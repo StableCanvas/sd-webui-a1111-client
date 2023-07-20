@@ -1,5 +1,5 @@
 {
-  "name": "@stable-canvas/sd-webui-api-client",
+  "name": "@stable-canvas/sd-webui-a1111-client",
   "version": "1.0.1",
   "description": "",
   "source": "src/main.ts",

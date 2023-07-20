@@ -39,7 +39,7 @@ fs.writeFileSync("image.png", Buffer.from(image, "base64"));
 <script type="importmap">
   {
     "imports": {
-      "@stable-canvas/sd-webui-a1111-client": "https://unpkg.com/@stable-canvas/sd-webui-a1111-client/dist/main.module.mjs"
+      "@stable-canvas/sd-webui-a1111-client": "https://unpkg.com/@stable-canvas/sd-webui-a1111-client@latest/dist/main.module.mjs"
     }
   }
 </script>
