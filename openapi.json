@@ -1,0 +1,5668 @@
+{
+  "openapi": "3.0.2",
+  "info": { "title": "FastAPI", "version": "0.1.0" },
+  "paths": {
+    "/user/": {
+      "get": {
+        "summary": "Get Current User",
+        "operationId": "get_current_user_user__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Current User User  Get",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "summary": "Get Current User",
+        "operationId": "get_current_user_user_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Current User User Get",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login_check/": {
+      "get": {
+        "summary": "Login Check",
+        "operationId": "login_check_login_check__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/login_check": {
+      "get": {
+        "summary": "Login Check",
+        "operationId": "login_check_login_check_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/token/": {
+      "get": {
+        "summary": "Get Token",
+        "operationId": "get_token_token__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Token Token  Get",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/token": {
+      "get": {
+        "summary": "Get Token",
+        "operationId": "get_token_token_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Token Token Get",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app_id/": {
+      "get": {
+        "summary": "App Id",
+        "operationId": "app_id_app_id__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response App Id App Id  Get",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app_id": {
+      "get": {
+        "summary": "App Id",
+        "operationId": "app_id_app_id_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response App Id App Id Get",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login/": {
+      "post": {
+        "summary": "Login",
+        "operationId": "login_login__post",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_login_login__post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "login_login_post",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": { "$ref": "#/components/schemas/Body_login_login_post" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Main",
+        "operationId": "main__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "text/html": { "schema": { "type": "string" } } }
+          }
+        }
+      },
+      "head": {
+        "summary": "Main",
+        "operationId": "main__head",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "text/html": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/info": {
+      "get": {
+        "summary": "Api Info",
+        "operationId": "api_info_info_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Serialize",
+              "type": "boolean",
+              "default": true
+            },
+            "name": "serialize",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/info/": {
+      "get": {
+        "summary": "Api Info",
+        "operationId": "api_info_info__get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Serialize",
+              "type": "boolean",
+              "default": true
+            },
+            "name": "serialize",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/config": {
+      "get": {
+        "summary": "Get Config",
+        "operationId": "get_config_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/config/": {
+      "get": {
+        "summary": "Get Config",
+        "operationId": "get_config_config__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/static/{path}": {
+      "get": {
+        "summary": "Static Resource",
+        "operationId": "static_resource_static__path__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/{path}": {
+      "get": {
+        "summary": "Build Resource",
+        "operationId": "build_resource_assets__path__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favicon.ico": {
+      "get": {
+        "summary": "Favicon",
+        "operationId": "favicon_favicon_ico_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/proxy={url_path}": {
+      "get": {
+        "summary": "Reverse Proxy",
+        "operationId": "reverse_proxy_proxy__url_path__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Url Path", "type": "string" },
+            "name": "url_path",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "head": {
+        "summary": "Reverse Proxy",
+        "operationId": "reverse_proxy_proxy__url_path__head",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Url Path", "type": "string" },
+            "name": "url_path",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/file={path_or_url}": {
+      "get": {
+        "summary": "File",
+        "operationId": "file_file__path_or_url__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path Or Url", "type": "string" },
+            "name": "path_or_url",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "head": {
+        "summary": "File",
+        "operationId": "file_file__path_or_url__head",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path Or Url", "type": "string" },
+            "name": "path_or_url",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/file/{path}": {
+      "get": {
+        "summary": "File Deprecated",
+        "operationId": "file_deprecated_file__path__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reset": {
+      "post": {
+        "summary": "Reset Iterator",
+        "operationId": "reset_iterator_reset_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ResetBody" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reset/": {
+      "post": {
+        "summary": "Reset Iterator",
+        "operationId": "reset_iterator_reset__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ResetBody" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{api_name}/": {
+      "post": {
+        "summary": "Predict",
+        "operationId": "predict_api__api_name___post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Api Name", "type": "string" },
+            "name": "api_name",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PredictBody" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{api_name}": {
+      "post": {
+        "summary": "Predict",
+        "operationId": "predict_api__api_name__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Api Name", "type": "string" },
+            "name": "api_name",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PredictBody" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/run/{api_name}/": {
+      "post": {
+        "summary": "Predict",
+        "operationId": "predict_run__api_name___post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Api Name", "type": "string" },
+            "name": "api_name",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PredictBody" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/run/{api_name}": {
+      "post": {
+        "summary": "Predict",
+        "operationId": "predict_run__api_name__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Api Name", "type": "string" },
+            "name": "api_name",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PredictBody" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/queue/status": {
+      "get": {
+        "summary": "Get Queue Status",
+        "operationId": "get_queue_status_queue_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Estimation" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/upload": {
+      "post": {
+        "summary": "Upload File",
+        "operationId": "upload_file_upload_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_file_upload_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/startup-events": {
+      "get": {
+        "summary": "Startup Events",
+        "operationId": "startup_events_startup_events_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/theme.css": {
+      "get": {
+        "summary": "Theme Css",
+        "operationId": "theme_css_theme_css_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "text/plain": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/robots.txt": {
+      "get": {
+        "summary": "Robots Txt",
+        "operationId": "robots_txt_robots_txt_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "text/plain": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/internal/progress": {
+      "post": {
+        "summary": "Progressapi",
+        "operationId": "progressapi_internal_progress_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ProgressRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/modules__progress__ProgressResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal/quicksettings-hint": {
+      "get": {
+        "summary": "Quicksettings Hint",
+        "operationId": "quicksettings_hint_internal_quicksettings_hint_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Quicksettings Hint Internal Quicksettings Hint Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/QuicksettingsHint" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal/ping": {
+      "get": {
+        "summary": "<Lambda>",
+        "operationId": "_lambda__internal_ping_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/internal/profile-startup": {
+      "get": {
+        "summary": "<Lambda>",
+        "operationId": "_lambda__internal_profile_startup_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/internal/sysinfo": {
+      "get": {
+        "summary": "Download Sysinfo",
+        "operationId": "download_sysinfo_internal_sysinfo_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Attachment", "default": false },
+            "name": "attachment",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal/sysinfo-download": {
+      "get": {
+        "summary": "<Lambda>",
+        "operationId": "_lambda__internal_sysinfo_download_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/txt2img": {
+      "post": {
+        "summary": "Text2Imgapi",
+        "operationId": "text2imgapi_sdapi_v1_txt2img_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StableDiffusionProcessingTxt2Img"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TextToImageResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/img2img": {
+      "post": {
+        "summary": "Img2Imgapi",
+        "operationId": "img2imgapi_sdapi_v1_img2img_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StableDiffusionProcessingImg2Img"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageToImageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/extra-single-image": {
+      "post": {
+        "summary": "Extras Single Image Api",
+        "operationId": "extras_single_image_api_sdapi_v1_extra_single_image_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExtrasSingleImageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtrasSingleImageResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/extra-batch-images": {
+      "post": {
+        "summary": "Extras Batch Images Api",
+        "operationId": "extras_batch_images_api_sdapi_v1_extra_batch_images_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExtrasBatchImagesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtrasBatchImagesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/png-info": {
+      "post": {
+        "summary": "Pnginfoapi",
+        "operationId": "pnginfoapi_sdapi_v1_png_info_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PNGInfoRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PNGInfoResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/progress": {
+      "get": {
+        "summary": "Progressapi",
+        "operationId": "progressapi_sdapi_v1_progress_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Skip Current Image",
+              "type": "boolean",
+              "default": false
+            },
+            "name": "skip_current_image",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/modules__api__models__ProgressResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/interrogate": {
+      "post": {
+        "summary": "Interrogateapi",
+        "operationId": "interrogateapi_sdapi_v1_interrogate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/InterrogateRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/interrupt": {
+      "post": {
+        "summary": "Interruptapi",
+        "operationId": "interruptapi_sdapi_v1_interrupt_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/skip": {
+      "post": {
+        "summary": "Skip",
+        "operationId": "skip_sdapi_v1_skip_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/options": {
+      "get": {
+        "summary": "Get Config",
+        "operationId": "get_config_sdapi_v1_options_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Options" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Set Config",
+        "operationId": "set_config_sdapi_v1_options_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "title": "Req", "type": "object" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/cmd-flags": {
+      "get": {
+        "summary": "Get Cmd Flags",
+        "operationId": "get_cmd_flags_sdapi_v1_cmd_flags_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Flags" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/samplers": {
+      "get": {
+        "summary": "Get Samplers",
+        "operationId": "get_samplers_sdapi_v1_samplers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Samplers Sdapi V1 Samplers Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/SamplerItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/upscalers": {
+      "get": {
+        "summary": "Get Upscalers",
+        "operationId": "get_upscalers_sdapi_v1_upscalers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Upscalers Sdapi V1 Upscalers Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UpscalerItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/latent-upscale-modes": {
+      "get": {
+        "summary": "Get Latent Upscale Modes",
+        "operationId": "get_latent_upscale_modes_sdapi_v1_latent_upscale_modes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Latent Upscale Modes Sdapi V1 Latent Upscale Modes Get",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LatentUpscalerModeItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/sd-models": {
+      "get": {
+        "summary": "Get Sd Models",
+        "operationId": "get_sd_models_sdapi_v1_sd_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Sd Models Sdapi V1 Sd Models Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/SDModelItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/sd-vae": {
+      "get": {
+        "summary": "Get Sd Vaes",
+        "operationId": "get_sd_vaes_sdapi_v1_sd_vae_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Sd Vaes Sdapi V1 Sd Vae Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/SDVaeItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/hypernetworks": {
+      "get": {
+        "summary": "Get Hypernetworks",
+        "operationId": "get_hypernetworks_sdapi_v1_hypernetworks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Hypernetworks Sdapi V1 Hypernetworks Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/HypernetworkItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/face-restorers": {
+      "get": {
+        "summary": "Get Face Restorers",
+        "operationId": "get_face_restorers_sdapi_v1_face_restorers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Face Restorers Sdapi V1 Face Restorers Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/FaceRestorerItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/realesrgan-models": {
+      "get": {
+        "summary": "Get Realesrgan Models",
+        "operationId": "get_realesrgan_models_sdapi_v1_realesrgan_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Realesrgan Models Sdapi V1 Realesrgan Models Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/RealesrganItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/prompt-styles": {
+      "get": {
+        "summary": "Get Prompt Styles",
+        "operationId": "get_prompt_styles_sdapi_v1_prompt_styles_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Prompt Styles Sdapi V1 Prompt Styles Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/PromptStyleItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/embeddings": {
+      "get": {
+        "summary": "Get Embeddings",
+        "operationId": "get_embeddings_sdapi_v1_embeddings_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/EmbeddingsResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/refresh-checkpoints": {
+      "post": {
+        "summary": "Refresh Checkpoints",
+        "operationId": "refresh_checkpoints_sdapi_v1_refresh_checkpoints_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/create/embedding": {
+      "post": {
+        "summary": "Create Embedding",
+        "operationId": "create_embedding_sdapi_v1_create_embedding_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "title": "Args", "type": "object" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CreateResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/create/hypernetwork": {
+      "post": {
+        "summary": "Create Hypernetwork",
+        "operationId": "create_hypernetwork_sdapi_v1_create_hypernetwork_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "title": "Args", "type": "object" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CreateResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/preprocess": {
+      "post": {
+        "summary": "Preprocess",
+        "operationId": "preprocess_sdapi_v1_preprocess_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "title": "Args", "type": "object" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PreprocessResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/train/embedding": {
+      "post": {
+        "summary": "Train Embedding",
+        "operationId": "train_embedding_sdapi_v1_train_embedding_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "title": "Args", "type": "object" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TrainResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/train/hypernetwork": {
+      "post": {
+        "summary": "Train Hypernetwork",
+        "operationId": "train_hypernetwork_sdapi_v1_train_hypernetwork_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "title": "Args", "type": "object" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TrainResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/memory": {
+      "get": {
+        "summary": "Get Memory",
+        "operationId": "get_memory_sdapi_v1_memory_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MemoryResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/unload-checkpoint": {
+      "post": {
+        "summary": "Unloadapi",
+        "operationId": "unloadapi_sdapi_v1_unload_checkpoint_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/reload-checkpoint": {
+      "post": {
+        "summary": "Reloadapi",
+        "operationId": "reloadapi_sdapi_v1_reload_checkpoint_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/scripts": {
+      "get": {
+        "summary": "Get Scripts List",
+        "operationId": "get_scripts_list_sdapi_v1_scripts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ScriptsList" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/script-info": {
+      "get": {
+        "summary": "Get Script Info",
+        "operationId": "get_script_info_sdapi_v1_script_info_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Script Info Sdapi V1 Script Info Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ScriptInfo" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sd_extra_networks/thumb": {
+      "get": {
+        "summary": "Fetch File",
+        "operationId": "fetch_file_sd_extra_networks_thumb_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Filename", "type": "string", "default": "" },
+            "name": "filename",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sd_extra_networks/metadata": {
+      "get": {
+        "summary": "Get Metadata",
+        "operationId": "get_metadata_sd_extra_networks_metadata_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Page", "type": "string", "default": "" },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Item", "type": "string", "default": "" },
+            "name": "item",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/queue/txt2img": {
+      "post": {
+        "summary": "Queue Txt2Img",
+        "operationId": "queue_txt2img_agent_scheduler_v1_queue_txt2img_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Txt2ImgApiTaskArgs" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QueueTaskResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/queue/img2img": {
+      "post": {
+        "summary": "Queue Img2Img",
+        "operationId": "queue_img2img_agent_scheduler_v1_queue_img2img_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Img2ImgApiTaskArgs" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QueueTaskResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/queue": {
+      "get": {
+        "summary": "Queue Status Api",
+        "operationId": "queue_status_api_agent_scheduler_v1_queue_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Limit", "type": "integer", "default": 20 },
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Offset", "type": "integer", "default": 0 },
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QueueStatusResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/history": {
+      "get": {
+        "summary": "History Api",
+        "operationId": "history_api_agent_scheduler_v1_history_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Status", "type": "string" },
+            "name": "status",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Limit", "type": "integer", "default": 20 },
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Offset", "type": "integer", "default": 0 },
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HistoryResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/run/{id}": {
+      "post": {
+        "summary": "Run Task",
+        "operationId": "run_task_agent_scheduler_v1_run__id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/requeue/{id}": {
+      "post": {
+        "summary": "Requeue Task",
+        "operationId": "requeue_task_agent_scheduler_v1_requeue__id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/delete/{id}": {
+      "post": {
+        "summary": "Delete Task",
+        "operationId": "delete_task_agent_scheduler_v1_delete__id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/move/{id}/{over_id}": {
+      "post": {
+        "summary": "Move Task",
+        "operationId": "move_task_agent_scheduler_v1_move__id___over_id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Over Id", "type": "string" },
+            "name": "over_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/bookmark/{id}": {
+      "post": {
+        "summary": "Pin Task",
+        "operationId": "pin_task_agent_scheduler_v1_bookmark__id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/unbookmark/{id}": {
+      "post": {
+        "summary": "Unpin Task",
+        "operationId": "unpin_task_agent_scheduler_v1_unbookmark__id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/rename/{id}": {
+      "post": {
+        "summary": "Rename Task",
+        "operationId": "rename_task_agent_scheduler_v1_rename__id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Name", "type": "string" },
+            "name": "name",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/results/{id}": {
+      "get": {
+        "summary": "Get Task Results",
+        "operationId": "get_task_results_agent_scheduler_v1_results__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Zip", "type": "boolean", "default": false },
+            "name": "zip",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/pause": {
+      "post": {
+        "summary": "Pause Queue",
+        "operationId": "pause_queue_agent_scheduler_v1_pause_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/resume": {
+      "post": {
+        "summary": "Resume Queue",
+        "operationId": "resume_queue_agent_scheduler_v1_resume_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/controlnet/version": {
+      "get": {
+        "summary": "Version",
+        "operationId": "version_controlnet_version_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/controlnet/model_list": {
+      "get": {
+        "summary": "Model List",
+        "operationId": "model_list_controlnet_model_list_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/controlnet/module_list": {
+      "get": {
+        "summary": "Module List",
+        "operationId": "module_list_controlnet_module_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Alias Names",
+              "type": "boolean",
+              "default": false
+            },
+            "name": "alias_names",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controlnet/control_types": {
+      "get": {
+        "summary": "Control Types",
+        "operationId": "control_types_controlnet_control_types_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/controlnet/settings": {
+      "get": {
+        "summary": "Settings",
+        "operationId": "settings_controlnet_settings_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/controlnet/detect": {
+      "post": {
+        "summary": "Detect",
+        "operationId": "detect_controlnet_detect_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_detect_controlnet_detect_post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/loras": {
+      "get": {
+        "summary": "Get Loras",
+        "operationId": "get_loras_sdapi_v1_loras_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/refresh-loras": {
+      "post": {
+        "summary": "Refresh Loras",
+        "operationId": "refresh_loras_sdapi_v1_refresh_loras_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Body_detect_controlnet_detect_post": {
+        "title": "Body_detect_controlnet_detect_post",
+        "type": "object",
+        "properties": {
+          "controlnet_module": {
+            "title": "Controlnet Module",
+            "type": "string",
+            "default": "none"
+          },
+          "controlnet_input_images": {
+            "title": "Controlnet Input Images",
+            "type": "array",
+            "items": { "type": "string" },
+            "default": []
+          },
+          "controlnet_processor_res": {
+            "title": "Controlnet Processor Resolution",
+            "type": "integer",
+            "default": 512
+          },
+          "controlnet_threshold_a": {
+            "title": "Controlnet Threshold a",
+            "type": "number",
+            "default": 64
+          },
+          "controlnet_threshold_b": {
+            "title": "Controlnet Threshold b",
+            "type": "number",
+            "default": 64
+          }
+        }
+      },
+      "Body_login_login__post": {
+        "title": "Body_login_login__post",
+        "required": ["username", "password"],
+        "type": "object",
+        "properties": {
+          "grant_type": {
+            "title": "Grant Type",
+            "pattern": "password",
+            "type": "string"
+          },
+          "username": { "title": "Username", "type": "string" },
+          "password": { "title": "Password", "type": "string" },
+          "scope": { "title": "Scope", "type": "string", "default": "" },
+          "client_id": { "title": "Client Id", "type": "string" },
+          "client_secret": { "title": "Client Secret", "type": "string" }
+        }
+      },
+      "Body_login_login_post": {
+        "title": "Body_login_login_post",
+        "required": ["username", "password"],
+        "type": "object",
+        "properties": {
+          "grant_type": {
+            "title": "Grant Type",
+            "pattern": "password",
+            "type": "string"
+          },
+          "username": { "title": "Username", "type": "string" },
+          "password": { "title": "Password", "type": "string" },
+          "scope": { "title": "Scope", "type": "string", "default": "" },
+          "client_id": { "title": "Client Id", "type": "string" },
+          "client_secret": { "title": "Client Secret", "type": "string" }
+        }
+      },
+      "Body_upload_file_upload_post": {
+        "title": "Body_upload_file_upload_post",
+        "required": ["files"],
+        "type": "object",
+        "properties": {
+          "files": {
+            "title": "Files",
+            "type": "array",
+            "items": { "type": "string", "format": "binary" }
+          }
+        }
+      },
+      "CreateResponse": {
+        "title": "CreateResponse",
+        "required": ["info"],
+        "type": "object",
+        "properties": {
+          "info": {
+            "title": "Create info",
+            "type": "string",
+            "description": "Response string from create embedding or hypernetwork task."
+          }
+        }
+      },
+      "EmbeddingItem": {
+        "title": "EmbeddingItem",
+        "required": ["shape", "vectors"],
+        "type": "object",
+        "properties": {
+          "step": {
+            "title": "Step",
+            "type": "integer",
+            "description": "The number of steps that were used to train this embedding, if available"
+          },
+          "sd_checkpoint": {
+            "title": "SD Checkpoint",
+            "type": "string",
+            "description": "The hash of the checkpoint this embedding was trained on, if available"
+          },
+          "sd_checkpoint_name": {
+            "title": "SD Checkpoint Name",
+            "type": "string",
+            "description": "The name of the checkpoint this embedding was trained on, if available. Note that this is the name that was used by the trainer; for a stable identifier, use `sd_checkpoint` instead"
+          },
+          "shape": {
+            "title": "Shape",
+            "type": "integer",
+            "description": "The length of each individual vector in the embedding"
+          },
+          "vectors": {
+            "title": "Vectors",
+            "type": "integer",
+            "description": "The number of vectors in the embedding"
+          }
+        }
+      },
+      "EmbeddingsResponse": {
+        "title": "EmbeddingsResponse",
+        "required": ["loaded", "skipped"],
+        "type": "object",
+        "properties": {
+          "loaded": {
+            "title": "Loaded",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/EmbeddingItem"
+            },
+            "description": "Embeddings loaded for the current model"
+          },
+          "skipped": {
+            "title": "Skipped",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/EmbeddingItem"
+            },
+            "description": "Embeddings skipped for the current model (likely due to architecture incompatibility)"
+          }
+        }
+      },
+      "Estimation": {
+        "title": "Estimation",
+        "required": ["queue_size", "queue_eta"],
+        "type": "object",
+        "properties": {
+          "msg": { "title": "Msg", "type": "string", "default": "estimation" },
+          "rank": { "title": "Rank", "type": "integer" },
+          "queue_size": { "title": "Queue Size", "type": "integer" },
+          "avg_event_process_time": {
+            "title": "Avg Event Process Time",
+            "type": "number"
+          },
+          "avg_event_concurrent_process_time": {
+            "title": "Avg Event Concurrent Process Time",
+            "type": "number"
+          },
+          "rank_eta": { "title": "Rank Eta", "type": "number" },
+          "queue_eta": { "title": "Queue Eta", "type": "number" }
+        }
+      },
+      "ExtrasBatchImagesRequest": {
+        "title": "ExtrasBatchImagesRequest",
+        "required": ["imageList"],
+        "type": "object",
+        "properties": {
+          "resize_mode": {
+            "title": "Resize Mode",
+            "enum": [0, 1],
+            "type": "integer",
+            "description": "Sets the resize mode: 0 to upscale by upscaling_resize amount, 1 to upscale up to upscaling_resize_h x upscaling_resize_w.",
+            "default": 0
+          },
+          "show_extras_results": {
+            "title": "Show results",
+            "type": "boolean",
+            "description": "Should the backend return the generated image?",
+            "default": true
+          },
+          "gfpgan_visibility": {
+            "title": "GFPGAN Visibility",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number",
+            "description": "Sets the visibility of GFPGAN, values should be between 0 and 1.",
+            "default": 0
+          },
+          "codeformer_visibility": {
+            "title": "CodeFormer Visibility",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number",
+            "description": "Sets the visibility of CodeFormer, values should be between 0 and 1.",
+            "default": 0
+          },
+          "codeformer_weight": {
+            "title": "CodeFormer Weight",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number",
+            "description": "Sets the weight of CodeFormer, values should be between 0 and 1.",
+            "default": 0
+          },
+          "upscaling_resize": {
+            "title": "Upscaling Factor",
+            "maximum": 8.0,
+            "minimum": 1.0,
+            "type": "number",
+            "description": "By how much to upscale the image, only used when resize_mode=0.",
+            "default": 2
+          },
+          "upscaling_resize_w": {
+            "title": "Target Width",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Target width for the upscaler to hit. Only used when resize_mode=1.",
+            "default": 512
+          },
+          "upscaling_resize_h": {
+            "title": "Target Height",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Target height for the upscaler to hit. Only used when resize_mode=1.",
+            "default": 512
+          },
+          "upscaling_crop": {
+            "title": "Crop to fit",
+            "type": "boolean",
+            "description": "Should the upscaler crop the image to fit in the chosen size?",
+            "default": true
+          },
+          "upscaler_1": {
+            "title": "Main upscaler",
+            "type": "string",
+            "description": "The name of the main upscaler to use, it has to be one of this list: ",
+            "default": "None"
+          },
+          "upscaler_2": {
+            "title": "Secondary upscaler",
+            "type": "string",
+            "description": "The name of the secondary upscaler to use, it has to be one of this list: ",
+            "default": "None"
+          },
+          "extras_upscaler_2_visibility": {
+            "title": "Secondary upscaler visibility",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number",
+            "description": "Sets the visibility of secondary upscaler, values should be between 0 and 1.",
+            "default": 0
+          },
+          "upscale_first": {
+            "title": "Upscale first",
+            "type": "boolean",
+            "description": "Should the upscaler run before restoring faces?",
+            "default": false
+          },
+          "imageList": {
+            "title": "Images",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/FileData" },
+            "description": "List of images to work on. Must be Base64 strings"
+          }
+        }
+      },
+      "ExtrasBatchImagesResponse": {
+        "title": "ExtrasBatchImagesResponse",
+        "required": ["html_info", "images"],
+        "type": "object",
+        "properties": {
+          "html_info": {
+            "title": "HTML info",
+            "type": "string",
+            "description": "A series of HTML tags containing the process info."
+          },
+          "images": {
+            "title": "Images",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The generated images in base64 format."
+          }
+        }
+      },
+      "ExtrasSingleImageRequest": {
+        "title": "ExtrasSingleImageRequest",
+        "type": "object",
+        "properties": {
+          "resize_mode": {
+            "title": "Resize Mode",
+            "enum": [0, 1],
+            "type": "integer",
+            "description": "Sets the resize mode: 0 to upscale by upscaling_resize amount, 1 to upscale up to upscaling_resize_h x upscaling_resize_w.",
+            "default": 0
+          },
+          "show_extras_results": {
+            "title": "Show results",
+            "type": "boolean",
+            "description": "Should the backend return the generated image?",
+            "default": true
+          },
+          "gfpgan_visibility": {
+            "title": "GFPGAN Visibility",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number",
+            "description": "Sets the visibility of GFPGAN, values should be between 0 and 1.",
+            "default": 0
+          },
+          "codeformer_visibility": {
+            "title": "CodeFormer Visibility",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number",
+            "description": "Sets the visibility of CodeFormer, values should be between 0 and 1.",
+            "default": 0
+          },
+          "codeformer_weight": {
+            "title": "CodeFormer Weight",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number",
+            "description": "Sets the weight of CodeFormer, values should be between 0 and 1.",
+            "default": 0
+          },
+          "upscaling_resize": {
+            "title": "Upscaling Factor",
+            "maximum": 8.0,
+            "minimum": 1.0,
+            "type": "number",
+            "description": "By how much to upscale the image, only used when resize_mode=0.",
+            "default": 2
+          },
+          "upscaling_resize_w": {
+            "title": "Target Width",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Target width for the upscaler to hit. Only used when resize_mode=1.",
+            "default": 512
+          },
+          "upscaling_resize_h": {
+            "title": "Target Height",
+            "minimum": 1.0,
+            "type": "integer",
+            "description": "Target height for the upscaler to hit. Only used when resize_mode=1.",
+            "default": 512
+          },
+          "upscaling_crop": {
+            "title": "Crop to fit",
+            "type": "boolean",
+            "description": "Should the upscaler crop the image to fit in the chosen size?",
+            "default": true
+          },
+          "upscaler_1": {
+            "title": "Main upscaler",
+            "type": "string",
+            "description": "The name of the main upscaler to use, it has to be one of this list: ",
+            "default": "None"
+          },
+          "upscaler_2": {
+            "title": "Secondary upscaler",
+            "type": "string",
+            "description": "The name of the secondary upscaler to use, it has to be one of this list: ",
+            "default": "None"
+          },
+          "extras_upscaler_2_visibility": {
+            "title": "Secondary upscaler visibility",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number",
+            "description": "Sets the visibility of secondary upscaler, values should be between 0 and 1.",
+            "default": 0
+          },
+          "upscale_first": {
+            "title": "Upscale first",
+            "type": "boolean",
+            "description": "Should the upscaler run before restoring faces?",
+            "default": false
+          },
+          "image": {
+            "title": "Image",
+            "type": "string",
+            "description": "Image to work on, must be a Base64 string containing the image's data.",
+            "default": ""
+          }
+        }
+      },
+      "ExtrasSingleImageResponse": {
+        "title": "ExtrasSingleImageResponse",
+        "required": ["html_info"],
+        "type": "object",
+        "properties": {
+          "html_info": {
+            "title": "HTML info",
+            "type": "string",
+            "description": "A series of HTML tags containing the process info."
+          },
+          "image": {
+            "title": "Image",
+            "type": "string",
+            "description": "The generated image in base64 format."
+          }
+        }
+      },
+      "FaceRestorerItem": {
+        "title": "FaceRestorerItem",
+        "required": ["name"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "cmd_dir": { "title": "Path", "type": "string" }
+        }
+      },
+      "FileData": {
+        "title": "FileData",
+        "required": ["data", "name"],
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "File data",
+            "type": "string",
+            "description": "Base64 representation of the file"
+          },
+          "name": { "title": "File name", "type": "string" }
+        }
+      },
+      "Flags": {
+        "title": "Flags",
+        "type": "object",
+        "properties": {
+          "f": {
+            "title": "F",
+            "type": "boolean",
+            "description": "==SUPPRESS==",
+            "default": false
+          },
+          "update_all_extensions": {
+            "title": "Update All Extensions",
+            "type": "boolean",
+            "description": "launch.py argument: download updates for all extensions when starting the program",
+            "default": false
+          },
+          "skip_python_version_check": {
+            "title": "Skip Python Version Check",
+            "type": "boolean",
+            "description": "launch.py argument: do not check python version",
+            "default": false
+          },
+          "skip_torch_cuda_test": {
+            "title": "Skip Torch Cuda Test",
+            "type": "boolean",
+            "description": "launch.py argument: do not check if CUDA is able to work properly",
+            "default": false
+          },
+          "reinstall_xformers": {
+            "title": "Reinstall Xformers",
+            "type": "boolean",
+            "description": "launch.py argument: install the appropriate version of xformers even if you have some version already installed",
+            "default": false
+          },
+          "reinstall_torch": {
+            "title": "Reinstall Torch",
+            "type": "boolean",
+            "description": "launch.py argument: install the appropriate version of torch even if you have some version already installed",
+            "default": false
+          },
+          "update_check": {
+            "title": "Update Check",
+            "type": "boolean",
+            "description": "launch.py argument: check for updates at startup",
+            "default": false
+          },
+          "test_server": {
+            "title": "Test Server",
+            "type": "boolean",
+            "description": "launch.py argument: configure server for testing",
+            "default": false
+          },
+          "skip_prepare_environment": {
+            "title": "Skip Prepare Environment",
+            "type": "boolean",
+            "description": "launch.py argument: skip all environment preparation",
+            "default": false
+          },
+          "skip_install": {
+            "title": "Skip Install",
+            "type": "boolean",
+            "description": "launch.py argument: skip installation of packages",
+            "default": false
+          },
+          "data_dir": {
+            "title": "Data Dir",
+            "type": "string",
+            "description": "base path where all user data is stored",
+            "default": "O:\\AI\\sd-webui"
+          },
+          "config": {
+            "title": "Config",
+            "type": "string",
+            "description": "path to config which constructs model",
+            "default": "O:\\AI\\sd-webui\\configs\\v1-inference.yaml"
+          },
+          "ckpt": {
+            "title": "Ckpt",
+            "type": "string",
+            "description": "path to checkpoint of stable diffusion model; if specified, this checkpoint will be added to the list of checkpoints and loaded",
+            "default": "O:\\AI\\sd-webui\\model.ckpt"
+          },
+          "ckpt_dir": {
+            "title": "Ckpt Dir",
+            "type": "string",
+            "description": "Path to directory with stable diffusion checkpoints"
+          },
+          "vae_dir": {
+            "title": "Vae Dir",
+            "type": "string",
+            "description": "Path to directory with VAE files"
+          },
+          "gfpgan_dir": {
+            "title": "Gfpgan Dir",
+            "type": "string",
+            "description": "GFPGAN directory",
+            "default": "./GFPGAN"
+          },
+          "gfpgan_model": {
+            "title": "Gfpgan Model",
+            "type": "string",
+            "description": "GFPGAN model file name"
+          },
+          "no_half": {
+            "title": "No Half",
+            "type": "boolean",
+            "description": "do not switch the model to 16-bit floats",
+            "default": false
+          },
+          "no_half_vae": {
+            "title": "No Half Vae",
+            "type": "boolean",
+            "description": "do not switch the VAE model to 16-bit floats",
+            "default": false
+          },
+          "no_progressbar_hiding": {
+            "title": "No Progressbar Hiding",
+            "type": "boolean",
+            "description": "do not hide progressbar in gradio UI (we hide it because it slows down ML if you have hardware acceleration in browser)",
+            "default": false
+          },
+          "max_batch_count": {
+            "title": "Max Batch Count",
+            "type": "integer",
+            "description": "maximum batch count value for the UI",
+            "default": 16
+          },
+          "embeddings_dir": {
+            "title": "Embeddings Dir",
+            "type": "string",
+            "description": "embeddings directory for textual inversion (default: embeddings)",
+            "default": "O:\\AI\\sd-webui\\embeddings"
+          },
+          "textual_inversion_templates_dir": {
+            "title": "Textual Inversion Templates Dir",
+            "type": "string",
+            "description": "directory with textual inversion templates",
+            "default": "O:\\AI\\sd-webui\\textual_inversion_templates"
+          },
+          "hypernetwork_dir": {
+            "title": "Hypernetwork Dir",
+            "type": "string",
+            "description": "hypernetwork directory",
+            "default": "O:\\AI\\sd-webui\\models\\hypernetworks"
+          },
+          "localizations_dir": {
+            "title": "Localizations Dir",
+            "type": "string",
+            "description": "localizations directory",
+            "default": "O:\\AI\\sd-webui\\localizations"
+          },
+          "allow_code": {
+            "title": "Allow Code",
+            "type": "boolean",
+            "description": "allow custom script execution from webui",
+            "default": false
+          },
+          "medvram": {
+            "title": "Medvram",
+            "type": "boolean",
+            "description": "enable stable diffusion model optimizations for sacrificing a little speed for low VRM usage",
+            "default": false
+          },
+          "lowvram": {
+            "title": "Lowvram",
+            "type": "boolean",
+            "description": "enable stable diffusion model optimizations for sacrificing a lot of speed for very low VRM usage",
+            "default": false
+          },
+          "lowram": {
+            "title": "Lowram",
+            "type": "boolean",
+            "description": "load stable diffusion checkpoint weights to VRAM instead of RAM",
+            "default": false
+          },
+          "always_batch_cond_uncond": {
+            "title": "Always Batch Cond Uncond",
+            "type": "boolean",
+            "description": "disables cond/uncond batching that is enabled to save memory with --medvram or --lowvram",
+            "default": false
+          },
+          "unload_gfpgan": {
+            "title": "Unload Gfpgan",
+            "type": "boolean",
+            "description": "does not do anything.",
+            "default": false
+          },
+          "precision": {
+            "title": "Precision",
+            "type": "string",
+            "description": "evaluate at this precision",
+            "default": "autocast"
+          },
+          "upcast_sampling": {
+            "title": "Upcast Sampling",
+            "type": "boolean",
+            "description": "upcast sampling. No effect with --no-half. Usually produces similar results to --no-half with better performance while using less memory.",
+            "default": false
+          },
+          "share": {
+            "title": "Share",
+            "type": "boolean",
+            "description": "use share=True for gradio and make the UI accessible through their site",
+            "default": false
+          },
+          "ngrok": {
+            "title": "Ngrok",
+            "type": "string",
+            "description": "ngrok authtoken, alternative to gradio --share"
+          },
+          "ngrok_region": {
+            "title": "Ngrok Region",
+            "type": "string",
+            "description": "does not do anything.",
+            "default": ""
+          },
+          "ngrok_options": {
+            "title": "Ngrok Options",
+            "type": "object",
+            "description": "The options to pass to ngrok in JSON format, e.g.: '{\"authtoken_from_env\":true, \"basic_auth\":\"user:password\", \"oauth_provider\":\"google\", \"oauth_allow_emails\":\"user@asdf.com\"}'",
+            "default": {}
+          },
+          "enable_insecure_extension_access": {
+            "title": "Enable Insecure Extension Access",
+            "type": "boolean",
+            "description": "enable extensions tab regardless of other options",
+            "default": false
+          },
+          "codeformer_models_path": {
+            "title": "Codeformer Models Path",
+            "type": "string",
+            "description": "Path to directory with codeformer model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\Codeformer"
+          },
+          "gfpgan_models_path": {
+            "title": "Gfpgan Models Path",
+            "type": "string",
+            "description": "Path to directory with GFPGAN model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\GFPGAN"
+          },
+          "esrgan_models_path": {
+            "title": "Esrgan Models Path",
+            "type": "string",
+            "description": "Path to directory with ESRGAN model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\ESRGAN"
+          },
+          "bsrgan_models_path": {
+            "title": "Bsrgan Models Path",
+            "type": "string",
+            "description": "Path to directory with BSRGAN model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\BSRGAN"
+          },
+          "realesrgan_models_path": {
+            "title": "Realesrgan Models Path",
+            "type": "string",
+            "description": "Path to directory with RealESRGAN model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\RealESRGAN"
+          },
+          "clip_models_path": {
+            "title": "Clip Models Path",
+            "type": "string",
+            "description": "Path to directory with CLIP model file(s)."
+          },
+          "xformers": {
+            "title": "Xformers",
+            "type": "boolean",
+            "description": "enable xformers for cross attention layers",
+            "default": false
+          },
+          "force_enable_xformers": {
+            "title": "Force Enable Xformers",
+            "type": "boolean",
+            "description": "enable xformers for cross attention layers regardless of whether the checking code thinks you can run it; do not make bug reports if this fails to work",
+            "default": false
+          },
+          "xformers_flash_attention": {
+            "title": "Xformers Flash Attention",
+            "type": "boolean",
+            "description": "enable xformers with Flash Attention to improve reproducibility (supported for SD2.x or variant only)",
+            "default": false
+          },
+          "deepdanbooru": {
+            "title": "Deepdanbooru",
+            "type": "boolean",
+            "description": "does not do anything",
+            "default": false
+          },
+          "opt_split_attention": {
+            "title": "Opt Split Attention",
+            "type": "boolean",
+            "description": "prefer Doggettx's cross-attention layer optimization for automatic choice of optimization",
+            "default": false
+          },
+          "opt_sub_quad_attention": {
+            "title": "Opt Sub Quad Attention",
+            "type": "boolean",
+            "description": "prefer memory efficient sub-quadratic cross-attention layer optimization for automatic choice of optimization",
+            "default": false
+          },
+          "sub_quad_q_chunk_size": {
+            "title": "Sub Quad Q Chunk Size",
+            "type": "integer",
+            "description": "query chunk size for the sub-quadratic cross-attention layer optimization to use",
+            "default": 1024
+          },
+          "sub_quad_kv_chunk_size": {
+            "title": "Sub Quad Kv Chunk Size",
+            "type": "string",
+            "description": "kv chunk size for the sub-quadratic cross-attention layer optimization to use"
+          },
+          "sub_quad_chunk_threshold": {
+            "title": "Sub Quad Chunk Threshold",
+            "type": "string",
+            "description": "the percentage of VRAM threshold for the sub-quadratic cross-attention layer optimization to use chunking"
+          },
+          "opt_split_attention_invokeai": {
+            "title": "Opt Split Attention Invokeai",
+            "type": "boolean",
+            "description": "prefer InvokeAI's cross-attention layer optimization for automatic choice of optimization",
+            "default": false
+          },
+          "opt_split_attention_v1": {
+            "title": "Opt Split Attention V1",
+            "type": "boolean",
+            "description": "prefer older version of split attention optimization for automatic choice of optimization",
+            "default": false
+          },
+          "opt_sdp_attention": {
+            "title": "Opt Sdp Attention",
+            "type": "boolean",
+            "description": "prefer scaled dot product cross-attention layer optimization for automatic choice of optimization; requires PyTorch 2.*",
+            "default": false
+          },
+          "opt_sdp_no_mem_attention": {
+            "title": "Opt Sdp No Mem Attention",
+            "type": "boolean",
+            "description": "prefer scaled dot product cross-attention layer optimization without memory efficient attention for automatic choice of optimization, makes image generation deterministic; requires PyTorch 2.*",
+            "default": false
+          },
+          "disable_opt_split_attention": {
+            "title": "Disable Opt Split Attention",
+            "type": "boolean",
+            "description": "prefer no cross-attention layer optimization for automatic choice of optimization",
+            "default": false
+          },
+          "disable_nan_check": {
+            "title": "Disable Nan Check",
+            "type": "boolean",
+            "description": "do not check if produced images/latent spaces have nans; useful for running without a checkpoint in CI",
+            "default": false
+          },
+          "use_cpu": {
+            "title": "Use Cpu",
+            "type": "array",
+            "items": {},
+            "description": "use CPU as torch device for specified modules",
+            "default": []
+          },
+          "listen": {
+            "title": "Listen",
+            "type": "boolean",
+            "description": "launch gradio with 0.0.0.0 as server name, allowing to respond to network requests",
+            "default": false
+          },
+          "port": {
+            "title": "Port",
+            "type": "string",
+            "description": "launch gradio with given server port, you need root/admin rights for ports < 1024, defaults to 7860 if available"
+          },
+          "show_negative_prompt": {
+            "title": "Show Negative Prompt",
+            "type": "boolean",
+            "description": "does not do anything",
+            "default": false
+          },
+          "ui_config_file": {
+            "title": "Ui Config File",
+            "type": "string",
+            "description": "filename to use for ui configuration",
+            "default": "O:\\AI\\sd-webui\\ui-config.json"
+          },
+          "hide_ui_dir_config": {
+            "title": "Hide Ui Dir Config",
+            "type": "boolean",
+            "description": "hide directory configuration from webui",
+            "default": false
+          },
+          "freeze_settings": {
+            "title": "Freeze Settings",
+            "type": "boolean",
+            "description": "disable editing settings",
+            "default": false
+          },
+          "ui_settings_file": {
+            "title": "Ui Settings File",
+            "type": "string",
+            "description": "filename to use for ui settings",
+            "default": "O:\\AI\\sd-webui\\config.json"
+          },
+          "gradio_debug": {
+            "title": "Gradio Debug",
+            "type": "boolean",
+            "description": "launch gradio with --debug option",
+            "default": false
+          },
+          "gradio_auth": {
+            "title": "Gradio Auth",
+            "type": "string",
+            "description": "set gradio authentication like \"username:password\"; or comma-delimit multiple like \"u1:p1,u2:p2,u3:p3\""
+          },
+          "gradio_auth_path": {
+            "title": "Gradio Auth Path",
+            "type": "string",
+            "description": "set gradio authentication file path ex. \"/path/to/auth/file\" same auth format as --gradio-auth"
+          },
+          "gradio_img2img_tool": {
+            "title": "Gradio Img2Img Tool",
+            "type": "string",
+            "description": "does not do anything"
+          },
+          "gradio_inpaint_tool": {
+            "title": "Gradio Inpaint Tool",
+            "type": "string",
+            "description": "does not do anything"
+          },
+          "gradio_allowed_path": {
+            "title": "Gradio Allowed Path",
+            "type": "string",
+            "description": "add path to gradio's allowed_paths, make it possible to serve files from it"
+          },
+          "opt_channelslast": {
+            "title": "Opt Channelslast",
+            "type": "boolean",
+            "description": "change memory type for stable diffusion to channels last",
+            "default": false
+          },
+          "styles_file": {
+            "title": "Styles File",
+            "type": "string",
+            "description": "filename to use for styles",
+            "default": "O:\\AI\\sd-webui\\styles.csv"
+          },
+          "autolaunch": {
+            "title": "Autolaunch",
+            "type": "boolean",
+            "description": "open the webui URL in the system's default browser upon launch",
+            "default": false
+          },
+          "theme": {
+            "title": "Theme",
+            "type": "string",
+            "description": "launches the UI with light or dark theme"
+          },
+          "use_textbox_seed": {
+            "title": "Use Textbox Seed",
+            "type": "boolean",
+            "description": "use textbox for seeds in UI (no up/down, but possible to input long seeds)",
+            "default": false
+          },
+          "disable_console_progressbars": {
+            "title": "Disable Console Progressbars",
+            "type": "boolean",
+            "description": "do not output progressbars to console",
+            "default": false
+          },
+          "enable_console_prompts": {
+            "title": "Enable Console Prompts",
+            "type": "boolean",
+            "description": "print prompts to console when generating with txt2img and img2img",
+            "default": false
+          },
+          "vae_path": {
+            "title": "Vae Path",
+            "type": "string",
+            "description": "Checkpoint to use as VAE; setting this argument disables all settings related to VAE"
+          },
+          "disable_safe_unpickle": {
+            "title": "Disable Safe Unpickle",
+            "type": "boolean",
+            "description": "disable checking pytorch models for malicious code",
+            "default": false
+          },
+          "api": {
+            "title": "Api",
+            "type": "boolean",
+            "description": "use api=True to launch the API together with the webui (use --nowebui instead for only the API)",
+            "default": false
+          },
+          "api_auth": {
+            "title": "Api Auth",
+            "type": "string",
+            "description": "Set authentication for API like \"username:password\"; or comma-delimit multiple like \"u1:p1,u2:p2,u3:p3\""
+          },
+          "api_log": {
+            "title": "Api Log",
+            "type": "boolean",
+            "description": "use api-log=True to enable logging of all API requests",
+            "default": false
+          },
+          "nowebui": {
+            "title": "Nowebui",
+            "type": "boolean",
+            "description": "use api=True to launch the API instead of the webui",
+            "default": false
+          },
+          "ui_debug_mode": {
+            "title": "Ui Debug Mode",
+            "type": "boolean",
+            "description": "Don't load model to quickly launch UI",
+            "default": false
+          },
+          "device_id": {
+            "title": "Device Id",
+            "type": "string",
+            "description": "Select the default CUDA device to use (export CUDA_VISIBLE_DEVICES=0,1,etc might be needed before)"
+          },
+          "administrator": {
+            "title": "Administrator",
+            "type": "boolean",
+            "description": "Administrator rights",
+            "default": false
+          },
+          "cors_allow_origins": {
+            "title": "Cors Allow Origins",
+            "type": "string",
+            "description": "Allowed CORS origin(s) in the form of a comma-separated list (no spaces)"
+          },
+          "cors_allow_origins_regex": {
+            "title": "Cors Allow Origins Regex",
+            "type": "string",
+            "description": "Allowed CORS origin(s) in the form of a single regular expression"
+          },
+          "tls_keyfile": {
+            "title": "Tls Keyfile",
+            "type": "string",
+            "description": "Partially enables TLS, requires --tls-certfile to fully function"
+          },
+          "tls_certfile": {
+            "title": "Tls Certfile",
+            "type": "string",
+            "description": "Partially enables TLS, requires --tls-keyfile to fully function"
+          },
+          "disable_tls_verify": {
+            "title": "Disable Tls Verify",
+            "type": "string",
+            "description": "When passed, enables the use of self-signed certificates."
+          },
+          "server_name": {
+            "title": "Server Name",
+            "type": "string",
+            "description": "Sets hostname of server"
+          },
+          "gradio_queue": {
+            "title": "Gradio Queue",
+            "type": "boolean",
+            "description": "does not do anything",
+            "default": true
+          },
+          "no_gradio_queue": {
+            "title": "No Gradio Queue",
+            "type": "boolean",
+            "description": "Disables gradio queue; causes the webpage to use http requests instead of websockets; was the defaul in earlier versions",
+            "default": false
+          },
+          "skip_version_check": {
+            "title": "Skip Version Check",
+            "type": "boolean",
+            "description": "Do not check versions of torch and xformers",
+            "default": false
+          },
+          "no_hashing": {
+            "title": "No Hashing",
+            "type": "boolean",
+            "description": "disable sha256 hashing of checkpoints to help loading performance",
+            "default": false
+          },
+          "no_download_sd_model": {
+            "title": "No Download Sd Model",
+            "type": "boolean",
+            "description": "don't download SD1.5 model even if no model is found in --ckpt-dir",
+            "default": false
+          },
+          "subpath": {
+            "title": "Subpath",
+            "type": "string",
+            "description": "customize the subpath for gradio, use with reverse proxy"
+          },
+          "add_stop_route": {
+            "title": "Add Stop Route",
+            "type": "boolean",
+            "description": "add /_stop route to stop server",
+            "default": false
+          },
+          "controlnet_dir": {
+            "title": "Controlnet Dir",
+            "type": "string",
+            "description": "Path to directory with ControlNet models"
+          },
+          "controlnet_annotator_models_path": {
+            "title": "Controlnet Annotator Models Path",
+            "type": "string",
+            "description": "Path to directory with annotator model directories"
+          },
+          "no_half_controlnet": {
+            "title": "No Half Controlnet",
+            "type": "string",
+            "description": "do not switch the ControlNet models to 16-bit floats (only needed without --no-half)"
+          },
+          "controlnet_preprocessor_cache_size": {
+            "title": "Controlnet Preprocessor Cache Size",
+            "type": "integer",
+            "description": "Cache size for controlnet preprocessor results",
+            "default": 16
+          },
+          "controlnet_loglevel": {
+            "title": "Controlnet Loglevel",
+            "type": "string",
+            "description": "Set the log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)",
+            "default": "INFO"
+          },
+          "ldsr_models_path": {
+            "title": "Ldsr Models Path",
+            "type": "string",
+            "description": "Path to directory with LDSR model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\LDSR"
+          },
+          "lora_dir": {
+            "title": "Lora Dir",
+            "type": "string",
+            "description": "Path to directory with Lora networks.",
+            "default": "O:\\AI\\sd-webui\\models\\Lora"
+          },
+          "scunet_models_path": {
+            "title": "Scunet Models Path",
+            "type": "string",
+            "description": "Path to directory with ScuNET model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\ScuNET"
+          },
+          "swinir_models_path": {
+            "title": "Swinir Models Path",
+            "type": "string",
+            "description": "Path to directory with SwinIR model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\SwinIR"
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ValidationError" }
+          }
+        }
+      },
+      "HistoryResponse": {
+        "title": "HistoryResponse",
+        "required": ["tasks", "total"],
+        "type": "object",
+        "properties": {
+          "tasks": {
+            "title": "Tasks",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/TaskModel" }
+          },
+          "total": { "title": "Task count", "type": "integer" }
+        }
+      },
+      "HypernetworkItem": {
+        "title": "HypernetworkItem",
+        "required": ["name"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "path": { "title": "Path", "type": "string" }
+        }
+      },
+      "ImageToImageResponse": {
+        "title": "ImageToImageResponse",
+        "required": ["parameters", "info"],
+        "type": "object",
+        "properties": {
+          "images": {
+            "title": "Image",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The generated image in base64 format."
+          },
+          "parameters": { "title": "Parameters", "type": "object" },
+          "info": { "title": "Info", "type": "string" }
+        }
+      },
+      "Img2ImgApiTaskArgs": {
+        "title": "Img2ImgApiTaskArgs",
+        "type": "object",
+        "properties": {
+          "init_images": {
+            "title": "Init Images",
+            "type": "array",
+            "items": {}
+          },
+          "resize_mode": {
+            "title": "Resize Mode",
+            "type": "integer",
+            "default": 0
+          },
+          "denoising_strength": {
+            "title": "Denoising Strength",
+            "type": "number",
+            "default": 0.75
+          },
+          "image_cfg_scale": { "title": "Image Cfg Scale", "type": "number" },
+          "mask": { "title": "Mask", "type": "string" },
+          "mask_blur": { "title": "Mask Blur", "type": "integer" },
+          "mask_blur_x": {
+            "title": "Mask Blur X",
+            "type": "integer",
+            "default": 4
+          },
+          "mask_blur_y": {
+            "title": "Mask Blur Y",
+            "type": "integer",
+            "default": 4
+          },
+          "inpainting_fill": {
+            "title": "Inpainting Fill",
+            "type": "integer",
+            "default": 0
+          },
+          "inpaint_full_res": {
+            "title": "Inpaint Full Res",
+            "type": "boolean",
+            "default": true
+          },
+          "inpaint_full_res_padding": {
+            "title": "Inpaint Full Res Padding",
+            "type": "integer",
+            "default": 0
+          },
+          "inpainting_mask_invert": {
+            "title": "Inpainting Mask Invert",
+            "type": "integer",
+            "default": 0
+          },
+          "initial_noise_multiplier": {
+            "title": "Initial Noise Multiplier",
+            "type": "number"
+          },
+          "prompt": { "title": "Prompt", "type": "string", "default": "" },
+          "styles": {
+            "title": "Styles",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "seed": { "title": "Seed", "type": "integer", "default": -1 },
+          "subseed": { "title": "Subseed", "type": "integer", "default": -1 },
+          "subseed_strength": {
+            "title": "Subseed Strength",
+            "type": "number",
+            "default": 0
+          },
+          "seed_resize_from_h": {
+            "title": "Seed Resize From H",
+            "type": "integer",
+            "default": -1
+          },
+          "seed_resize_from_w": {
+            "title": "Seed Resize From W",
+            "type": "integer",
+            "default": -1
+          },
+          "sampler_name": {
+            "title": "Sampler name",
+            "type": "string",
+            "default": "Euler a"
+          },
+          "batch_size": {
+            "title": "Batch Size",
+            "type": "integer",
+            "default": 1
+          },
+          "n_iter": { "title": "N Iter", "type": "integer", "default": 1 },
+          "steps": { "title": "Steps", "type": "integer", "default": 50 },
+          "cfg_scale": {
+            "title": "Cfg Scale",
+            "type": "number",
+            "default": 7.0
+          },
+          "width": { "title": "Width", "type": "integer", "default": 512 },
+          "height": { "title": "Height", "type": "integer", "default": 512 },
+          "restore_faces": {
+            "title": "Restore Faces",
+            "type": "boolean",
+            "default": false
+          },
+          "tiling": { "title": "Tiling", "type": "boolean", "default": false },
+          "do_not_save_samples": {
+            "title": "Do Not Save Samples",
+            "type": "boolean",
+            "default": false
+          },
+          "do_not_save_grid": {
+            "title": "Do Not Save Grid",
+            "type": "boolean",
+            "default": false
+          },
+          "negative_prompt": { "title": "Negative Prompt", "type": "string" },
+          "eta": { "title": "Eta", "type": "number" },
+          "s_min_uncond": {
+            "title": "S Min Uncond",
+            "type": "number",
+            "default": 0.0
+          },
+          "s_churn": { "title": "S Churn", "type": "number", "default": 0.0 },
+          "s_tmax": { "title": "S Tmax", "type": "number" },
+          "s_tmin": { "title": "S Tmin", "type": "number", "default": 0.0 },
+          "s_noise": { "title": "S Noise", "type": "number", "default": 1.0 },
+          "override_settings": {
+            "title": "Override Settings",
+            "type": "object"
+          },
+          "override_settings_restore_afterwards": {
+            "title": "Override Settings Restore Afterwards",
+            "type": "boolean",
+            "default": true
+          },
+          "script_args": {
+            "title": "Script Args",
+            "type": "array",
+            "items": {},
+            "default": []
+          },
+          "include_init_images": {
+            "title": "Include Init Images",
+            "type": "boolean",
+            "default": false
+          },
+          "script_name": { "title": "Script Name", "type": "string" },
+          "alwayson_scripts": {
+            "title": "Alwayson Scripts",
+            "type": "object",
+            "default": {}
+          },
+          "checkpoint": {
+            "title": "Custom checkpoint.",
+            "type": "string",
+            "description": "Custom checkpoint hash. If not specified, the latest checkpoint will be used."
+          },
+          "callback_url": {
+            "title": "Callback URL",
+            "type": "string",
+            "description": "The callback URL to send the result to."
+          }
+        }
+      },
+      "InterrogateRequest": {
+        "title": "InterrogateRequest",
+        "type": "object",
+        "properties": {
+          "image": {
+            "title": "Image",
+            "type": "string",
+            "description": "Image to work on, must be a Base64 string containing the image's data.",
+            "default": ""
+          },
+          "model": {
+            "title": "Model",
+            "type": "string",
+            "description": "The interrogate model used.",
+            "default": "clip"
+          }
+        }
+      },
+      "LatentUpscalerModeItem": {
+        "title": "LatentUpscalerModeItem",
+        "required": ["name"],
+        "type": "object",
+        "properties": { "name": { "title": "Name", "type": "string" } }
+      },
+      "MemoryResponse": {
+        "title": "MemoryResponse",
+        "required": ["ram", "cuda"],
+        "type": "object",
+        "properties": {
+          "ram": {
+            "title": "RAM",
+            "type": "object",
+            "description": "System memory stats"
+          },
+          "cuda": {
+            "title": "CUDA",
+            "type": "object",
+            "description": "nVidia CUDA memory stats"
+          }
+        }
+      },
+      "Options": {
+        "title": "Options",
+        "type": "object",
+        "properties": {
+          "samples_save": {
+            "title": "Samples Save",
+            "type": "boolean",
+            "description": "Always save all generated images",
+            "default": true
+          },
+          "samples_format": {
+            "title": "Samples Format",
+            "type": "string",
+            "description": "File format for images",
+            "default": "png"
+          },
+          "samples_filename_pattern": {
+            "title": "Samples Filename Pattern",
+            "type": "string",
+            "description": "Images filename pattern",
+            "default": ""
+          },
+          "save_images_add_number": {
+            "title": "Save Images Add Number",
+            "type": "boolean",
+            "description": "Add number to filename when saving",
+            "default": true
+          },
+          "grid_save": {
+            "title": "Grid Save",
+            "type": "boolean",
+            "description": "Always save all generated image grids",
+            "default": true
+          },
+          "grid_format": {
+            "title": "Grid Format",
+            "type": "string",
+            "description": "File format for grids",
+            "default": "png"
+          },
+          "grid_extended_filename": {
+            "title": "Grid Extended Filename",
+            "type": "boolean",
+            "description": "Add extended info (seed, prompt) to filename when saving grid",
+            "default": false
+          },
+          "grid_only_if_multiple": {
+            "title": "Grid Only If Multiple",
+            "type": "boolean",
+            "description": "Do not save grids consisting of one picture",
+            "default": true
+          },
+          "grid_prevent_empty_spots": {
+            "title": "Grid Prevent Empty Spots",
+            "type": "boolean",
+            "description": "Prevent empty spots in grid (when set to autodetect)",
+            "default": false
+          },
+          "grid_zip_filename_pattern": {
+            "title": "Grid Zip Filename Pattern",
+            "type": "string",
+            "description": "Archive filename pattern",
+            "default": ""
+          },
+          "n_rows": {
+            "title": "N Rows",
+            "type": "number",
+            "description": "Grid row count; use -1 for autodetect and 0 for it to be same as batch size",
+            "default": -1
+          },
+          "enable_pnginfo": {
+            "title": "Enable Pnginfo",
+            "type": "boolean",
+            "description": "Save text information about generation parameters as chunks to png files",
+            "default": true
+          },
+          "save_txt": {
+            "title": "Save Txt",
+            "type": "boolean",
+            "description": "Create a text file next to every image with generation parameters.",
+            "default": false
+          },
+          "save_images_before_face_restoration": {
+            "title": "Save Images Before Face Restoration",
+            "type": "boolean",
+            "description": "Save a copy of image before doing face restoration.",
+            "default": false
+          },
+          "save_images_before_highres_fix": {
+            "title": "Save Images Before Highres Fix",
+            "type": "boolean",
+            "description": "Save a copy of image before applying highres fix.",
+            "default": false
+          },
+          "save_images_before_color_correction": {
+            "title": "Save Images Before Color Correction",
+            "type": "boolean",
+            "description": "Save a copy of image before applying color correction to img2img results",
+            "default": false
+          },
+          "save_mask": {
+            "title": "Save Mask",
+            "type": "boolean",
+            "description": "For inpainting, save a copy of the greyscale mask",
+            "default": false
+          },
+          "save_mask_composite": {
+            "title": "Save Mask Composite",
+            "type": "boolean",
+            "description": "For inpainting, save a masked composite",
+            "default": false
+          },
+          "jpeg_quality": {
+            "title": "Jpeg Quality",
+            "type": "number",
+            "description": "Quality for saved jpeg images",
+            "default": 80
+          },
+          "webp_lossless": {
+            "title": "Webp Lossless",
+            "type": "boolean",
+            "description": "Use lossless compression for webp images",
+            "default": false
+          },
+          "export_for_4chan": {
+            "title": "Export For 4Chan",
+            "type": "boolean",
+            "description": "Save copy of large images as JPG",
+            "default": true
+          },
+          "img_downscale_threshold": {
+            "title": "Img Downscale Threshold",
+            "type": "number",
+            "description": "File size limit for the above option, MB",
+            "default": 4.0
+          },
+          "target_side_length": {
+            "title": "Target Side Length",
+            "type": "number",
+            "description": "Width/height limit for the above option, in pixels",
+            "default": 4000
+          },
+          "img_max_size_mp": {
+            "title": "Img Max Size Mp",
+            "type": "number",
+            "description": "Maximum image size",
+            "default": 200
+          },
+          "use_original_name_batch": {
+            "title": "Use Original Name Batch",
+            "type": "boolean",
+            "description": "Use original name for output filename during batch process in extras tab",
+            "default": true
+          },
+          "use_upscaler_name_as_suffix": {
+            "title": "Use Upscaler Name As Suffix",
+            "type": "boolean",
+            "description": "Use upscaler name as filename suffix in the extras tab",
+            "default": false
+          },
+          "save_selected_only": {
+            "title": "Save Selected Only",
+            "type": "boolean",
+            "description": "When using 'Save' button, only save a single selected image",
+            "default": true
+          },
+          "save_init_img": {
+            "title": "Save Init Img",
+            "type": "boolean",
+            "description": "Save init images when using img2img",
+            "default": false
+          },
+          "temp_dir": {
+            "title": "Temp Dir",
+            "type": "string",
+            "description": "Directory for temporary images; leave empty for default",
+            "default": ""
+          },
+          "clean_temp_dir_at_start": {
+            "title": "Clean Temp Dir At Start",
+            "type": "boolean",
+            "description": "Cleanup non-default temporary directory when starting webui",
+            "default": false
+          },
+          "outdir_samples": {
+            "title": "Outdir Samples",
+            "type": "string",
+            "description": "Output directory for images; if empty, defaults to three directories below",
+            "default": ""
+          },
+          "outdir_txt2img_samples": {
+            "title": "Outdir Txt2Img Samples",
+            "type": "string",
+            "description": "Output directory for txt2img images",
+            "default": "outputs/txt2img-images"
+          },
+          "outdir_img2img_samples": {
+            "title": "Outdir Img2Img Samples",
+            "type": "string",
+            "description": "Output directory for img2img images",
+            "default": "outputs/img2img-images"
+          },
+          "outdir_extras_samples": {
+            "title": "Outdir Extras Samples",
+            "type": "string",
+            "description": "Output directory for images from extras tab",
+            "default": "outputs/extras-images"
+          },
+          "outdir_grids": {
+            "title": "Outdir Grids",
+            "type": "string",
+            "description": "Output directory for grids; if empty, defaults to two directories below",
+            "default": ""
+          },
+          "outdir_txt2img_grids": {
+            "title": "Outdir Txt2Img Grids",
+            "type": "string",
+            "description": "Output directory for txt2img grids",
+            "default": "outputs/txt2img-grids"
+          },
+          "outdir_img2img_grids": {
+            "title": "Outdir Img2Img Grids",
+            "type": "string",
+            "description": "Output directory for img2img grids",
+            "default": "outputs/img2img-grids"
+          },
+          "outdir_save": {
+            "title": "Outdir Save",
+            "type": "string",
+            "description": "Directory for saving images using the Save button",
+            "default": "log/images"
+          },
+          "outdir_init_images": {
+            "title": "Outdir Init Images",
+            "type": "string",
+            "description": "Directory for saving init images when using img2img",
+            "default": "outputs/init-images"
+          },
+          "save_to_dirs": {
+            "title": "Save To Dirs",
+            "type": "boolean",
+            "description": "Save images to a subdirectory",
+            "default": true
+          },
+          "grid_save_to_dirs": {
+            "title": "Grid Save To Dirs",
+            "type": "boolean",
+            "description": "Save grids to a subdirectory",
+            "default": true
+          },
+          "use_save_to_dirs_for_ui": {
+            "title": "Use Save To Dirs For Ui",
+            "type": "boolean",
+            "description": "When using \"Save\" button, save images to a subdirectory",
+            "default": false
+          },
+          "directories_filename_pattern": {
+            "title": "Directories Filename Pattern",
+            "type": "string",
+            "description": "Directory name pattern",
+            "default": "[date]"
+          },
+          "directories_max_prompt_words": {
+            "title": "Directories Max Prompt Words",
+            "type": "number",
+            "description": "Max prompt words for [prompt_words] pattern",
+            "default": 8
+          },
+          "ESRGAN_tile": {
+            "title": "Esrgan Tile",
+            "type": "number",
+            "description": "Tile size for ESRGAN upscalers.",
+            "default": 192
+          },
+          "ESRGAN_tile_overlap": {
+            "title": "Esrgan Tile Overlap",
+            "type": "number",
+            "description": "Tile overlap for ESRGAN upscalers.",
+            "default": 8
+          },
+          "realesrgan_enabled_models": {
+            "title": "Realesrgan Enabled Models",
+            "type": "array",
+            "items": {},
+            "description": "Select which Real-ESRGAN models to show in the web UI.",
+            "default": ["R-ESRGAN 4x+", "R-ESRGAN 4x+ Anime6B"]
+          },
+          "upscaler_for_img2img": {
+            "title": "Upscaler For Img2Img",
+            "type": "null",
+            "description": "Upscaler for img2img"
+          },
+          "face_restoration_model": {
+            "title": "Face Restoration Model",
+            "type": "string",
+            "description": "Face restoration model",
+            "default": "CodeFormer"
+          },
+          "code_former_weight": {
+            "title": "Code Former Weight",
+            "type": "number",
+            "description": "CodeFormer weight",
+            "default": 0.5
+          },
+          "face_restoration_unload": {
+            "title": "Face Restoration Unload",
+            "type": "boolean",
+            "description": "Move face restoration model from VRAM into RAM after processing",
+            "default": false
+          },
+          "show_warnings": {
+            "title": "Show Warnings",
+            "type": "boolean",
+            "description": "Show warnings in console.",
+            "default": false
+          },
+          "memmon_poll_rate": {
+            "title": "Memmon Poll Rate",
+            "type": "number",
+            "description": "VRAM usage polls per second during generation.",
+            "default": 8
+          },
+          "samples_log_stdout": {
+            "title": "Samples Log Stdout",
+            "type": "boolean",
+            "description": "Always print all generation info to standard output",
+            "default": false
+          },
+          "multiple_tqdm": {
+            "title": "Multiple Tqdm",
+            "type": "boolean",
+            "description": "Add a second progress bar to the console that shows progress for an entire job.",
+            "default": true
+          },
+          "print_hypernet_extra": {
+            "title": "Print Hypernet Extra",
+            "type": "boolean",
+            "description": "Print extra hypernetwork information to console.",
+            "default": false
+          },
+          "list_hidden_files": {
+            "title": "List Hidden Files",
+            "type": "boolean",
+            "description": "Load models/files in hidden directories",
+            "default": true
+          },
+          "unload_models_when_training": {
+            "title": "Unload Models When Training",
+            "type": "boolean",
+            "description": "Move VAE and CLIP to RAM when training if possible. Saves VRAM.",
+            "default": false
+          },
+          "pin_memory": {
+            "title": "Pin Memory",
+            "type": "boolean",
+            "description": "Turn on pin_memory for DataLoader. Makes training slightly faster but can increase memory usage.",
+            "default": false
+          },
+          "save_optimizer_state": {
+            "title": "Save Optimizer State",
+            "type": "boolean",
+            "description": "Saves Optimizer state as separate *.optim file. Training of embedding or HN can be resumed with the matching optim file.",
+            "default": false
+          },
+          "save_training_settings_to_txt": {
+            "title": "Save Training Settings To Txt",
+            "type": "boolean",
+            "description": "Save textual inversion and hypernet settings to a text file whenever training starts.",
+            "default": true
+          },
+          "dataset_filename_word_regex": {
+            "title": "Dataset Filename Word Regex",
+            "type": "string",
+            "description": "Filename word regex",
+            "default": ""
+          },
+          "dataset_filename_join_string": {
+            "title": "Dataset Filename Join String",
+            "type": "string",
+            "description": "Filename join string",
+            "default": " "
+          },
+          "training_image_repeats_per_epoch": {
+            "title": "Training Image Repeats Per Epoch",
+            "type": "number",
+            "description": "Number of repeats for a single input image per epoch; used only for displaying epoch number",
+            "default": 1
+          },
+          "training_write_csv_every": {
+            "title": "Training Write Csv Every",
+            "type": "number",
+            "description": "Save an csv containing the loss to log directory every N steps, 0 to disable",
+            "default": 500
+          },
+          "training_xattention_optimizations": {
+            "title": "Training Xattention Optimizations",
+            "type": "boolean",
+            "description": "Use cross attention optimizations while training",
+            "default": false
+          },
+          "training_enable_tensorboard": {
+            "title": "Training Enable Tensorboard",
+            "type": "boolean",
+            "description": "Enable tensorboard logging.",
+            "default": false
+          },
+          "training_tensorboard_save_images": {
+            "title": "Training Tensorboard Save Images",
+            "type": "boolean",
+            "description": "Save generated images within tensorboard.",
+            "default": false
+          },
+          "training_tensorboard_flush_every": {
+            "title": "Training Tensorboard Flush Every",
+            "type": "number",
+            "description": "How often, in seconds, to flush the pending tensorboard events and summaries to disk.",
+            "default": 120
+          },
+          "sd_model_checkpoint": {
+            "title": "Sd Model Checkpoint",
+            "type": "string",
+            "description": "Stable Diffusion checkpoint"
+          },
+          "sd_checkpoint_cache": {
+            "title": "Sd Checkpoint Cache",
+            "type": "number",
+            "description": "Checkpoints to cache in RAM",
+            "default": 0
+          },
+          "sd_vae_checkpoint_cache": {
+            "title": "Sd Vae Checkpoint Cache",
+            "type": "number",
+            "description": "VAE Checkpoints to cache in RAM",
+            "default": 0
+          },
+          "sd_vae": {
+            "title": "Sd Vae",
+            "type": "string",
+            "description": "SD VAE",
+            "default": "Automatic"
+          },
+          "sd_vae_as_default": {
+            "title": "Sd Vae As Default",
+            "type": "boolean",
+            "description": "Ignore selected VAE for stable diffusion checkpoints that have their own .vae.pt next to them",
+            "default": true
+          },
+          "sd_unet": {
+            "title": "Sd Unet",
+            "type": "string",
+            "description": "SD Unet",
+            "default": "Automatic"
+          },
+          "inpainting_mask_weight": {
+            "title": "Inpainting Mask Weight",
+            "type": "number",
+            "description": "Inpainting conditioning mask strength",
+            "default": 1.0
+          },
+          "initial_noise_multiplier": {
+            "title": "Initial Noise Multiplier",
+            "type": "integer",
+            "description": "Noise multiplier for img2img",
+            "default": 1.0
+          },
+          "img2img_color_correction": {
+            "title": "Img2Img Color Correction",
+            "type": "boolean",
+            "description": "Apply color correction to img2img results to match original colors.",
+            "default": false
+          },
+          "img2img_fix_steps": {
+            "title": "Img2Img Fix Steps",
+            "type": "boolean",
+            "description": "With img2img, do exactly the amount of steps the slider specifies.",
+            "default": false
+          },
+          "img2img_background_color": {
+            "title": "Img2Img Background Color",
+            "type": "string",
+            "description": "With img2img, fill image's transparent parts with this color.",
+            "default": "#ffffff"
+          },
+          "enable_quantization": {
+            "title": "Enable Quantization",
+            "type": "boolean",
+            "description": "Enable quantization in K samplers for sharper and cleaner results. This may change existing seeds. Requires restart to apply.",
+            "default": false
+          },
+          "enable_emphasis": {
+            "title": "Enable Emphasis",
+            "type": "boolean",
+            "description": "Enable emphasis",
+            "default": true
+          },
+          "enable_batch_seeds": {
+            "title": "Enable Batch Seeds",
+            "type": "boolean",
+            "description": "Make K-diffusion samplers produce same images in a batch as when making a single image",
+            "default": true
+          },
+          "comma_padding_backtrack": {
+            "title": "Comma Padding Backtrack",
+            "type": "number",
+            "description": "Prompt word wrap length limit",
+            "default": 20
+          },
+          "CLIP_stop_at_last_layers": {
+            "title": "Clip Stop At Last Layers",
+            "type": "number",
+            "description": "Clip skip",
+            "default": 1
+          },
+          "upcast_attn": {
+            "title": "Upcast Attn",
+            "type": "boolean",
+            "description": "Upcast cross attention layer to float32",
+            "default": false
+          },
+          "randn_source": {
+            "title": "Randn Source",
+            "type": "string",
+            "description": "Random number generator source.",
+            "default": "GPU"
+          },
+          "cross_attention_optimization": {
+            "title": "Cross Attention Optimization",
+            "type": "string",
+            "description": "Cross attention optimization",
+            "default": "Automatic"
+          },
+          "s_min_uncond": {
+            "title": "S Min Uncond",
+            "type": "integer",
+            "description": "Negative Guidance minimum sigma",
+            "default": 0.0
+          },
+          "token_merging_ratio": {
+            "title": "Token Merging Ratio",
+            "type": "integer",
+            "description": "Token merging ratio",
+            "default": 0.0
+          },
+          "token_merging_ratio_img2img": {
+            "title": "Token Merging Ratio Img2Img",
+            "type": "integer",
+            "description": "Token merging ratio for img2img",
+            "default": 0.0
+          },
+          "token_merging_ratio_hr": {
+            "title": "Token Merging Ratio Hr",
+            "type": "integer",
+            "description": "Token merging ratio for high-res pass",
+            "default": 0.0
+          },
+          "pad_cond_uncond": {
+            "title": "Pad Cond Uncond",
+            "type": "boolean",
+            "description": "Pad prompt/negative prompt to be same length",
+            "default": false
+          },
+          "experimental_persistent_cond_cache": {
+            "title": "Experimental Persistent Cond Cache",
+            "type": "boolean",
+            "description": "persistent cond cache",
+            "default": false
+          },
+          "use_old_emphasis_implementation": {
+            "title": "Use Old Emphasis Implementation",
+            "type": "boolean",
+            "description": "Use old emphasis implementation. Can be useful to reproduce old seeds.",
+            "default": false
+          },
+          "use_old_karras_scheduler_sigmas": {
+            "title": "Use Old Karras Scheduler Sigmas",
+            "type": "boolean",
+            "description": "Use old karras scheduler sigmas (0.1 to 10).",
+            "default": false
+          },
+          "no_dpmpp_sde_batch_determinism": {
+            "title": "No Dpmpp Sde Batch Determinism",
+            "type": "boolean",
+            "description": "Do not make DPM++ SDE deterministic across different batch sizes.",
+            "default": false
+          },
+          "use_old_hires_fix_width_height": {
+            "title": "Use Old Hires Fix Width Height",
+            "type": "boolean",
+            "description": "For hires fix, use width/height sliders to set final resolution rather than first pass (disables Upscale by, Resize width/height to).",
+            "default": false
+          },
+          "dont_fix_second_order_samplers_schedule": {
+            "title": "Dont Fix Second Order Samplers Schedule",
+            "type": "boolean",
+            "description": "Do not fix prompt schedule for second order samplers.",
+            "default": false
+          },
+          "hires_fix_use_firstpass_conds": {
+            "title": "Hires Fix Use Firstpass Conds",
+            "type": "boolean",
+            "description": "For hires fix, calculate conds of second pass using extra networks of first pass.",
+            "default": false
+          },
+          "interrogate_keep_models_in_memory": {
+            "title": "Interrogate Keep Models In Memory",
+            "type": "boolean",
+            "description": "Keep models in VRAM",
+            "default": false
+          },
+          "interrogate_return_ranks": {
+            "title": "Interrogate Return Ranks",
+            "type": "boolean",
+            "description": "Include ranks of model tags matches in results.",
+            "default": false
+          },
+          "interrogate_clip_num_beams": {
+            "title": "Interrogate Clip Num Beams",
+            "type": "number",
+            "description": "BLIP: num_beams",
+            "default": 1
+          },
+          "interrogate_clip_min_length": {
+            "title": "Interrogate Clip Min Length",
+            "type": "number",
+            "description": "BLIP: minimum description length",
+            "default": 24
+          },
+          "interrogate_clip_max_length": {
+            "title": "Interrogate Clip Max Length",
+            "type": "number",
+            "description": "BLIP: maximum description length",
+            "default": 48
+          },
+          "interrogate_clip_dict_limit": {
+            "title": "Interrogate Clip Dict Limit",
+            "type": "number",
+            "description": "CLIP: maximum number of lines in text file",
+            "default": 1500
+          },
+          "interrogate_clip_skip_categories": {
+            "title": "Interrogate Clip Skip Categories",
+            "type": "array",
+            "items": {},
+            "description": "CLIP: skip inquire categories",
+            "default": []
+          },
+          "interrogate_deepbooru_score_threshold": {
+            "title": "Interrogate Deepbooru Score Threshold",
+            "type": "number",
+            "description": "deepbooru: score threshold",
+            "default": 0.5
+          },
+          "deepbooru_sort_alpha": {
+            "title": "Deepbooru Sort Alpha",
+            "type": "boolean",
+            "description": "deepbooru: sort tags alphabetically",
+            "default": true
+          },
+          "deepbooru_use_spaces": {
+            "title": "Deepbooru Use Spaces",
+            "type": "boolean",
+            "description": "deepbooru: use spaces in tags",
+            "default": true
+          },
+          "deepbooru_escape": {
+            "title": "Deepbooru Escape",
+            "type": "boolean",
+            "description": "deepbooru: escape (\\) brackets",
+            "default": true
+          },
+          "deepbooru_filter_tags": {
+            "title": "Deepbooru Filter Tags",
+            "type": "string",
+            "description": "deepbooru: filter out those tags",
+            "default": ""
+          },
+          "extra_networks_show_hidden_directories": {
+            "title": "Extra Networks Show Hidden Directories",
+            "type": "boolean",
+            "description": "Show hidden directories",
+            "default": true
+          },
+          "extra_networks_hidden_models": {
+            "title": "Extra Networks Hidden Models",
+            "type": "string",
+            "description": "Show cards for models in hidden directories",
+            "default": "When searched"
+          },
+          "extra_networks_default_view": {
+            "title": "Extra Networks Default View",
+            "type": "string",
+            "description": "Default view for Extra Networks",
+            "default": "cards"
+          },
+          "extra_networks_default_multiplier": {
+            "title": "Extra Networks Default Multiplier",
+            "type": "integer",
+            "description": "Multiplier for extra networks",
+            "default": 1.0
+          },
+          "extra_networks_card_width": {
+            "title": "Extra Networks Card Width",
+            "type": "number",
+            "description": "Card width for Extra Networks",
+            "default": 0
+          },
+          "extra_networks_card_height": {
+            "title": "Extra Networks Card Height",
+            "type": "number",
+            "description": "Card height for Extra Networks",
+            "default": 0
+          },
+          "extra_networks_add_text_separator": {
+            "title": "Extra Networks Add Text Separator",
+            "type": "string",
+            "description": "Extra networks separator",
+            "default": " "
+          },
+          "ui_extra_networks_tab_reorder": {
+            "title": "Ui Extra Networks Tab Reorder",
+            "type": "string",
+            "description": "Extra networks tab order",
+            "default": ""
+          },
+          "sd_hypernetwork": {
+            "title": "Sd Hypernetwork",
+            "type": "string",
+            "description": "Add hypernetwork to prompt",
+            "default": "None"
+          },
+          "localization": {
+            "title": "Localization",
+            "type": "string",
+            "description": "Localization",
+            "default": "None"
+          },
+          "gradio_theme": {
+            "title": "Gradio Theme",
+            "type": "string",
+            "description": "Gradio theme",
+            "default": "Default"
+          },
+          "img2img_editor_height": {
+            "title": "Img2Img Editor Height",
+            "type": "number",
+            "description": "img2img: height of image editor",
+            "default": 720
+          },
+          "return_grid": {
+            "title": "Return Grid",
+            "type": "boolean",
+            "description": "Show grid in results for web",
+            "default": true
+          },
+          "return_mask": {
+            "title": "Return Mask",
+            "type": "boolean",
+            "description": "For inpainting, include the greyscale mask in results for web",
+            "default": false
+          },
+          "return_mask_composite": {
+            "title": "Return Mask Composite",
+            "type": "boolean",
+            "description": "For inpainting, include masked composite in results for web",
+            "default": false
+          },
+          "do_not_show_images": {
+            "title": "Do Not Show Images",
+            "type": "boolean",
+            "description": "Do not show any images in results for web",
+            "default": false
+          },
+          "send_seed": {
+            "title": "Send Seed",
+            "type": "boolean",
+            "description": "Send seed when sending prompt or image to other interface",
+            "default": true
+          },
+          "send_size": {
+            "title": "Send Size",
+            "type": "boolean",
+            "description": "Send size when sending prompt or image to another interface",
+            "default": true
+          },
+          "font": {
+            "title": "Font",
+            "type": "string",
+            "description": "Font for image grids that have text",
+            "default": ""
+          },
+          "js_modal_lightbox": {
+            "title": "Js Modal Lightbox",
+            "type": "boolean",
+            "description": "Enable full page image viewer",
+            "default": true
+          },
+          "js_modal_lightbox_initially_zoomed": {
+            "title": "Js Modal Lightbox Initially Zoomed",
+            "type": "boolean",
+            "description": "Show images zoomed in by default in full page image viewer",
+            "default": true
+          },
+          "js_modal_lightbox_gamepad": {
+            "title": "Js Modal Lightbox Gamepad",
+            "type": "boolean",
+            "description": "Navigate image viewer with gamepad",
+            "default": false
+          },
+          "js_modal_lightbox_gamepad_repeat": {
+            "title": "Js Modal Lightbox Gamepad Repeat",
+            "type": "number",
+            "description": "Gamepad repeat period, in milliseconds",
+            "default": 250
+          },
+          "show_progress_in_title": {
+            "title": "Show Progress In Title",
+            "type": "boolean",
+            "description": "Show generation progress in window title.",
+            "default": true
+          },
+          "samplers_in_dropdown": {
+            "title": "Samplers In Dropdown",
+            "type": "boolean",
+            "description": "Use dropdown for sampler selection instead of radio group",
+            "default": true
+          },
+          "dimensions_and_batch_together": {
+            "title": "Dimensions And Batch Together",
+            "type": "boolean",
+            "description": "Show Width/Height and Batch sliders in same row",
+            "default": true
+          },
+          "keyedit_precision_attention": {
+            "title": "Keyedit Precision Attention",
+            "type": "number",
+            "description": "Ctrl+up/down precision when editing (attention:1.1)",
+            "default": 0.1
+          },
+          "keyedit_precision_extra": {
+            "title": "Keyedit Precision Extra",
+            "type": "number",
+            "description": "Ctrl+up/down precision when editing <extra networks:0.9>",
+            "default": 0.05
+          },
+          "keyedit_delimiters": {
+            "title": "Keyedit Delimiters",
+            "type": "string",
+            "description": "Ctrl+up/down word delimiters",
+            "default": ".,\\/!?%^*;:{}=`~()"
+          },
+          "quicksettings_list": {
+            "title": "Quicksettings List",
+            "type": "array",
+            "items": {},
+            "description": "Quicksettings list",
+            "default": ["sd_model_checkpoint"]
+          },
+          "ui_tab_order": {
+            "title": "Ui Tab Order",
+            "type": "array",
+            "items": {},
+            "description": "UI tab order",
+            "default": []
+          },
+          "hidden_tabs": {
+            "title": "Hidden Tabs",
+            "type": "array",
+            "items": {},
+            "description": "Hidden UI tabs",
+            "default": []
+          },
+          "ui_reorder_list": {
+            "title": "Ui Reorder List",
+            "type": "array",
+            "items": {},
+            "description": "txt2img/img2img UI item order",
+            "default": []
+          },
+          "hires_fix_show_sampler": {
+            "title": "Hires Fix Show Sampler",
+            "type": "boolean",
+            "description": "Hires fix: show hires sampler selection",
+            "default": false
+          },
+          "hires_fix_show_prompts": {
+            "title": "Hires Fix Show Prompts",
+            "type": "boolean",
+            "description": "Hires fix: show hires prompt and negative prompt",
+            "default": false
+          },
+          "disable_token_counters": {
+            "title": "Disable Token Counters",
+            "type": "boolean",
+            "description": "Disable prompt token counters",
+            "default": false
+          },
+          "add_model_hash_to_info": {
+            "title": "Add Model Hash To Info",
+            "type": "boolean",
+            "description": "Add model hash to generation information",
+            "default": true
+          },
+          "add_model_name_to_info": {
+            "title": "Add Model Name To Info",
+            "type": "boolean",
+            "description": "Add model name to generation information",
+            "default": true
+          },
+          "add_version_to_infotext": {
+            "title": "Add Version To Infotext",
+            "type": "boolean",
+            "description": "Add program version to generation information",
+            "default": true
+          },
+          "disable_weights_auto_swap": {
+            "title": "Disable Weights Auto Swap",
+            "type": "boolean",
+            "description": "Disregard checkpoint information from pasted infotext",
+            "default": true
+          },
+          "infotext_styles": {
+            "title": "Infotext Styles",
+            "type": "string",
+            "description": "Infer styles from prompts of pasted infotext",
+            "default": "Apply if any"
+          },
+          "show_progressbar": {
+            "title": "Show Progressbar",
+            "type": "boolean",
+            "description": "Show progressbar",
+            "default": true
+          },
+          "live_previews_enable": {
+            "title": "Live Previews Enable",
+            "type": "boolean",
+            "description": "Show live previews of the created image",
+            "default": true
+          },
+          "live_previews_image_format": {
+            "title": "Live Previews Image Format",
+            "type": "string",
+            "description": "Live preview file format",
+            "default": "png"
+          },
+          "show_progress_grid": {
+            "title": "Show Progress Grid",
+            "type": "boolean",
+            "description": "Show previews of all images generated in a batch as a grid",
+            "default": true
+          },
+          "show_progress_every_n_steps": {
+            "title": "Show Progress Every N Steps",
+            "type": "number",
+            "description": "Live preview display period",
+            "default": 10
+          },
+          "show_progress_type": {
+            "title": "Show Progress Type",
+            "type": "string",
+            "description": "Live preview method",
+            "default": "Approx NN"
+          },
+          "live_preview_content": {
+            "title": "Live Preview Content",
+            "type": "string",
+            "description": "Live preview subject",
+            "default": "Prompt"
+          },
+          "live_preview_refresh_period": {
+            "title": "Live Preview Refresh Period",
+            "type": "number",
+            "description": "Progressbar and preview update period",
+            "default": 1000
+          },
+          "hide_samplers": {
+            "title": "Hide Samplers",
+            "type": "array",
+            "items": {},
+            "description": "Hide samplers in user interface",
+            "default": []
+          },
+          "eta_ddim": {
+            "title": "Eta Ddim",
+            "type": "integer",
+            "description": "Eta for DDIM",
+            "default": 0.0
+          },
+          "eta_ancestral": {
+            "title": "Eta Ancestral",
+            "type": "integer",
+            "description": "Eta for ancestral samplers",
+            "default": 1.0
+          },
+          "ddim_discretize": {
+            "title": "Ddim Discretize",
+            "type": "string",
+            "description": "img2img DDIM discretize",
+            "default": "uniform"
+          },
+          "s_churn": {
+            "title": "S Churn",
+            "type": "integer",
+            "description": "sigma churn",
+            "default": 0.0
+          },
+          "s_tmin": {
+            "title": "S Tmin",
+            "type": "integer",
+            "description": "sigma tmin",
+            "default": 0.0
+          },
+          "s_noise": {
+            "title": "S Noise",
+            "type": "integer",
+            "description": "sigma noise",
+            "default": 1.0
+          },
+          "k_sched_type": {
+            "title": "K Sched Type",
+            "type": "string",
+            "description": "scheduler type",
+            "default": "Automatic"
+          },
+          "sigma_min": {
+            "title": "Sigma Min",
+            "type": "number",
+            "description": "sigma min",
+            "default": 0.0
+          },
+          "sigma_max": {
+            "title": "Sigma Max",
+            "type": "number",
+            "description": "sigma max",
+            "default": 0.0
+          },
+          "rho": {
+            "title": "Rho",
+            "type": "number",
+            "description": "rho",
+            "default": 0.0
+          },
+          "eta_noise_seed_delta": {
+            "title": "Eta Noise Seed Delta",
+            "type": "number",
+            "description": "Eta noise seed delta",
+            "default": 0
+          },
+          "always_discard_next_to_last_sigma": {
+            "title": "Always Discard Next To Last Sigma",
+            "type": "boolean",
+            "description": "Always discard next-to-last sigma",
+            "default": false
+          },
+          "uni_pc_variant": {
+            "title": "Uni Pc Variant",
+            "type": "string",
+            "description": "UniPC variant",
+            "default": "bh1"
+          },
+          "uni_pc_skip_type": {
+            "title": "Uni Pc Skip Type",
+            "type": "string",
+            "description": "UniPC skip type",
+            "default": "time_uniform"
+          },
+          "uni_pc_order": {
+            "title": "Uni Pc Order",
+            "type": "number",
+            "description": "UniPC order",
+            "default": 3
+          },
+          "uni_pc_lower_order_final": {
+            "title": "Uni Pc Lower Order Final",
+            "type": "boolean",
+            "description": "UniPC lower order final",
+            "default": true
+          },
+          "postprocessing_enable_in_main_ui": {
+            "title": "Postprocessing Enable In Main Ui",
+            "type": "array",
+            "items": {},
+            "description": "Enable postprocessing operations in txt2img and img2img tabs",
+            "default": []
+          },
+          "postprocessing_operation_order": {
+            "title": "Postprocessing Operation Order",
+            "type": "array",
+            "items": {},
+            "description": "Postprocessing operation order",
+            "default": []
+          },
+          "upscaling_max_images_in_cache": {
+            "title": "Upscaling Max Images In Cache",
+            "type": "number",
+            "description": "Maximum number of images in upscaling cache",
+            "default": 5
+          },
+          "disabled_extensions": {
+            "title": "Disabled Extensions",
+            "type": "array",
+            "items": {},
+            "description": "Disable these extensions",
+            "default": []
+          },
+          "disable_all_extensions": {
+            "title": "Disable All Extensions",
+            "type": "null",
+            "description": "Disable all extensions (preserves the list of disabled extensions)",
+            "default": "none"
+          },
+          "restore_config_state_file": {
+            "title": "Restore Config State File",
+            "type": "null",
+            "description": "Config state file to restore from, under 'config-states/' folder",
+            "default": ""
+          },
+          "sd_checkpoint_hash": {
+            "title": "Sd Checkpoint Hash",
+            "type": "string",
+            "description": "SHA256 hash of the current checkpoint",
+            "default": ""
+          }
+        }
+      },
+      "PNGInfoRequest": {
+        "title": "PNGInfoRequest",
+        "required": ["image"],
+        "type": "object",
+        "properties": {
+          "image": {
+            "title": "Image",
+            "type": "string",
+            "description": "The base64 encoded PNG image"
+          }
+        }
+      },
+      "PNGInfoResponse": {
+        "title": "PNGInfoResponse",
+        "required": ["info", "items"],
+        "type": "object",
+        "properties": {
+          "info": {
+            "title": "Image info",
+            "type": "string",
+            "description": "A string with the parameters used to generate the image"
+          },
+          "items": {
+            "title": "Items",
+            "type": "object",
+            "description": "An object containing all the info the image had"
+          }
+        }
+      },
+      "PredictBody": {
+        "title": "PredictBody",
+        "required": ["data"],
+        "type": "object",
+        "properties": {
+          "session_hash": { "title": "Session Hash", "type": "string" },
+          "event_id": { "title": "Event Id", "type": "string" },
+          "data": { "title": "Data", "type": "array", "items": {} },
+          "event_data": { "title": "Event Data" },
+          "fn_index": { "title": "Fn Index", "type": "integer" },
+          "batched": {
+            "title": "Batched",
+            "type": "boolean",
+            "default": false
+          },
+          "request": {
+            "title": "Request",
+            "anyOf": [
+              { "type": "object" },
+              { "type": "array", "items": { "type": "object" } }
+            ]
+          }
+        }
+      },
+      "PreprocessResponse": {
+        "title": "PreprocessResponse",
+        "required": ["info"],
+        "type": "object",
+        "properties": {
+          "info": {
+            "title": "Preprocess info",
+            "type": "string",
+            "description": "Response string from preprocessing task."
+          }
+        }
+      },
+      "ProgressRequest": {
+        "title": "ProgressRequest",
+        "type": "object",
+        "properties": {
+          "id_task": {
+            "title": "Task ID",
+            "type": "string",
+            "description": "id of the task to get progress for"
+          },
+          "id_live_preview": {
+            "title": "Live preview image ID",
+            "type": "integer",
+            "description": "id of last received last preview image",
+            "default": -1
+          }
+        }
+      },
+      "PromptStyleItem": {
+        "title": "PromptStyleItem",
+        "required": ["name"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "prompt": { "title": "Prompt", "type": "string" },
+          "negative_prompt": { "title": "Negative Prompt", "type": "string" }
+        }
+      },
+      "QueueStatusResponse": {
+        "title": "QueueStatusResponse",
+        "required": ["pending_tasks", "total_pending_tasks", "paused"],
+        "type": "object",
+        "properties": {
+          "current_task_id": {
+            "title": "Current Task Id",
+            "type": "string",
+            "description": "The on progress task id"
+          },
+          "pending_tasks": {
+            "title": "Pending Tasks",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/TaskModel" },
+            "description": "The pending tasks in the queue"
+          },
+          "total_pending_tasks": {
+            "title": "Queue length",
+            "type": "integer",
+            "description": "The total pending tasks in the queue"
+          },
+          "paused": {
+            "title": "Paused",
+            "type": "boolean",
+            "description": "Whether the queue is paused"
+          }
+        }
+      },
+      "QueueTaskResponse": {
+        "title": "QueueTaskResponse",
+        "required": ["task_id"],
+        "type": "object",
+        "properties": { "task_id": { "title": "Task Id", "type": "string" } }
+      },
+      "QuicksettingsHint": {
+        "title": "QuicksettingsHint",
+        "required": ["name", "label"],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name of the quicksettings field",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label of the quicksettings field",
+            "type": "string"
+          }
+        }
+      },
+      "RealesrganItem": {
+        "title": "RealesrganItem",
+        "required": ["name"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "path": { "title": "Path", "type": "string" },
+          "scale": { "title": "Scale", "type": "integer" }
+        }
+      },
+      "ResetBody": {
+        "title": "ResetBody",
+        "required": ["session_hash", "fn_index"],
+        "type": "object",
+        "properties": {
+          "session_hash": { "title": "Session Hash", "type": "string" },
+          "fn_index": { "title": "Fn Index", "type": "integer" }
+        }
+      },
+      "SDModelItem": {
+        "title": "SDModelItem",
+        "required": ["title", "model_name", "filename"],
+        "type": "object",
+        "properties": {
+          "title": { "title": "Title", "type": "string" },
+          "model_name": { "title": "Model Name", "type": "string" },
+          "hash": { "title": "Short hash", "type": "string" },
+          "sha256": { "title": "sha256 hash", "type": "string" },
+          "filename": { "title": "Filename", "type": "string" },
+          "config": { "title": "Config file", "type": "string" }
+        }
+      },
+      "SDVaeItem": {
+        "title": "SDVaeItem",
+        "required": ["model_name", "filename"],
+        "type": "object",
+        "properties": {
+          "model_name": { "title": "Model Name", "type": "string" },
+          "filename": { "title": "Filename", "type": "string" }
+        }
+      },
+      "SamplerItem": {
+        "title": "SamplerItem",
+        "required": ["name", "aliases", "options"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "aliases": {
+            "title": "Aliases",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "options": {
+            "title": "Options",
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+          }
+        }
+      },
+      "ScriptArg": {
+        "title": "ScriptArg",
+        "type": "object",
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string",
+            "description": "Name of the argument in UI"
+          },
+          "value": {
+            "title": "Value",
+            "description": "Default value of the argument"
+          },
+          "minimum": {
+            "title": "Minimum",
+            "description": "Minimum allowed value for the argumentin UI"
+          },
+          "maximum": {
+            "title": "Minimum",
+            "description": "Maximum allowed value for the argumentin UI"
+          },
+          "step": {
+            "title": "Minimum",
+            "description": "Step for changing value of the argumentin UI"
+          },
+          "choices": {
+            "title": "Choices",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Possible values for the argument"
+          }
+        }
+      },
+      "ScriptInfo": {
+        "title": "ScriptInfo",
+        "required": ["args"],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "description": "Script name"
+          },
+          "is_alwayson": {
+            "title": "IsAlwayson",
+            "type": "boolean",
+            "description": "Flag specifying whether this script is an alwayson script"
+          },
+          "is_img2img": {
+            "title": "IsImg2img",
+            "type": "boolean",
+            "description": "Flag specifying whether this script is an img2img script"
+          },
+          "args": {
+            "title": "Arguments",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ScriptArg" },
+            "description": "List of script's arguments"
+          }
+        }
+      },
+      "ScriptsList": {
+        "title": "ScriptsList",
+        "type": "object",
+        "properties": {
+          "txt2img": {
+            "title": "Txt2img",
+            "type": "array",
+            "items": {},
+            "description": "Titles of scripts (txt2img)"
+          },
+          "img2img": {
+            "title": "Img2img",
+            "type": "array",
+            "items": {},
+            "description": "Titles of scripts (img2img)"
+          }
+        }
+      },
+      "StableDiffusionProcessingImg2Img": {
+        "title": "StableDiffusionProcessingImg2Img",
+        "type": "object",
+        "properties": {
+          "init_images": {
+            "title": "Init Images",
+            "type": "array",
+            "items": {}
+          },
+          "resize_mode": {
+            "title": "Resize Mode",
+            "type": "integer",
+            "default": 0
+          },
+          "denoising_strength": {
+            "title": "Denoising Strength",
+            "type": "number",
+            "default": 0.75
+          },
+          "image_cfg_scale": { "title": "Image Cfg Scale", "type": "number" },
+          "mask": { "title": "Mask", "type": "string" },
+          "mask_blur": { "title": "Mask Blur", "type": "integer" },
+          "mask_blur_x": {
+            "title": "Mask Blur X",
+            "type": "integer",
+            "default": 4
+          },
+          "mask_blur_y": {
+            "title": "Mask Blur Y",
+            "type": "integer",
+            "default": 4
+          },
+          "inpainting_fill": {
+            "title": "Inpainting Fill",
+            "type": "integer",
+            "default": 0
+          },
+          "inpaint_full_res": {
+            "title": "Inpaint Full Res",
+            "type": "boolean",
+            "default": true
+          },
+          "inpaint_full_res_padding": {
+            "title": "Inpaint Full Res Padding",
+            "type": "integer",
+            "default": 0
+          },
+          "inpainting_mask_invert": {
+            "title": "Inpainting Mask Invert",
+            "type": "integer",
+            "default": 0
+          },
+          "initial_noise_multiplier": {
+            "title": "Initial Noise Multiplier",
+            "type": "number"
+          },
+          "prompt": { "title": "Prompt", "type": "string", "default": "" },
+          "styles": {
+            "title": "Styles",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "seed": { "title": "Seed", "type": "integer", "default": -1 },
+          "subseed": { "title": "Subseed", "type": "integer", "default": -1 },
+          "subseed_strength": {
+            "title": "Subseed Strength",
+            "type": "number",
+            "default": 0
+          },
+          "seed_resize_from_h": {
+            "title": "Seed Resize From H",
+            "type": "integer",
+            "default": -1
+          },
+          "seed_resize_from_w": {
+            "title": "Seed Resize From W",
+            "type": "integer",
+            "default": -1
+          },
+          "sampler_name": { "title": "Sampler Name", "type": "string" },
+          "batch_size": {
+            "title": "Batch Size",
+            "type": "integer",
+            "default": 1
+          },
+          "n_iter": { "title": "N Iter", "type": "integer", "default": 1 },
+          "steps": { "title": "Steps", "type": "integer", "default": 50 },
+          "cfg_scale": {
+            "title": "Cfg Scale",
+            "type": "number",
+            "default": 7.0
+          },
+          "width": { "title": "Width", "type": "integer", "default": 512 },
+          "height": { "title": "Height", "type": "integer", "default": 512 },
+          "restore_faces": {
+            "title": "Restore Faces",
+            "type": "boolean",
+            "default": false
+          },
+          "tiling": { "title": "Tiling", "type": "boolean", "default": false },
+          "do_not_save_samples": {
+            "title": "Do Not Save Samples",
+            "type": "boolean",
+            "default": false
+          },
+          "do_not_save_grid": {
+            "title": "Do Not Save Grid",
+            "type": "boolean",
+            "default": false
+          },
+          "negative_prompt": { "title": "Negative Prompt", "type": "string" },
+          "eta": { "title": "Eta", "type": "number" },
+          "s_min_uncond": {
+            "title": "S Min Uncond",
+            "type": "number",
+            "default": 0.0
+          },
+          "s_churn": { "title": "S Churn", "type": "number", "default": 0.0 },
+          "s_tmax": { "title": "S Tmax", "type": "number" },
+          "s_tmin": { "title": "S Tmin", "type": "number", "default": 0.0 },
+          "s_noise": { "title": "S Noise", "type": "number", "default": 1.0 },
+          "override_settings": {
+            "title": "Override Settings",
+            "type": "object"
+          },
+          "override_settings_restore_afterwards": {
+            "title": "Override Settings Restore Afterwards",
+            "type": "boolean",
+            "default": true
+          },
+          "script_args": {
+            "title": "Script Args",
+            "type": "array",
+            "items": {},
+            "default": []
+          },
+          "sampler_index": {
+            "title": "Sampler Index",
+            "type": "string",
+            "default": "Euler"
+          },
+          "include_init_images": {
+            "title": "Include Init Images",
+            "type": "boolean",
+            "default": false
+          },
+          "script_name": { "title": "Script Name", "type": "string" },
+          "send_images": {
+            "title": "Send Images",
+            "type": "boolean",
+            "default": true
+          },
+          "save_images": {
+            "title": "Save Images",
+            "type": "boolean",
+            "default": false
+          },
+          "alwayson_scripts": {
+            "title": "Alwayson Scripts",
+            "type": "object",
+            "default": {}
+          }
+        }
+      },
+      "StableDiffusionProcessingTxt2Img": {
+        "title": "StableDiffusionProcessingTxt2Img",
+        "type": "object",
+        "properties": {
+          "enable_hr": {
+            "title": "Enable Hr",
+            "type": "boolean",
+            "default": false
+          },
+          "denoising_strength": {
+            "title": "Denoising Strength",
+            "type": "number",
+            "default": 0
+          },
+          "firstphase_width": {
+            "title": "Firstphase Width",
+            "type": "integer",
+            "default": 0
+          },
+          "firstphase_height": {
+            "title": "Firstphase Height",
+            "type": "integer",
+            "default": 0
+          },
+          "hr_scale": { "title": "Hr Scale", "type": "number", "default": 2.0 },
+          "hr_upscaler": { "title": "Hr Upscaler", "type": "string" },
+          "hr_second_pass_steps": {
+            "title": "Hr Second Pass Steps",
+            "type": "integer",
+            "default": 0
+          },
+          "hr_resize_x": {
+            "title": "Hr Resize X",
+            "type": "integer",
+            "default": 0
+          },
+          "hr_resize_y": {
+            "title": "Hr Resize Y",
+            "type": "integer",
+            "default": 0
+          },
+          "hr_sampler_name": { "title": "Hr Sampler Name", "type": "string" },
+          "hr_prompt": {
+            "title": "Hr Prompt",
+            "type": "string",
+            "default": ""
+          },
+          "hr_negative_prompt": {
+            "title": "Hr Negative Prompt",
+            "type": "string",
+            "default": ""
+          },
+          "prompt": { "title": "Prompt", "type": "string", "default": "" },
+          "styles": {
+            "title": "Styles",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "seed": { "title": "Seed", "type": "integer", "default": -1 },
+          "subseed": { "title": "Subseed", "type": "integer", "default": -1 },
+          "subseed_strength": {
+            "title": "Subseed Strength",
+            "type": "number",
+            "default": 0
+          },
+          "seed_resize_from_h": {
+            "title": "Seed Resize From H",
+            "type": "integer",
+            "default": -1
+          },
+          "seed_resize_from_w": {
+            "title": "Seed Resize From W",
+            "type": "integer",
+            "default": -1
+          },
+          "sampler_name": { "title": "Sampler Name", "type": "string" },
+          "batch_size": {
+            "title": "Batch Size",
+            "type": "integer",
+            "default": 1
+          },
+          "n_iter": { "title": "N Iter", "type": "integer", "default": 1 },
+          "steps": { "title": "Steps", "type": "integer", "default": 50 },
+          "cfg_scale": {
+            "title": "Cfg Scale",
+            "type": "number",
+            "default": 7.0
+          },
+          "width": { "title": "Width", "type": "integer", "default": 512 },
+          "height": { "title": "Height", "type": "integer", "default": 512 },
+          "restore_faces": {
+            "title": "Restore Faces",
+            "type": "boolean",
+            "default": false
+          },
+          "tiling": { "title": "Tiling", "type": "boolean", "default": false },
+          "do_not_save_samples": {
+            "title": "Do Not Save Samples",
+            "type": "boolean",
+            "default": false
+          },
+          "do_not_save_grid": {
+            "title": "Do Not Save Grid",
+            "type": "boolean",
+            "default": false
+          },
+          "negative_prompt": { "title": "Negative Prompt", "type": "string" },
+          "eta": { "title": "Eta", "type": "number" },
+          "s_min_uncond": {
+            "title": "S Min Uncond",
+            "type": "number",
+            "default": 0.0
+          },
+          "s_churn": { "title": "S Churn", "type": "number", "default": 0.0 },
+          "s_tmax": { "title": "S Tmax", "type": "number" },
+          "s_tmin": { "title": "S Tmin", "type": "number", "default": 0.0 },
+          "s_noise": { "title": "S Noise", "type": "number", "default": 1.0 },
+          "override_settings": {
+            "title": "Override Settings",
+            "type": "object"
+          },
+          "override_settings_restore_afterwards": {
+            "title": "Override Settings Restore Afterwards",
+            "type": "boolean",
+            "default": true
+          },
+          "script_args": {
+            "title": "Script Args",
+            "type": "array",
+            "items": {},
+            "default": []
+          },
+          "sampler_index": {
+            "title": "Sampler Index",
+            "type": "string",
+            "default": "Euler"
+          },
+          "script_name": { "title": "Script Name", "type": "string" },
+          "send_images": {
+            "title": "Send Images",
+            "type": "boolean",
+            "default": true
+          },
+          "save_images": {
+            "title": "Save Images",
+            "type": "boolean",
+            "default": false
+          },
+          "alwayson_scripts": {
+            "title": "Alwayson Scripts",
+            "type": "object",
+            "default": {}
+          }
+        }
+      },
+      "TaskModel": {
+        "title": "TaskModel",
+        "required": ["id", "type", "params"],
+        "type": "object",
+        "properties": {
+          "id": { "title": "Task Id", "type": "string" },
+          "api_task_id": { "title": "API Task Id", "type": "string" },
+          "api_task_callback": {
+            "title": "API Task Callback",
+            "type": "string"
+          },
+          "name": { "title": "Task Name", "type": "string" },
+          "type": {
+            "title": "Task Type",
+            "type": "string",
+            "description": "Either txt2img or img2img"
+          },
+          "status": {
+            "title": "Task Status",
+            "type": "string",
+            "description": "Either pending, running, done or failed",
+            "default": "pending"
+          },
+          "params": {
+            "title": "Task Parameters",
+            "type": "object",
+            "description": "The parameters of the task in JSON format"
+          },
+          "priority": { "title": "Task Priority", "type": "integer" },
+          "result": {
+            "title": "Task Result",
+            "type": "string",
+            "description": "The result of the task in JSON format"
+          },
+          "bookmarked": { "title": "Is task bookmarked", "type": "boolean" },
+          "created_at": {
+            "title": "Task Created At",
+            "type": "string",
+            "description": "The time when the task was created",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "title": "Task Updated At",
+            "type": "string",
+            "description": "The time when the task was updated",
+            "format": "date-time"
+          }
+        }
+      },
+      "TextToImageResponse": {
+        "title": "TextToImageResponse",
+        "required": ["parameters", "info"],
+        "type": "object",
+        "properties": {
+          "images": {
+            "title": "Image",
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The generated image in base64 format."
+          },
+          "parameters": { "title": "Parameters", "type": "object" },
+          "info": { "title": "Info", "type": "string" }
+        }
+      },
+      "TrainResponse": {
+        "title": "TrainResponse",
+        "required": ["info"],
+        "type": "object",
+        "properties": {
+          "info": {
+            "title": "Train info",
+            "type": "string",
+            "description": "Response string from train embedding or hypernetwork task."
+          }
+        }
+      },
+      "Txt2ImgApiTaskArgs": {
+        "title": "Txt2ImgApiTaskArgs",
+        "type": "object",
+        "properties": {
+          "enable_hr": {
+            "title": "Enable Hr",
+            "type": "boolean",
+            "default": false
+          },
+          "denoising_strength": {
+            "title": "Denoising Strength",
+            "type": "number",
+            "default": 0
+          },
+          "firstphase_width": {
+            "title": "Firstphase Width",
+            "type": "integer",
+            "default": 0
+          },
+          "firstphase_height": {
+            "title": "Firstphase Height",
+            "type": "integer",
+            "default": 0
+          },
+          "hr_scale": { "title": "Hr Scale", "type": "number", "default": 2.0 },
+          "hr_upscaler": { "title": "Hr Upscaler", "type": "string" },
+          "hr_second_pass_steps": {
+            "title": "Hr Second Pass Steps",
+            "type": "integer",
+            "default": 0
+          },
+          "hr_resize_x": {
+            "title": "Hr Resize X",
+            "type": "integer",
+            "default": 0
+          },
+          "hr_resize_y": {
+            "title": "Hr Resize Y",
+            "type": "integer",
+            "default": 0
+          },
+          "hr_sampler_name": { "title": "Hr Sampler Name", "type": "string" },
+          "hr_prompt": {
+            "title": "Hr Prompt",
+            "type": "string",
+            "default": ""
+          },
+          "hr_negative_prompt": {
+            "title": "Hr Negative Prompt",
+            "type": "string",
+            "default": ""
+          },
+          "prompt": { "title": "Prompt", "type": "string", "default": "" },
+          "styles": {
+            "title": "Styles",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "seed": { "title": "Seed", "type": "integer", "default": -1 },
+          "subseed": { "title": "Subseed", "type": "integer", "default": -1 },
+          "subseed_strength": {
+            "title": "Subseed Strength",
+            "type": "number",
+            "default": 0
+          },
+          "seed_resize_from_h": {
+            "title": "Seed Resize From H",
+            "type": "integer",
+            "default": -1
+          },
+          "seed_resize_from_w": {
+            "title": "Seed Resize From W",
+            "type": "integer",
+            "default": -1
+          },
+          "sampler_name": {
+            "title": "Sampler name",
+            "type": "string",
+            "default": "Euler a"
+          },
+          "batch_size": {
+            "title": "Batch Size",
+            "type": "integer",
+            "default": 1
+          },
+          "n_iter": { "title": "N Iter", "type": "integer", "default": 1 },
+          "steps": { "title": "Steps", "type": "integer", "default": 50 },
+          "cfg_scale": {
+            "title": "Cfg Scale",
+            "type": "number",
+            "default": 7.0
+          },
+          "width": { "title": "Width", "type": "integer", "default": 512 },
+          "height": { "title": "Height", "type": "integer", "default": 512 },
+          "restore_faces": {
+            "title": "Restore Faces",
+            "type": "boolean",
+            "default": false
+          },
+          "tiling": { "title": "Tiling", "type": "boolean", "default": false },
+          "do_not_save_samples": {
+            "title": "Do Not Save Samples",
+            "type": "boolean",
+            "default": false
+          },
+          "do_not_save_grid": {
+            "title": "Do Not Save Grid",
+            "type": "boolean",
+            "default": false
+          },
+          "negative_prompt": { "title": "Negative Prompt", "type": "string" },
+          "eta": { "title": "Eta", "type": "number" },
+          "s_min_uncond": {
+            "title": "S Min Uncond",
+            "type": "number",
+            "default": 0.0
+          },
+          "s_churn": { "title": "S Churn", "type": "number", "default": 0.0 },
+          "s_tmax": { "title": "S Tmax", "type": "number" },
+          "s_tmin": { "title": "S Tmin", "type": "number", "default": 0.0 },
+          "s_noise": { "title": "S Noise", "type": "number", "default": 1.0 },
+          "override_settings": {
+            "title": "Override Settings",
+            "type": "object"
+          },
+          "override_settings_restore_afterwards": {
+            "title": "Override Settings Restore Afterwards",
+            "type": "boolean",
+            "default": true
+          },
+          "script_args": {
+            "title": "Script Args",
+            "type": "array",
+            "items": {},
+            "default": []
+          },
+          "script_name": { "title": "Script Name", "type": "string" },
+          "alwayson_scripts": {
+            "title": "Alwayson Scripts",
+            "type": "object",
+            "default": {}
+          },
+          "checkpoint": {
+            "title": "Custom checkpoint.",
+            "type": "string",
+            "description": "Custom checkpoint hash. If not specified, the latest checkpoint will be used."
+          },
+          "callback_url": {
+            "title": "Callback URL",
+            "type": "string",
+            "description": "The callback URL to send the result to."
+          }
+        }
+      },
+      "UpscalerItem": {
+        "title": "UpscalerItem",
+        "required": ["name"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "model_name": { "title": "Model Name", "type": "string" },
+          "model_path": { "title": "Path", "type": "string" },
+          "model_url": { "title": "URL", "type": "string" },
+          "scale": { "title": "Scale", "type": "number" }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": ["loc", "msg", "type"],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] }
+          },
+          "msg": { "title": "Message", "type": "string" },
+          "type": { "title": "Error Type", "type": "string" }
+        }
+      },
+      "modules__api__models__ProgressResponse": {
+        "title": "ProgressResponse",
+        "required": ["progress", "eta_relative", "state"],
+        "type": "object",
+        "properties": {
+          "progress": {
+            "title": "Progress",
+            "type": "number",
+            "description": "The progress with a range of 0 to 1"
+          },
+          "eta_relative": { "title": "ETA in secs", "type": "number" },
+          "state": {
+            "title": "State",
+            "type": "object",
+            "description": "The current state snapshot"
+          },
+          "current_image": {
+            "title": "Current image",
+            "type": "string",
+            "description": "The current image in base64 format. opts.show_progress_every_n_steps is required for this to work."
+          },
+          "textinfo": {
+            "title": "Info text",
+            "type": "string",
+            "description": "Info text used by WebUI."
+          }
+        }
+      },
+      "modules__progress__ProgressResponse": {
+        "title": "ProgressResponse",
+        "required": ["active", "queued", "completed"],
+        "type": "object",
+        "properties": {
+          "active": {
+            "title": "Whether the task is being worked on right now",
+            "type": "boolean"
+          },
+          "queued": {
+            "title": "Whether the task is in queue",
+            "type": "boolean"
+          },
+          "completed": {
+            "title": "Whether the task has already finished",
+            "type": "boolean"
+          },
+          "progress": {
+            "title": "Progress",
+            "type": "number",
+            "description": "The progress with a range of 0 to 1"
+          },
+          "eta": { "title": "ETA in secs", "type": "number" },
+          "live_preview": {
+            "title": "Live preview image",
+            "type": "string",
+            "description": "Current live preview; a data: uri"
+          },
+          "id_live_preview": {
+            "title": "Live preview image ID",
+            "type": "integer",
+            "description": "Send this together with next request to prevent receiving same image"
+          },
+          "textinfo": {
+            "title": "Info text",
+            "type": "string",
+            "description": "Info text used by WebUI."
+          }
+        }
+      }
+    }
+  }
+}
