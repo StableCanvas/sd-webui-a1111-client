@@ -26,7 +26,9 @@ import {
 } from "@stable-canvas/sd-webui-a1111-client";
 import fs from "fs";
 
-const client = new SDWebUIA1111Client();
+const client = new SDWebUIA1111Client({
+  BASE: "http://localhost:7860",
+});
 const process = new Txt2imgProcess({ prompt: "1girl" });
 const { images } = await process.request(client);
 const image = images[0]; // base64 image string
@@ -53,17 +55,20 @@ fs.writeFileSync("image.png", Buffer.from(image, "base64"));
   } from "@stable-canvas/sd-webui-a1111-client";
   window.onload = async () => {
     const $msg = document.querySelector("#message");
-    const client = new SDWebUIA1111Client();
+    const $img = document.querySelector("img");
+    const client = new SDWebUIA1111Client({
+      BASE: "http://localhost:7860",
+    });
     const process = new Txt2imgProcess({ prompt: "1girl" });
-    $msg.innerText = 'generating...';
+    $msg.innerText = "generating...";
     try {
-        const { images } = await process.request(client);
-        const image = images[0]; // base64 image string
-        document.querySelector("img").src = image;
-        $msg.innerText = 'done.';
+      const { images } = await process.request(client);
+      const image = images[0]; // base64 image string
+      $img.src = `data:image/png;base64,${image}`;
+      $msg.innerText = "done.";
     } catch (error) {
-        $msg.innerText = error.message;
-        console.error(error)
+      $msg.innerText = error.message;
+      console.error(error);
     }
   };
 </script>

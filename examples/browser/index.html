@@ -12,31 +12,114 @@
         }
       }
     </script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    </style>
   </head>
   <body>
     <h1>@stable-canvas/sd-webui-a1111-client DEMO</h1>
+    <fieldset style="display: inline-block">
+      <legend>prompt</legend>
+      <textarea
+        id="prompt"
+        cols="60"
+        rows="10"
+        style="border: none; resize: none"
+      ></textarea>
+    </fieldset>
+    <fieldset style="display: inline-block">
+      <legend>negative prompt</legend>
+      <textarea
+        id="negative_prompt"
+        cols="60"
+        rows="10"
+        style="border: none; resize: none"
+      ></textarea>
+    </fieldset>
+    <br />
+    <button>Generate</button>
     <div id="message"></div>
-    <img src="" alt="" />
+    <div id="eta"></div>
+    <fieldset id="history">
+      <legend>history</legend>
+    </fieldset>
     <script type="module">
       import {
         SDWebUIA1111Client,
         Txt2imgProcess,
       } from "@stable-canvas/sd-webui-a1111-client";
-      window.onload = async () => {
-        const $msg = document.querySelector("#message");
-        const client = new SDWebUIA1111Client();
-        const process = new Txt2imgProcess({ prompt: "1girl" });
+      const client = new SDWebUIA1111Client({
+        BASE: "http://localhost:7860",
+      });
+
+      const $btn = document.querySelector("button");
+      const $msg = document.querySelector("#message");
+      const $history = document.querySelector("#history");
+      const $eta = document.querySelector("#eta");
+      const $prompt = document.querySelector("#prompt");
+      const $negative_prompt = document.querySelector("#negative_prompt");
+      $prompt.value = localStorage.getItem("prompt") || "1girl";
+      $negative_prompt.value =
+        localStorage.getItem("negative_prompt") ||
+        "worst quality,zombie,disgust";
+      let processing = false;
+      const generate = async () => {
+        if (processing) {
+          return;
+        }
+        processing = true;
+        $btn.disabled = true;
+        const sync_eta = async () => {
+          while (processing) {
+            const { progress, eta_relative } =
+              await client.default.progressapiSdapiV1ProgressGet({
+                skipCurrentImage: true,
+              });
+            $eta.innerText = `progress: ${Number(progress * 100).toFixed(
+              2
+            )}% eta: ${Number(eta_relative).toFixed(2)}s`;
+            await new Promise((r) => setTimeout(r, 1000));
+          }
+          $eta.innerText = "";
+        };
+        sync_eta();
+        const body = {
+          prompt: $prompt.value,
+          negative_prompt: $negative_prompt.value,
+          width: 512,
+          height: 768,
+          steps: 30,
+        };
+        localStorage.setItem("prompt", body.prompt);
+        localStorage.setItem("negative_prompt", body.negative_prompt);
+        const process = new Txt2imgProcess(body);
         $msg.innerText = "generating...";
         try {
           const { images } = await process.request(client);
           const image = images[0]; // base64 image string
-          document.querySelector("img").src = image;
+          const $img = document.createElement("img");
+          $img.src = `data:image/png;base64,${image}`;
+          $history.insertBefore($img, $history.querySelector("img"));
           $msg.innerText = "done.";
         } catch (error) {
           $msg.innerText = error.message;
           console.error(error);
+        } finally {
+          $btn.disabled = false;
+          processing = false;
         }
       };
+      $btn.onclick = generate;
+      window.addEventListener("keypress", (event) => {
+        if (event.code === "Enter" && event.ctrlKey) {
+          generate();
+        }
+      });
     </script>
   </body>
 </html>
