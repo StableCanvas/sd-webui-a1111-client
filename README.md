@@ -73,3 +73,6 @@ fs.writeFileSync("image.png", Buffer.from(image, "base64"));
   };
 </script>
 ```
+
+demo online: [codesandbox](https://codesandbox.io/s/sd-webui-a1111-client-demo-j38wmy?file=/src/index.js)
+
