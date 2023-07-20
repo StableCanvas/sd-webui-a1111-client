@@ -35,8 +35,20 @@
     "regen": "openapi --input ./openapi.json --output ./src/client --name SDWebUIA1111Client --useOptions --useUnionTypes ",
     "test": "jest"
   },
-  "author": "",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StableCanvas/sd-webui-a1111-client.git"
+  },
+  "author": "zhzluke96",
+  "bugs": {
+    "url": "https://github.com/StableCanvas/sd-webui-a1111-client/issues"
+  },
+  "homepage": "https://github.com/StableCanvas/sd-webui-a1111-client#readme",
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^20.4.2",
