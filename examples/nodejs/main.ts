@@ -1,5 +1,16 @@
-import { generate1Girl } from "./1girl";
+import "./ensure-fetch";
+
 import fs from "fs";
+import { SDWebUIA1111Client, Txt2imgProcess } from "../../dist/main";
+
+export const generate1Girl = async (client: SDWebUIA1111Client) => {
+  const pc1 = new Txt2imgProcess({
+    prompt: `photorealistic, RAW photo, realistic,4k, high-res, masterpiece, best quality, 1girl, close-up`,
+    negative_prompt: `fake, paintings, NG_DeepNegative_V1_75T,`,
+  });
+  const { images: [image0] = [] } = await pc1.request(client);
+  return image0 as undefined | string;
+};
 
 async function saveBase64Image(
   base64String: string,
@@ -17,7 +28,10 @@ async function saveBase64Image(
 }
 
 const main = async () => {
-  const image = await generate1Girl();
+  const client = new SDWebUIA1111Client({
+    BASE: "http://localhost:7860",
+  });
+  const image = await generate1Girl(client);
   if (!image) {
     throw new Error("Failed to generate image");
   }
