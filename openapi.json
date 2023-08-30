@@ -1742,6 +1742,204 @@
         }
       }
     },
+    "/sd_extra_networks/get-single-card": {
+      "get": {
+        "summary": "Get Single Card",
+        "operationId": "get_single_card_sd_extra_networks_get_single_card_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Page", "type": "string", "default": "" },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Tabname", "type": "string", "default": "" },
+            "name": "tabname",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Name", "type": "string", "default": "" },
+            "name": "name",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/lora-info/{lora_name}": {
+      "get": {
+        "summary": "Get Lora Info",
+        "operationId": "get_lora_info_tacapi_v1_lora_info__lora_name__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Lora Name" },
+            "name": "lora_name",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/lyco-info/{lyco_name}": {
+      "get": {
+        "summary": "Get Lyco Info",
+        "operationId": "get_lyco_info_tacapi_v1_lyco_info__lyco_name__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Lyco Name" },
+            "name": "lyco_name",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/thumb-preview/{filename}": {
+      "get": {
+        "summary": "Get Thumb Preview",
+        "operationId": "get_thumb_preview_tacapi_v1_thumb_preview__filename__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Filename" },
+            "name": "filename",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Type" },
+            "name": "type",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/thumb-preview-blob/{filename}": {
+      "get": {
+        "summary": "Get Thumb Preview Blob",
+        "operationId": "get_thumb_preview_blob_tacapi_v1_thumb_preview_blob__filename__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Filename" },
+            "name": "filename",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Type" },
+            "name": "type",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/wildcard-contents": {
+      "get": {
+        "summary": "Get Wildcard Contents",
+        "operationId": "get_wildcard_contents_tacapi_v1_wildcard_contents_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Basepath", "type": "string" },
+            "name": "basepath",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Filename", "type": "string" },
+            "name": "filename",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agent-scheduler/v1/queue/txt2img": {
       "post": {
         "summary": "Queue Txt2Img",
@@ -1888,10 +2086,183 @@
         }
       }
     },
+    "/agent-scheduler/v1/task/{id}": {
+      "get": {
+        "summary": "Get Task",
+        "operationId": "get_task_agent_scheduler_v1_task__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Task",
+        "operationId": "update_task_agent_scheduler_v1_task__id__put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateTaskArgs" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Task",
+        "operationId": "delete_task_agent_scheduler_v1_task__id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/task/{id}/position": {
+      "get": {
+        "summary": "Get Task Position",
+        "operationId": "get_task_position_agent_scheduler_v1_task__id__position_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/task/{id}/run": {
+      "post": {
+        "summary": "Run Task",
+        "operationId": "run_task_agent_scheduler_v1_task__id__run_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agent-scheduler/v1/run/{id}": {
       "post": {
         "summary": "Run Task",
         "operationId": "run_task_agent_scheduler_v1_run__id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/task/{id}/requeue": {
+      "post": {
+        "summary": "Requeue Task",
+        "operationId": "requeue_task_agent_scheduler_v1_task__id__requeue_post",
         "parameters": [
           {
             "required": true,
@@ -1941,7 +2312,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/agent-scheduler/v1/delete/{id}": {
@@ -1953,6 +2325,41 @@
             "required": true,
             "schema": { "title": "Id", "type": "string" },
             "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/task/{id}/move/{over_id}": {
+      "post": {
+        "summary": "Move Task",
+        "operationId": "move_task_agent_scheduler_v1_task__id__move__over_id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Over Id", "type": "string" },
+            "name": "over_id",
             "in": "path"
           }
         ],
@@ -2003,6 +2410,35 @@
               }
             }
           }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/task/{id}/bookmark": {
+      "post": {
+        "summary": "Pin Task",
+        "operationId": "pin_task_agent_scheduler_v1_task__id__bookmark_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
         }
       }
     },
@@ -2010,6 +2446,35 @@
       "post": {
         "summary": "Pin Task",
         "operationId": "pin_task_agent_scheduler_v1_bookmark__id__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/task/{id}/unbookmark": {
+      "post": {
+        "summary": "Unpin Task",
+        "operationId": "unpin_task_agent_scheduler_v1_task__id__unbookmark_post",
         "parameters": [
           {
             "required": true,
@@ -2059,6 +2524,41 @@
               }
             }
           }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/task/{id}/rename": {
+      "post": {
+        "summary": "Rename Task",
+        "operationId": "rename_task_agent_scheduler_v1_task__id__rename_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Name", "type": "string" },
+            "name": "name",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
         }
       }
     },
@@ -2077,6 +2577,41 @@
             "required": true,
             "schema": { "title": "Name", "type": "string" },
             "name": "name",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/task/{id}/results": {
+      "get": {
+        "summary": "Get Task Results",
+        "operationId": "get_task_results_agent_scheduler_v1_task__id__results_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Id", "type": "string" },
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Zip", "type": "boolean", "default": false },
+            "name": "zip",
             "in": "query"
           }
         ],
@@ -2127,6 +2662,19 @@
               }
             }
           }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/queue/pause": {
+      "post": {
+        "summary": "Pause Queue",
+        "operationId": "pause_queue_agent_scheduler_v1_queue_pause_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
         }
       }
     },
@@ -2139,6 +2687,19 @@
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
           }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/queue/resume": {
+      "post": {
+        "summary": "Resume Queue",
+        "operationId": "resume_queue_agent_scheduler_v1_queue_resume_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
         }
       }
     },
@@ -2146,6 +2707,31 @@
       "post": {
         "summary": "Resume Queue",
         "operationId": "resume_queue_agent_scheduler_v1_resume_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/queue/clear": {
+      "post": {
+        "summary": "Clear Queue",
+        "operationId": "clear_queue_agent_scheduler_v1_queue_clear_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/history/clear": {
+      "post": {
+        "summary": "Clear History",
+        "operationId": "clear_history_agent_scheduler_v1_history_clear_post",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2170,10 +2756,26 @@
       "get": {
         "summary": "Model List",
         "operationId": "model_list_controlnet_model_list_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Update", "type": "boolean", "default": true },
+            "name": "update",
+            "in": "query"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
           }
         }
       }
@@ -2783,6 +3385,12 @@
             "description": "launch.py argument: skip installation of packages",
             "default": false
           },
+          "do_not_download_clip": {
+            "title": "Do Not Download Clip",
+            "type": "boolean",
+            "description": "do not download CLIP model even if it's not included in the checkpoint",
+            "default": false
+          },
           "data_dir": {
             "title": "Data Dir",
             "type": "string",
@@ -3312,6 +3920,24 @@
             "description": "add /_stop route to stop server",
             "default": false
           },
+          "api_server_stop": {
+            "title": "Api Server Stop",
+            "type": "boolean",
+            "description": "enable server stop/restart/kill via api",
+            "default": false
+          },
+          "timeout_keep_alive": {
+            "title": "Timeout Keep Alive",
+            "type": "integer",
+            "description": "set timeout_keep_alive for uvicorn",
+            "default": 30
+          },
+          "ad_no_huggingface": {
+            "title": "Ad No Huggingface",
+            "type": "boolean",
+            "description": "Don't use adetailer models from huggingface",
+            "default": false
+          },
           "controlnet_dir": {
             "title": "Controlnet Dir",
             "type": "string",
@@ -3350,6 +3976,12 @@
             "type": "string",
             "description": "Path to directory with Lora networks.",
             "default": "O:\\AI\\sd-webui\\models\\Lora"
+          },
+          "lyco_dir_backcompat": {
+            "title": "Lyco Dir Backcompat",
+            "type": "string",
+            "description": "Path to directory with LyCORIS networks (for backawards compatibility; can also use --lyco-dir).",
+            "default": "O:\\AI\\sd-webui\\models\\LyCORIS"
           },
           "scunet_models_path": {
             "title": "Scunet Models Path",
@@ -3635,7 +4267,6 @@
           },
           "samples_filename_pattern": {
             "title": "Samples Filename Pattern",
-            "type": "string",
             "description": "Images filename pattern",
             "default": ""
           },
@@ -3659,7 +4290,6 @@
           },
           "grid_extended_filename": {
             "title": "Grid Extended Filename",
-            "type": "boolean",
             "description": "Add extended info (seed, prompt) to filename when saving grid",
             "default": false
           },
@@ -3671,13 +4301,11 @@
           },
           "grid_prevent_empty_spots": {
             "title": "Grid Prevent Empty Spots",
-            "type": "boolean",
             "description": "Prevent empty spots in grid (when set to autodetect)",
             "default": false
           },
           "grid_zip_filename_pattern": {
             "title": "Grid Zip Filename Pattern",
-            "type": "string",
             "description": "Archive filename pattern",
             "default": ""
           },
@@ -3687,6 +4315,29 @@
             "description": "Grid row count; use -1 for autodetect and 0 for it to be same as batch size",
             "default": -1
           },
+          "font": {
+            "title": "Font",
+            "description": "Font for image grids that have text",
+            "default": ""
+          },
+          "grid_text_active_color": {
+            "title": "Grid Text Active Color",
+            "type": "string",
+            "description": "Text color for image grids",
+            "default": "#000000"
+          },
+          "grid_text_inactive_color": {
+            "title": "Grid Text Inactive Color",
+            "type": "string",
+            "description": "Inactive text color for image grids",
+            "default": "#999999"
+          },
+          "grid_background_color": {
+            "title": "Grid Background Color",
+            "type": "string",
+            "description": "Background color for image grids",
+            "default": "#ffffff"
+          },
           "enable_pnginfo": {
             "title": "Enable Pnginfo",
             "type": "boolean",
@@ -3695,37 +4346,31 @@
           },
           "save_txt": {
             "title": "Save Txt",
-            "type": "boolean",
             "description": "Create a text file next to every image with generation parameters.",
             "default": false
           },
           "save_images_before_face_restoration": {
             "title": "Save Images Before Face Restoration",
-            "type": "boolean",
             "description": "Save a copy of image before doing face restoration.",
             "default": false
           },
           "save_images_before_highres_fix": {
             "title": "Save Images Before Highres Fix",
-            "type": "boolean",
             "description": "Save a copy of image before applying highres fix.",
             "default": false
           },
           "save_images_before_color_correction": {
             "title": "Save Images Before Color Correction",
-            "type": "boolean",
             "description": "Save a copy of image before applying color correction to img2img results",
             "default": false
           },
           "save_mask": {
             "title": "Save Mask",
-            "type": "boolean",
             "description": "For inpainting, save a copy of the greyscale mask",
             "default": false
           },
           "save_mask_composite": {
             "title": "Save Mask Composite",
-            "type": "boolean",
             "description": "For inpainting, save a masked composite",
             "default": false
           },
@@ -3737,7 +4382,6 @@
           },
           "webp_lossless": {
             "title": "Webp Lossless",
-            "type": "boolean",
             "description": "Use lossless compression for webp images",
             "default": false
           },
@@ -3773,7 +4417,6 @@
           },
           "use_upscaler_name_as_suffix": {
             "title": "Use Upscaler Name As Suffix",
-            "type": "boolean",
             "description": "Use upscaler name as filename suffix in the extras tab",
             "default": false
           },
@@ -3785,25 +4428,21 @@
           },
           "save_init_img": {
             "title": "Save Init Img",
-            "type": "boolean",
             "description": "Save init images when using img2img",
             "default": false
           },
           "temp_dir": {
             "title": "Temp Dir",
-            "type": "string",
             "description": "Directory for temporary images; leave empty for default",
             "default": ""
           },
           "clean_temp_dir_at_start": {
             "title": "Clean Temp Dir At Start",
-            "type": "boolean",
             "description": "Cleanup non-default temporary directory when starting webui",
             "default": false
           },
           "outdir_samples": {
             "title": "Outdir Samples",
-            "type": "string",
             "description": "Output directory for images; if empty, defaults to three directories below",
             "default": ""
           },
@@ -3827,7 +4466,6 @@
           },
           "outdir_grids": {
             "title": "Outdir Grids",
-            "type": "string",
             "description": "Output directory for grids; if empty, defaults to two directories below",
             "default": ""
           },
@@ -3869,7 +4507,6 @@
           },
           "use_save_to_dirs_for_ui": {
             "title": "Use Save To Dirs For Ui",
-            "type": "boolean",
             "description": "When using \"Save\" button, save images to a subdirectory",
             "default": false
           },
@@ -3906,7 +4543,6 @@
           },
           "upscaler_for_img2img": {
             "title": "Upscaler For Img2Img",
-            "type": "null",
             "description": "Upscaler for img2img"
           },
           "face_restoration_model": {
@@ -3923,13 +4559,11 @@
           },
           "face_restoration_unload": {
             "title": "Face Restoration Unload",
-            "type": "boolean",
             "description": "Move face restoration model from VRAM into RAM after processing",
             "default": false
           },
           "show_warnings": {
             "title": "Show Warnings",
-            "type": "boolean",
             "description": "Show warnings in console.",
             "default": false
           },
@@ -3941,7 +4575,6 @@
           },
           "samples_log_stdout": {
             "title": "Samples Log Stdout",
-            "type": "boolean",
             "description": "Always print all generation info to standard output",
             "default": false
           },
@@ -3953,7 +4586,6 @@
           },
           "print_hypernet_extra": {
             "title": "Print Hypernet Extra",
-            "type": "boolean",
             "description": "Print extra hypernetwork information to console.",
             "default": false
           },
@@ -3963,21 +4595,23 @@
             "description": "Load models/files in hidden directories",
             "default": true
           },
+          "disable_mmap_load_safetensors": {
+            "title": "Disable Mmap Load Safetensors",
+            "description": "Disable memmapping for loading .safetensors files.",
+            "default": false
+          },
           "unload_models_when_training": {
             "title": "Unload Models When Training",
-            "type": "boolean",
             "description": "Move VAE and CLIP to RAM when training if possible. Saves VRAM.",
             "default": false
           },
           "pin_memory": {
             "title": "Pin Memory",
-            "type": "boolean",
             "description": "Turn on pin_memory for DataLoader. Makes training slightly faster but can increase memory usage.",
             "default": false
           },
           "save_optimizer_state": {
             "title": "Save Optimizer State",
-            "type": "boolean",
             "description": "Saves Optimizer state as separate *.optim file. Training of embedding or HN can be resumed with the matching optim file.",
             "default": false
           },
@@ -3989,7 +4623,6 @@
           },
           "dataset_filename_word_regex": {
             "title": "Dataset Filename Word Regex",
-            "type": "string",
             "description": "Filename word regex",
             "default": ""
           },
@@ -4013,19 +4646,16 @@
           },
           "training_xattention_optimizations": {
             "title": "Training Xattention Optimizations",
-            "type": "boolean",
             "description": "Use cross attention optimizations while training",
             "default": false
           },
           "training_enable_tensorboard": {
             "title": "Training Enable Tensorboard",
-            "type": "boolean",
             "description": "Enable tensorboard logging.",
             "default": false
           },
           "training_tensorboard_save_images": {
             "title": "Training Tensorboard Save Images",
-            "type": "boolean",
             "description": "Save generated images within tensorboard.",
             "default": false
           },
@@ -4037,18 +4667,15 @@
           },
           "sd_model_checkpoint": {
             "title": "Sd Model Checkpoint",
-            "type": "string",
             "description": "Stable Diffusion checkpoint"
           },
           "sd_checkpoint_cache": {
             "title": "Sd Checkpoint Cache",
-            "type": "number",
             "description": "Checkpoints to cache in RAM",
             "default": 0
           },
           "sd_vae_checkpoint_cache": {
             "title": "Sd Vae Checkpoint Cache",
-            "type": "number",
             "description": "VAE Checkpoints to cache in RAM",
             "default": 0
           },
@@ -4078,19 +4705,17 @@
           },
           "initial_noise_multiplier": {
             "title": "Initial Noise Multiplier",
-            "type": "integer",
+            "type": "number",
             "description": "Noise multiplier for img2img",
             "default": 1.0
           },
           "img2img_color_correction": {
             "title": "Img2Img Color Correction",
-            "type": "boolean",
             "description": "Apply color correction to img2img results to match original colors.",
             "default": false
           },
           "img2img_fix_steps": {
             "title": "Img2Img Fix Steps",
-            "type": "boolean",
             "description": "With img2img, do exactly the amount of steps the slider specifies.",
             "default": false
           },
@@ -4102,7 +4727,6 @@
           },
           "enable_quantization": {
             "title": "Enable Quantization",
-            "type": "boolean",
             "description": "Enable quantization in K samplers for sharper and cleaner results. This may change existing seeds. Requires restart to apply.",
             "default": false
           },
@@ -4132,15 +4756,42 @@
           },
           "upcast_attn": {
             "title": "Upcast Attn",
-            "type": "boolean",
             "description": "Upcast cross attention layer to float32",
             "default": false
+          },
+          "auto_vae_precision": {
+            "title": "Auto Vae Precision",
+            "type": "boolean",
+            "description": "Automaticlly revert VAE to 32-bit floats",
+            "default": true
           },
           "randn_source": {
             "title": "Randn Source",
             "type": "string",
             "description": "Random number generator source.",
             "default": "GPU"
+          },
+          "sdxl_crop_top": {
+            "title": "Sdxl Crop Top",
+            "description": "crop top coordinate",
+            "default": 0
+          },
+          "sdxl_crop_left": {
+            "title": "Sdxl Crop Left",
+            "description": "crop left coordinate",
+            "default": 0
+          },
+          "sdxl_refiner_low_aesthetic_score": {
+            "title": "Sdxl Refiner Low Aesthetic Score",
+            "type": "number",
+            "description": "SDXL low aesthetic score",
+            "default": 2.5
+          },
+          "sdxl_refiner_high_aesthetic_score": {
+            "title": "Sdxl Refiner High Aesthetic Score",
+            "type": "number",
+            "description": "SDXL high aesthetic score",
+            "default": 6.0
           },
           "cross_attention_optimization": {
             "title": "Cross Attention Optimization",
@@ -4150,85 +4801,71 @@
           },
           "s_min_uncond": {
             "title": "S Min Uncond",
-            "type": "integer",
             "description": "Negative Guidance minimum sigma",
             "default": 0.0
           },
           "token_merging_ratio": {
             "title": "Token Merging Ratio",
-            "type": "integer",
             "description": "Token merging ratio",
             "default": 0.0
           },
           "token_merging_ratio_img2img": {
             "title": "Token Merging Ratio Img2Img",
-            "type": "integer",
             "description": "Token merging ratio for img2img",
             "default": 0.0
           },
           "token_merging_ratio_hr": {
             "title": "Token Merging Ratio Hr",
-            "type": "integer",
             "description": "Token merging ratio for high-res pass",
             "default": 0.0
           },
           "pad_cond_uncond": {
             "title": "Pad Cond Uncond",
-            "type": "boolean",
             "description": "Pad prompt/negative prompt to be same length",
             "default": false
           },
           "experimental_persistent_cond_cache": {
             "title": "Experimental Persistent Cond Cache",
-            "type": "boolean",
             "description": "persistent cond cache",
             "default": false
           },
           "use_old_emphasis_implementation": {
             "title": "Use Old Emphasis Implementation",
-            "type": "boolean",
             "description": "Use old emphasis implementation. Can be useful to reproduce old seeds.",
             "default": false
           },
           "use_old_karras_scheduler_sigmas": {
             "title": "Use Old Karras Scheduler Sigmas",
-            "type": "boolean",
             "description": "Use old karras scheduler sigmas (0.1 to 10).",
             "default": false
           },
           "no_dpmpp_sde_batch_determinism": {
             "title": "No Dpmpp Sde Batch Determinism",
-            "type": "boolean",
             "description": "Do not make DPM++ SDE deterministic across different batch sizes.",
             "default": false
           },
           "use_old_hires_fix_width_height": {
             "title": "Use Old Hires Fix Width Height",
-            "type": "boolean",
             "description": "For hires fix, use width/height sliders to set final resolution rather than first pass (disables Upscale by, Resize width/height to).",
             "default": false
           },
           "dont_fix_second_order_samplers_schedule": {
             "title": "Dont Fix Second Order Samplers Schedule",
-            "type": "boolean",
             "description": "Do not fix prompt schedule for second order samplers.",
             "default": false
           },
           "hires_fix_use_firstpass_conds": {
             "title": "Hires Fix Use Firstpass Conds",
-            "type": "boolean",
             "description": "For hires fix, calculate conds of second pass using extra networks of first pass.",
             "default": false
           },
           "interrogate_keep_models_in_memory": {
             "title": "Interrogate Keep Models In Memory",
-            "type": "boolean",
             "description": "Keep models in VRAM",
             "default": false
           },
           "interrogate_return_ranks": {
             "title": "Interrogate Return Ranks",
-            "type": "boolean",
             "description": "Include ranks of model tags matches in results.",
             "default": false
           },
@@ -4258,8 +4895,6 @@
           },
           "interrogate_clip_skip_categories": {
             "title": "Interrogate Clip Skip Categories",
-            "type": "array",
-            "items": {},
             "description": "CLIP: skip inquire categories",
             "default": []
           },
@@ -4289,7 +4924,6 @@
           },
           "deepbooru_filter_tags": {
             "title": "Deepbooru Filter Tags",
-            "type": "string",
             "description": "deepbooru: filter out those tags",
             "default": ""
           },
@@ -4305,29 +4939,33 @@
             "description": "Show cards for models in hidden directories",
             "default": "When searched"
           },
-          "extra_networks_default_view": {
-            "title": "Extra Networks Default View",
-            "type": "string",
-            "description": "Default view for Extra Networks",
-            "default": "cards"
-          },
           "extra_networks_default_multiplier": {
             "title": "Extra Networks Default Multiplier",
-            "type": "integer",
-            "description": "Multiplier for extra networks",
+            "type": "number",
+            "description": "Default multiplier for extra networks",
             "default": 1.0
           },
           "extra_networks_card_width": {
             "title": "Extra Networks Card Width",
-            "type": "number",
             "description": "Card width for Extra Networks",
             "default": 0
           },
           "extra_networks_card_height": {
             "title": "Extra Networks Card Height",
-            "type": "number",
             "description": "Card height for Extra Networks",
             "default": 0
+          },
+          "extra_networks_card_text_scale": {
+            "title": "Extra Networks Card Text Scale",
+            "type": "number",
+            "description": "Card text scale",
+            "default": 1.0
+          },
+          "extra_networks_card_show_desc": {
+            "title": "Extra Networks Card Show Desc",
+            "type": "boolean",
+            "description": "Show description on card",
+            "default": true
           },
           "extra_networks_add_text_separator": {
             "title": "Extra Networks Add Text Separator",
@@ -4337,9 +4975,19 @@
           },
           "ui_extra_networks_tab_reorder": {
             "title": "Ui Extra Networks Tab Reorder",
-            "type": "string",
             "description": "Extra networks tab order",
             "default": ""
+          },
+          "textual_inversion_print_at_load": {
+            "title": "Textual Inversion Print At Load",
+            "description": "Print a list of Textual Inversion embeddings when loading model",
+            "default": false
+          },
+          "textual_inversion_add_hashes_to_infotext": {
+            "title": "Textual Inversion Add Hashes To Infotext",
+            "type": "boolean",
+            "description": "Add Textual Inversion hashes to infotext",
+            "default": true
           },
           "sd_hypernetwork": {
             "title": "Sd Hypernetwork",
@@ -4373,19 +5021,16 @@
           },
           "return_mask": {
             "title": "Return Mask",
-            "type": "boolean",
             "description": "For inpainting, include the greyscale mask in results for web",
             "default": false
           },
           "return_mask_composite": {
             "title": "Return Mask Composite",
-            "type": "boolean",
             "description": "For inpainting, include masked composite in results for web",
             "default": false
           },
           "do_not_show_images": {
             "title": "Do Not Show Images",
-            "type": "boolean",
             "description": "Do not show any images in results for web",
             "default": false
           },
@@ -4401,12 +5046,6 @@
             "description": "Send size when sending prompt or image to another interface",
             "default": true
           },
-          "font": {
-            "title": "Font",
-            "type": "string",
-            "description": "Font for image grids that have text",
-            "default": ""
-          },
           "js_modal_lightbox": {
             "title": "Js Modal Lightbox",
             "type": "boolean",
@@ -4421,7 +5060,6 @@
           },
           "js_modal_lightbox_gamepad": {
             "title": "Js Modal Lightbox Gamepad",
-            "type": "boolean",
             "description": "Navigate image viewer with gamepad",
             "default": false
           },
@@ -4467,6 +5105,12 @@
             "description": "Ctrl+up/down word delimiters",
             "default": ".,\\/!?%^*;:{}=`~()"
           },
+          "keyedit_move": {
+            "title": "Keyedit Move",
+            "type": "boolean",
+            "description": "Alt+left/right moves prompt elements",
+            "default": true
+          },
           "quicksettings_list": {
             "title": "Quicksettings List",
             "type": "array",
@@ -4476,40 +5120,31 @@
           },
           "ui_tab_order": {
             "title": "Ui Tab Order",
-            "type": "array",
-            "items": {},
             "description": "UI tab order",
             "default": []
           },
           "hidden_tabs": {
             "title": "Hidden Tabs",
-            "type": "array",
-            "items": {},
             "description": "Hidden UI tabs",
             "default": []
           },
           "ui_reorder_list": {
             "title": "Ui Reorder List",
-            "type": "array",
-            "items": {},
             "description": "txt2img/img2img UI item order",
             "default": []
           },
           "hires_fix_show_sampler": {
             "title": "Hires Fix Show Sampler",
-            "type": "boolean",
             "description": "Hires fix: show hires sampler selection",
             "default": false
           },
           "hires_fix_show_prompts": {
             "title": "Hires Fix Show Prompts",
-            "type": "boolean",
             "description": "Hires fix: show hires prompt and negative prompt",
             "default": false
           },
           "disable_token_counters": {
             "title": "Disable Token Counters",
-            "type": "boolean",
             "description": "Disable prompt token counters",
             "default": false
           },
@@ -4524,6 +5159,11 @@
             "type": "boolean",
             "description": "Add model name to generation information",
             "default": true
+          },
+          "add_user_name_to_info": {
+            "title": "Add User Name To Info",
+            "description": "Add user name to generation information when authenticated",
+            "default": false
           },
           "add_version_to_infotext": {
             "title": "Add Version To Infotext",
@@ -4593,20 +5233,17 @@
           },
           "hide_samplers": {
             "title": "Hide Samplers",
-            "type": "array",
-            "items": {},
             "description": "Hide samplers in user interface",
             "default": []
           },
           "eta_ddim": {
             "title": "Eta Ddim",
-            "type": "integer",
             "description": "Eta for DDIM",
             "default": 0.0
           },
           "eta_ancestral": {
             "title": "Eta Ancestral",
-            "type": "integer",
+            "type": "number",
             "description": "Eta for ancestral samplers",
             "default": 1.0
           },
@@ -4618,19 +5255,17 @@
           },
           "s_churn": {
             "title": "S Churn",
-            "type": "integer",
             "description": "sigma churn",
             "default": 0.0
           },
           "s_tmin": {
             "title": "S Tmin",
-            "type": "integer",
             "description": "sigma tmin",
             "default": 0.0
           },
           "s_noise": {
             "title": "S Noise",
-            "type": "integer",
+            "type": "number",
             "description": "sigma noise",
             "default": 1.0
           },
@@ -4642,31 +5277,22 @@
           },
           "sigma_min": {
             "title": "Sigma Min",
-            "type": "number",
             "description": "sigma min",
             "default": 0.0
           },
           "sigma_max": {
             "title": "Sigma Max",
-            "type": "number",
             "description": "sigma max",
             "default": 0.0
           },
-          "rho": {
-            "title": "Rho",
-            "type": "number",
-            "description": "rho",
-            "default": 0.0
-          },
+          "rho": { "title": "Rho", "description": "rho", "default": 0.0 },
           "eta_noise_seed_delta": {
             "title": "Eta Noise Seed Delta",
-            "type": "number",
             "description": "Eta noise seed delta",
             "default": 0
           },
           "always_discard_next_to_last_sigma": {
             "title": "Always Discard Next To Last Sigma",
-            "type": "boolean",
             "description": "Always discard next-to-last sigma",
             "default": false
           },
@@ -4696,15 +5322,11 @@
           },
           "postprocessing_enable_in_main_ui": {
             "title": "Postprocessing Enable In Main Ui",
-            "type": "array",
-            "items": {},
             "description": "Enable postprocessing operations in txt2img and img2img tabs",
             "default": []
           },
           "postprocessing_operation_order": {
             "title": "Postprocessing Operation Order",
-            "type": "array",
-            "items": {},
             "description": "Postprocessing operation order",
             "default": []
           },
@@ -4716,26 +5338,22 @@
           },
           "disabled_extensions": {
             "title": "Disabled Extensions",
-            "type": "array",
-            "items": {},
             "description": "Disable these extensions",
             "default": []
           },
           "disable_all_extensions": {
             "title": "Disable All Extensions",
-            "type": "null",
+            "type": "string",
             "description": "Disable all extensions (preserves the list of disabled extensions)",
             "default": "none"
           },
           "restore_config_state_file": {
             "title": "Restore Config State File",
-            "type": "null",
             "description": "Config state file to restore from, under 'config-states/' folder",
             "default": ""
           },
           "sd_checkpoint_hash": {
             "title": "Sd Checkpoint Hash",
-            "type": "string",
             "description": "SHA256 hash of the current checkpoint",
             "default": ""
           }
@@ -5368,6 +5986,7 @@
             "description": "The parameters of the task in JSON format"
           },
           "priority": { "title": "Task Priority", "type": "integer" },
+          "position": { "title": "Task Position", "type": "integer" },
           "result": {
             "title": "Task Result",
             "type": "string",
@@ -5566,6 +6185,19 @@
             "title": "Callback URL",
             "type": "string",
             "description": "The callback URL to send the result to."
+          }
+        }
+      },
+      "UpdateTaskArgs": {
+        "title": "UpdateTaskArgs",
+        "type": "object",
+        "properties": {
+          "name": { "title": "Task Name", "type": "string" },
+          "checkpoint": { "title": "Checkpoint", "type": "string" },
+          "params": {
+            "title": "Task Parameters",
+            "type": "object",
+            "description": "The parameters of the task in JSON format"
           }
         }
       },
