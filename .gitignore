@@ -131,3 +131,6 @@ dist
 
 # images
 *.png
+
+# generate code
+src/client/**/*.ts
