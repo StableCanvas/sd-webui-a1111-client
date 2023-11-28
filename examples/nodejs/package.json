@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node main.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cli-progress": "^3.11.3",
     "@types/node": "^20.4.2",
     "node-fetch": "^3.3.1",
     "ts-node": "^10.9.1",
@@ -17,6 +18,8 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "esm-hook": "^0.1.4"
+    "cli-progress": "^3.12.0",
+    "esm-hook": "^0.1.4",
+    "open": "^8.4.2"
   }
 }

@@ -134,3 +134,5 @@ dist
 
 # generate code
 src/client/**/*.ts
+
+openapi-cleaned.json

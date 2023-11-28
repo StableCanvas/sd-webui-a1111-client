@@ -484,6 +484,46 @@
         }
       }
     },
+    "/stream/{session_hash}/{run}/{component_id}": {
+      "get": {
+        "summary": "Stream",
+        "operationId": "stream_stream__session_hash___run___component_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Session Hash", "type": "string" },
+            "name": "session_hash",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Run", "type": "integer" },
+            "name": "run",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Component Id", "type": "integer" },
+            "name": "component_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/file/{path}": {
       "get": {
         "summary": "File Deprecated",
@@ -1444,6 +1484,18 @@
         }
       }
     },
+    "/sdapi/v1/refresh-vae": {
+      "post": {
+        "summary": "Refresh Vae",
+        "operationId": "refresh_vae_sdapi_v1_refresh_vae_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
     "/sdapi/v1/create/embedding": {
       "post": {
         "summary": "Create Embedding",
@@ -1782,6 +1834,18 @@
         }
       }
     },
+    "/tacapi/v1/refresh-temp-files": {
+      "post": {
+        "summary": "Api Refresh Temp Files",
+        "operationId": "api_refresh_temp_files_tacapi_v1_refresh_temp_files_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
     "/tacapi/v1/lora-info/{lora_name}": {
       "get": {
         "summary": "Get Lora Info",
@@ -1819,6 +1883,34 @@
             "required": true,
             "schema": { "title": "Lyco Name" },
             "name": "lyco_name",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/lora-cached-hash/{lora_name}": {
+      "get": {
+        "summary": "Get Lora Cached Hash",
+        "operationId": "get_lora_cached_hash_tacapi_v1_lora_cached_hash__lora_name__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Lora Name", "type": "string" },
+            "name": "lora_name",
             "in": "path"
           }
         ],
@@ -2865,6 +2957,826 @@
         }
       }
     },
+    "/infinite_image_browsing/hello": {
+      "get": {
+        "summary": "Greeting",
+        "operationId": "greeting_infinite_image_browsing_hello_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/global_setting": {
+      "get": {
+        "summary": "Global Setting",
+        "operationId": "global_setting_infinite_image_browsing_global_setting_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/delete_files": {
+      "post": {
+        "summary": "Delete Files",
+        "operationId": "delete_files_infinite_image_browsing_delete_files_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DeleteFilesReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/mkdirs": {
+      "post": {
+        "summary": "Create Folders",
+        "operationId": "create_folders_infinite_image_browsing_mkdirs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateFoldersReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/copy_files": {
+      "post": {
+        "summary": "Copy Files",
+        "operationId": "copy_files_infinite_image_browsing_copy_files_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MoveFilesReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/move_files": {
+      "post": {
+        "summary": "Move Files",
+        "operationId": "move_files_infinite_image_browsing_move_files_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MoveFilesReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/files": {
+      "get": {
+        "summary": "Get Target Floder Files",
+        "operationId": "get_target_floder_files_infinite_image_browsing_files_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Folder Path", "type": "string" },
+            "name": "folder_path",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/image-thumbnail": {
+      "get": {
+        "summary": "Thumbnail",
+        "operationId": "thumbnail_infinite_image_browsing_image_thumbnail_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "T", "type": "string" },
+            "name": "t",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "type": "string",
+              "default": "256x256"
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/file": {
+      "get": {
+        "summary": "Get File",
+        "operationId": "get_file_infinite_image_browsing_file_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "T", "type": "string" },
+            "name": "t",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Disposition", "type": "string" },
+            "name": "disposition",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/send_img_path": {
+      "post": {
+        "summary": "Api Set Send Img Path",
+        "operationId": "api_set_send_img_path_infinite_image_browsing_send_img_path_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/gen_info_completed": {
+      "get": {
+        "summary": "Api Set Send Img Path",
+        "operationId": "api_set_send_img_path_infinite_image_browsing_gen_info_completed_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/image_geninfo": {
+      "get": {
+        "summary": "Image Geninfo",
+        "operationId": "image_geninfo_infinite_image_browsing_image_geninfo_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/check_path_exists": {
+      "post": {
+        "summary": "Check Path Exists",
+        "operationId": "check_path_exists_infinite_image_browsing_check_path_exists_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CheckPathExistsReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing": {
+      "get": {
+        "summary": "Index Bd",
+        "operationId": "index_bd_infinite_image_browsing_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/open_folder": {
+      "post": {
+        "summary": "Open Folder Using Explore",
+        "operationId": "open_folder_using_explore_infinite_image_browsing_open_folder_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OpenFolderReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/shutdown": {
+      "post": {
+        "summary": "Shutdown App",
+        "operationId": "shutdown_app_infinite_image_browsing_shutdown_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/zip": {
+      "post": {
+        "summary": "Zip Files",
+        "operationId": "zip_files_infinite_image_browsing_zip_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PathsReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/basic_info": {
+      "get": {
+        "summary": "Get Db Basic Info",
+        "operationId": "get_db_basic_info_infinite_image_browsing_db_basic_info_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/expired_dirs": {
+      "get": {
+        "summary": "Get Db Expired",
+        "operationId": "get_db_expired_infinite_image_browsing_db_expired_dirs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/update_image_data": {
+      "post": {
+        "summary": "Update Image Db Data",
+        "operationId": "update_image_db_data_infinite_image_browsing_db_update_image_data_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/match_images_by_tags": {
+      "post": {
+        "summary": "Match Image By Tags",
+        "operationId": "match_image_by_tags_infinite_image_browsing_db_match_images_by_tags_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MatchImagesByTagsReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/img_selected_custom_tag": {
+      "get": {
+        "summary": "Get Img Selected Custom Tag",
+        "operationId": "get_img_selected_custom_tag_infinite_image_browsing_db_img_selected_custom_tag_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/get_image_tags": {
+      "post": {
+        "summary": "Get Img Tags",
+        "operationId": "get_img_tags_infinite_image_browsing_db_get_image_tags_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PathsReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/toggle_custom_tag_to_img": {
+      "post": {
+        "summary": "Toggle Custom Tag To Img",
+        "operationId": "toggle_custom_tag_to_img_infinite_image_browsing_db_toggle_custom_tag_to_img_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ToggleCustomTagToImgReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/add_custom_tag": {
+      "post": {
+        "summary": "Add Custom Tag",
+        "operationId": "add_custom_tag_infinite_image_browsing_db_add_custom_tag_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AddCustomTagReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/remove_custom_tag": {
+      "post": {
+        "summary": "Remove Custom Tag",
+        "operationId": "remove_custom_tag_infinite_image_browsing_db_remove_custom_tag_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RemoveCustomTagReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/remove_custom_tag_from_img": {
+      "post": {
+        "summary": "Remove Custom Tag From Img",
+        "operationId": "remove_custom_tag_from_img_infinite_image_browsing_db_remove_custom_tag_from_img_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveCustomTagFromReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/search_by_substr": {
+      "get": {
+        "summary": "Search By Substr",
+        "operationId": "search_by_substr_infinite_image_browsing_db_search_by_substr_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Substr", "type": "string", "default": "" },
+            "name": "substr",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Cursor", "type": "string", "default": "" },
+            "name": "cursor",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Size", "default": 200 },
+            "name": "size",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Regexp", "type": "string", "default": "" },
+            "name": "regexp",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/extra_paths": {
+      "get": {
+        "summary": "Read Extra Paths",
+        "operationId": "read_extra_paths_infinite_image_browsing_db_extra_paths_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Extra Path",
+        "operationId": "create_extra_path_infinite_image_browsing_db_extra_paths_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ExtraPathModel" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Extra Path",
+        "operationId": "delete_extra_path_infinite_image_browsing_db_extra_paths_delete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ExtraPathModel" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/rebuild_index": {
+      "post": {
+        "summary": "Rebuild Index",
+        "operationId": "rebuild_index_infinite_image_browsing_db_rebuild_index_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/openpose_editor_index": {
+      "get": {
+        "summary": "Index Get",
+        "operationId": "index_get_openpose_editor_index_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "text/html": { "schema": { "type": "string" } } }
+          }
+        }
+      },
+      "post": {
+        "summary": "Index Post",
+        "operationId": "index_post_openpose_editor_index_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Item" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "text/html": { "schema": { "type": "string" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sdapi/v1/loras": {
       "get": {
         "summary": "Get Loras",
@@ -2892,6 +3804,12 @@
   },
   "components": {
     "schemas": {
+      "AddCustomTagReq": {
+        "title": "AddCustomTagReq",
+        "required": ["tag_name"],
+        "type": "object",
+        "properties": { "tag_name": { "title": "Tag Name", "type": "string" } }
+      },
       "Body_detect_controlnet_detect_post": {
         "title": "Body_detect_controlnet_detect_post",
         "type": "object",
@@ -2970,6 +3888,26 @@
           }
         }
       },
+      "CheckPathExistsReq": {
+        "title": "CheckPathExistsReq",
+        "required": ["paths"],
+        "type": "object",
+        "properties": {
+          "paths": {
+            "title": "Paths",
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      },
+      "CreateFoldersReq": {
+        "title": "CreateFoldersReq",
+        "required": ["dest_folder"],
+        "type": "object",
+        "properties": {
+          "dest_folder": { "title": "Dest Folder", "type": "string" }
+        }
+      },
       "CreateResponse": {
         "title": "CreateResponse",
         "required": ["info"],
@@ -2979,6 +3917,18 @@
             "title": "Create info",
             "type": "string",
             "description": "Response string from create embedding or hypernetwork task."
+          }
+        }
+      },
+      "DeleteFilesReq": {
+        "title": "DeleteFilesReq",
+        "required": ["file_paths"],
+        "type": "object",
+        "properties": {
+          "file_paths": {
+            "title": "File Paths",
+            "type": "array",
+            "items": { "type": "string" }
           }
         }
       },
@@ -3056,6 +4006,20 @@
           "rank_eta": { "title": "Rank Eta", "type": "number" },
           "queue_eta": { "title": "Queue Eta", "type": "number" }
         }
+      },
+      "ExtraPathModel": {
+        "title": "ExtraPathModel",
+        "required": ["path"],
+        "type": "object",
+        "properties": {
+          "path": { "title": "Path", "type": "string" },
+          "type": { "$ref": "#/components/schemas/ExtraPathType" }
+        }
+      },
+      "ExtraPathType": {
+        "title": "ExtraPathType",
+        "enum": ["scanned", "walk", "cli_access_only"],
+        "description": "An enumeration."
       },
       "ExtrasBatchImagesRequest": {
         "title": "ExtrasBatchImagesRequest",
@@ -3373,6 +4337,12 @@
             "description": "launch.py argument: configure server for testing",
             "default": false
           },
+          "log_startup": {
+            "title": "Log Startup",
+            "type": "boolean",
+            "description": "launch.py argument: print a detailed log of what's happening at startup",
+            "default": false
+          },
           "skip_prepare_environment": {
             "title": "Skip Prepare Environment",
             "type": "boolean",
@@ -3384,6 +4354,17 @@
             "type": "boolean",
             "description": "launch.py argument: skip installation of packages",
             "default": false
+          },
+          "dump_sysinfo": {
+            "title": "Dump Sysinfo",
+            "type": "boolean",
+            "description": "launch.py argument: dump limited sysinfo file (without information about extensions, options) to disk and quit",
+            "default": false
+          },
+          "loglevel": {
+            "title": "Loglevel",
+            "type": "string",
+            "description": "log level; one of: CRITICAL, ERROR, WARNING, INFO, DEBUG"
           },
           "do_not_download_clip": {
             "title": "Do Not Download Clip",
@@ -3490,6 +4471,12 @@
             "description": "enable stable diffusion model optimizations for sacrificing a little speed for low VRM usage",
             "default": false
           },
+          "medvram_sdxl": {
+            "title": "Medvram Sdxl",
+            "type": "boolean",
+            "description": "enable --medvram optimization just for SDXL models",
+            "default": false
+          },
           "lowvram": {
             "title": "Lowvram",
             "type": "boolean",
@@ -3505,7 +4492,7 @@
           "always_batch_cond_uncond": {
             "title": "Always Batch Cond Uncond",
             "type": "boolean",
-            "description": "disables cond/uncond batching that is enabled to save memory with --medvram or --lowvram",
+            "description": "does not do anything",
             "default": false
           },
           "unload_gfpgan": {
@@ -3685,6 +4672,12 @@
             "description": "use CPU as torch device for specified modules",
             "default": []
           },
+          "disable_model_loading_ram_optimization": {
+            "title": "Disable Model Loading Ram Optimization",
+            "type": "boolean",
+            "description": "disable an optimization that reduces RAM use when loading a model",
+            "default": false
+          },
           "listen": {
             "title": "Listen",
             "type": "boolean",
@@ -3754,8 +4747,10 @@
           },
           "gradio_allowed_path": {
             "title": "Gradio Allowed Path",
-            "type": "string",
-            "description": "add path to gradio's allowed_paths, make it possible to serve files from it"
+            "type": "array",
+            "items": {},
+            "description": "add path to gradio's allowed_paths, make it possible to serve files from it",
+            "default": ["O:\\AI\\sd-webui"]
           },
           "opt_channelslast": {
             "title": "Opt Channelslast",
@@ -3932,6 +4927,18 @@
             "description": "set timeout_keep_alive for uvicorn",
             "default": 30
           },
+          "disable_all_extensions": {
+            "title": "Disable All Extensions",
+            "type": "boolean",
+            "description": "prevent all extensions from running regardless of any other settings",
+            "default": false
+          },
+          "disable_extra_extensions": {
+            "title": "Disable Extra Extensions",
+            "type": "boolean",
+            "description": " prevent all extensions except built-in from running regardless of any other settings",
+            "default": false
+          },
           "ad_no_huggingface": {
             "title": "Ad No Huggingface",
             "type": "boolean",
@@ -3964,6 +4971,11 @@
             "type": "string",
             "description": "Set the log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)",
             "default": "INFO"
+          },
+          "disable_openpose_editor_auto_update": {
+            "title": "Disable Openpose Editor Auto Update",
+            "type": "string",
+            "description": "Disable auto-update of openpose editor"
           },
           "ldsr_models_path": {
             "title": "Ldsr Models Path",
@@ -4049,59 +5061,12 @@
         "title": "Img2ImgApiTaskArgs",
         "type": "object",
         "properties": {
-          "init_images": {
-            "title": "Init Images",
-            "type": "array",
-            "items": {}
-          },
-          "resize_mode": {
-            "title": "Resize Mode",
-            "type": "integer",
-            "default": 0
-          },
-          "denoising_strength": {
-            "title": "Denoising Strength",
-            "type": "number",
-            "default": 0.75
-          },
-          "image_cfg_scale": { "title": "Image Cfg Scale", "type": "number" },
-          "mask": { "title": "Mask", "type": "string" },
-          "mask_blur": { "title": "Mask Blur", "type": "integer" },
-          "mask_blur_x": {
-            "title": "Mask Blur X",
-            "type": "integer",
-            "default": 4
-          },
-          "mask_blur_y": {
-            "title": "Mask Blur Y",
-            "type": "integer",
-            "default": 4
-          },
-          "inpainting_fill": {
-            "title": "Inpainting Fill",
-            "type": "integer",
-            "default": 0
-          },
-          "inpaint_full_res": {
-            "title": "Inpaint Full Res",
-            "type": "boolean",
-            "default": true
-          },
-          "inpaint_full_res_padding": {
-            "title": "Inpaint Full Res Padding",
-            "type": "integer",
-            "default": 0
-          },
-          "inpainting_mask_invert": {
-            "title": "Inpainting Mask Invert",
-            "type": "integer",
-            "default": 0
-          },
-          "initial_noise_multiplier": {
-            "title": "Initial Noise Multiplier",
-            "type": "number"
-          },
           "prompt": { "title": "Prompt", "type": "string", "default": "" },
+          "negative_prompt": {
+            "title": "Negative Prompt",
+            "type": "string",
+            "default": ""
+          },
           "styles": {
             "title": "Styles",
             "type": "array",
@@ -4127,7 +5092,7 @@
           "sampler_name": {
             "title": "Sampler name",
             "type": "string",
-            "default": "Euler a"
+            "default": "DPM++ 2M Karras"
           },
           "batch_size": {
             "title": "Batch Size",
@@ -4143,12 +5108,8 @@
           },
           "width": { "title": "Width", "type": "integer", "default": 512 },
           "height": { "title": "Height", "type": "integer", "default": 512 },
-          "restore_faces": {
-            "title": "Restore Faces",
-            "type": "boolean",
-            "default": false
-          },
-          "tiling": { "title": "Tiling", "type": "boolean", "default": false },
+          "restore_faces": { "title": "Restore Faces", "type": "boolean" },
+          "tiling": { "title": "Tiling", "type": "boolean" },
           "do_not_save_samples": {
             "title": "Do Not Save Samples",
             "type": "boolean",
@@ -4159,17 +5120,17 @@
             "type": "boolean",
             "default": false
           },
-          "negative_prompt": { "title": "Negative Prompt", "type": "string" },
           "eta": { "title": "Eta", "type": "number" },
-          "s_min_uncond": {
-            "title": "S Min Uncond",
+          "denoising_strength": {
+            "title": "Denoising Strength",
             "type": "number",
-            "default": 0.0
+            "default": 0.75
           },
-          "s_churn": { "title": "S Churn", "type": "number", "default": 0.0 },
+          "s_min_uncond": { "title": "S Min Uncond", "type": "number" },
+          "s_churn": { "title": "S Churn", "type": "number" },
           "s_tmax": { "title": "S Tmax", "type": "number" },
-          "s_tmin": { "title": "S Tmin", "type": "number", "default": 0.0 },
-          "s_noise": { "title": "S Noise", "type": "number", "default": 1.0 },
+          "s_tmin": { "title": "S Tmin", "type": "number" },
+          "s_noise": { "title": "S Noise", "type": "number" },
           "override_settings": {
             "title": "Override Settings",
             "type": "object"
@@ -4179,18 +5140,80 @@
             "type": "boolean",
             "default": true
           },
-          "script_args": {
-            "title": "Script Args",
-            "type": "array",
-            "items": {},
-            "default": []
+          "refiner_checkpoint": {
+            "title": "Refiner Checkpoint",
+            "type": "string"
           },
+          "refiner_switch_at": {
+            "title": "Refiner Switch At",
+            "type": "number"
+          },
+          "disable_extra_networks": {
+            "title": "Disable Extra Networks",
+            "type": "boolean",
+            "default": false
+          },
+          "comments": { "title": "Comments", "type": "object" },
+          "init_images": {
+            "title": "Init Images",
+            "type": "array",
+            "items": {}
+          },
+          "resize_mode": {
+            "title": "Resize Mode",
+            "type": "integer",
+            "default": 0
+          },
+          "image_cfg_scale": { "title": "Image Cfg Scale", "type": "number" },
+          "mask": { "title": "Mask", "type": "string" },
+          "mask_blur_x": {
+            "title": "Mask Blur X",
+            "type": "integer",
+            "default": 4
+          },
+          "mask_blur_y": {
+            "title": "Mask Blur Y",
+            "type": "integer",
+            "default": 4
+          },
+          "mask_blur": { "title": "Mask Blur", "type": "integer" },
+          "inpainting_fill": {
+            "title": "Inpainting Fill",
+            "type": "integer",
+            "default": 0
+          },
+          "inpaint_full_res": {
+            "title": "Inpaint Full Res",
+            "type": "boolean",
+            "default": true
+          },
+          "inpaint_full_res_padding": {
+            "title": "Inpaint Full Res Padding",
+            "type": "integer",
+            "default": 0
+          },
+          "inpainting_mask_invert": {
+            "title": "Inpainting Mask Invert",
+            "type": "integer",
+            "default": 0
+          },
+          "initial_noise_multiplier": {
+            "title": "Initial Noise Multiplier",
+            "type": "number"
+          },
+          "latent_mask": { "title": "Latent Mask", "type": "string" },
           "include_init_images": {
             "title": "Include Init Images",
             "type": "boolean",
             "default": false
           },
           "script_name": { "title": "Script Name", "type": "string" },
+          "script_args": {
+            "title": "Script Args",
+            "type": "array",
+            "items": {},
+            "default": []
+          },
           "alwayson_scripts": {
             "title": "Alwayson Scripts",
             "type": "object",
@@ -4200,6 +5223,11 @@
             "title": "Custom checkpoint.",
             "type": "string",
             "description": "Custom checkpoint hash. If not specified, the latest checkpoint will be used."
+          },
+          "vae": {
+            "title": "Custom VAE.",
+            "type": "string",
+            "description": "Custom VAE. If not specified, the current VAE will be used."
           },
           "callback_url": {
             "title": "Callback URL",
@@ -4226,11 +5254,44 @@
           }
         }
       },
+      "Item": {
+        "title": "Item",
+        "required": ["image_url", "pose"],
+        "type": "object",
+        "properties": {
+          "image_url": { "title": "Image Url", "type": "string" },
+          "pose": { "title": "Pose", "type": "string" }
+        }
+      },
       "LatentUpscalerModeItem": {
         "title": "LatentUpscalerModeItem",
         "required": ["name"],
         "type": "object",
         "properties": { "name": { "title": "Name", "type": "string" } }
+      },
+      "MatchImagesByTagsReq": {
+        "title": "MatchImagesByTagsReq",
+        "required": ["and_tags", "or_tags", "not_tags", "cursor"],
+        "type": "object",
+        "properties": {
+          "and_tags": {
+            "title": "And Tags",
+            "type": "array",
+            "items": { "type": "integer" }
+          },
+          "or_tags": {
+            "title": "Or Tags",
+            "type": "array",
+            "items": { "type": "integer" }
+          },
+          "not_tags": {
+            "title": "Not Tags",
+            "type": "array",
+            "items": { "type": "integer" }
+          },
+          "cursor": { "title": "Cursor", "type": "string" },
+          "size": { "title": "Size", "type": "integer", "default": 200 }
+        }
       },
       "MemoryResponse": {
         "title": "MemoryResponse",
@@ -4248,6 +5309,30 @@
             "description": "nVidia CUDA memory stats"
           }
         }
+      },
+      "MoveFilesReq": {
+        "title": "MoveFilesReq",
+        "required": ["file_paths", "dest"],
+        "type": "object",
+        "properties": {
+          "file_paths": {
+            "title": "File Paths",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "dest": { "title": "Dest", "type": "string" },
+          "create_dest_folder": {
+            "title": "Create Dest Folder",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "OpenFolderReq": {
+        "title": "OpenFolderReq",
+        "required": ["path"],
+        "type": "object",
+        "properties": { "path": { "title": "Path", "type": "string" } }
       },
       "Options": {
         "title": "Options",
@@ -4441,6 +5526,11 @@
             "description": "Cleanup non-default temporary directory when starting webui",
             "default": false
           },
+          "save_incomplete_images": {
+            "title": "Save Incomplete Images",
+            "description": "Save incomplete images",
+            "default": false
+          },
           "outdir_samples": {
             "title": "Outdir Samples",
             "description": "Output directory for images; if empty, defaults to three directories below",
@@ -4545,6 +5635,11 @@
             "title": "Upscaler For Img2Img",
             "description": "Upscaler for img2img"
           },
+          "face_restoration": {
+            "title": "Face Restoration",
+            "description": "Restore faces",
+            "default": false
+          },
           "face_restoration_model": {
             "title": "Face Restoration Model",
             "type": "string",
@@ -4562,10 +5657,22 @@
             "description": "Move face restoration model from VRAM into RAM after processing",
             "default": false
           },
+          "auto_launch_browser": {
+            "title": "Auto Launch Browser",
+            "type": "string",
+            "description": "Automatically open webui in browser on startup",
+            "default": "Local"
+          },
           "show_warnings": {
             "title": "Show Warnings",
             "description": "Show warnings in console.",
             "default": false
+          },
+          "show_gradio_deprecation_warnings": {
+            "title": "Show Gradio Deprecation Warnings",
+            "type": "boolean",
+            "description": "Show gradio deprecation warnings in console.",
+            "default": true
           },
           "memmon_poll_rate": {
             "title": "Memmon Poll Rate",
@@ -4599,6 +5706,29 @@
             "title": "Disable Mmap Load Safetensors",
             "description": "Disable memmapping for loading .safetensors files.",
             "default": false
+          },
+          "hide_ldm_prints": {
+            "title": "Hide Ldm Prints",
+            "type": "boolean",
+            "description": "Prevent Stability-AI's ldm/sgm modules from printing noise to console.",
+            "default": true
+          },
+          "api_enable_requests": {
+            "title": "Api Enable Requests",
+            "type": "boolean",
+            "description": "Allow http:// and https:// URLs for input images in API",
+            "default": true
+          },
+          "api_forbid_local_requests": {
+            "title": "Api Forbid Local Requests",
+            "type": "boolean",
+            "description": "Forbid URLs to local resources",
+            "default": true
+          },
+          "api_useragent": {
+            "title": "Api Useragent",
+            "description": "User agent for requests",
+            "default": ""
           },
           "unload_models_when_training": {
             "title": "Unload Models When Training",
@@ -4669,27 +5799,22 @@
             "title": "Sd Model Checkpoint",
             "description": "Stable Diffusion checkpoint"
           },
+          "sd_checkpoints_limit": {
+            "title": "Sd Checkpoints Limit",
+            "type": "number",
+            "description": "Maximum number of checkpoints loaded at the same time",
+            "default": 1
+          },
+          "sd_checkpoints_keep_in_cpu": {
+            "title": "Sd Checkpoints Keep In Cpu",
+            "type": "boolean",
+            "description": "Only keep one model on device",
+            "default": true
+          },
           "sd_checkpoint_cache": {
             "title": "Sd Checkpoint Cache",
             "description": "Checkpoints to cache in RAM",
             "default": 0
-          },
-          "sd_vae_checkpoint_cache": {
-            "title": "Sd Vae Checkpoint Cache",
-            "description": "VAE Checkpoints to cache in RAM",
-            "default": 0
-          },
-          "sd_vae": {
-            "title": "Sd Vae",
-            "type": "string",
-            "description": "SD VAE",
-            "default": "Automatic"
-          },
-          "sd_vae_as_default": {
-            "title": "Sd Vae As Default",
-            "type": "boolean",
-            "description": "Ignore selected VAE for stable diffusion checkpoints that have their own .vae.pt next to them",
-            "default": true
           },
           "sd_unet": {
             "title": "Sd Unet",
@@ -4697,37 +5822,9 @@
             "description": "SD Unet",
             "default": "Automatic"
           },
-          "inpainting_mask_weight": {
-            "title": "Inpainting Mask Weight",
-            "type": "number",
-            "description": "Inpainting conditioning mask strength",
-            "default": 1.0
-          },
-          "initial_noise_multiplier": {
-            "title": "Initial Noise Multiplier",
-            "type": "number",
-            "description": "Noise multiplier for img2img",
-            "default": 1.0
-          },
-          "img2img_color_correction": {
-            "title": "Img2Img Color Correction",
-            "description": "Apply color correction to img2img results to match original colors.",
-            "default": false
-          },
-          "img2img_fix_steps": {
-            "title": "Img2Img Fix Steps",
-            "description": "With img2img, do exactly the amount of steps the slider specifies.",
-            "default": false
-          },
-          "img2img_background_color": {
-            "title": "Img2Img Background Color",
-            "type": "string",
-            "description": "With img2img, fill image's transparent parts with this color.",
-            "default": "#ffffff"
-          },
           "enable_quantization": {
             "title": "Enable Quantization",
-            "description": "Enable quantization in K samplers for sharper and cleaner results. This may change existing seeds. Requires restart to apply.",
+            "description": "Enable quantization in K samplers for sharper and cleaner results. This may change existing seeds",
             "default": false
           },
           "enable_emphasis": {
@@ -4759,17 +5856,22 @@
             "description": "Upcast cross attention layer to float32",
             "default": false
           },
-          "auto_vae_precision": {
-            "title": "Auto Vae Precision",
-            "type": "boolean",
-            "description": "Automaticlly revert VAE to 32-bit floats",
-            "default": true
-          },
           "randn_source": {
             "title": "Randn Source",
             "type": "string",
             "description": "Random number generator source.",
             "default": "GPU"
+          },
+          "tiling": {
+            "title": "Tiling",
+            "description": "Tiling",
+            "default": false
+          },
+          "hires_fix_refiner_pass": {
+            "title": "Hires Fix Refiner Pass",
+            "type": "string",
+            "description": "Hires fix: which pass to enable refiner for",
+            "default": "second pass"
           },
           "sdxl_crop_top": {
             "title": "Sdxl Crop Top",
@@ -4792,6 +5894,113 @@
             "type": "number",
             "description": "SDXL high aesthetic score",
             "default": 6.0
+          },
+          "sd_vae_explanation": {
+            "title": "Sd Vae Explanation",
+            "type": "string",
+            "default": "<abbr title='Variational autoencoder'>VAE</abbr> is a neural network that transforms a standard <abbr title='red/green/blue'>RGB</abbr>\nimage into latent space representation and back. Latent space representation is what stable diffusion is working on during sampling\n(i.e. when the progress bar is between empty and full). For txt2img, VAE is used to create a resulting image after the sampling is finished.\nFor img2img, VAE is used to process user's input image before the sampling, and to create an image after sampling."
+          },
+          "sd_vae_checkpoint_cache": {
+            "title": "Sd Vae Checkpoint Cache",
+            "description": "VAE Checkpoints to cache in RAM",
+            "default": 0
+          },
+          "sd_vae": {
+            "title": "Sd Vae",
+            "type": "string",
+            "description": "SD VAE",
+            "default": "Automatic"
+          },
+          "sd_vae_overrides_per_model_preferences": {
+            "title": "Sd Vae Overrides Per Model Preferences",
+            "type": "boolean",
+            "description": "Selected VAE overrides per-model preferences",
+            "default": true
+          },
+          "auto_vae_precision": {
+            "title": "Auto Vae Precision",
+            "type": "boolean",
+            "description": "Automatically revert VAE to 32-bit floats",
+            "default": true
+          },
+          "sd_vae_encode_method": {
+            "title": "Sd Vae Encode Method",
+            "type": "string",
+            "description": "VAE type for encode",
+            "default": "Full"
+          },
+          "sd_vae_decode_method": {
+            "title": "Sd Vae Decode Method",
+            "type": "string",
+            "description": "VAE type for decode",
+            "default": "Full"
+          },
+          "inpainting_mask_weight": {
+            "title": "Inpainting Mask Weight",
+            "type": "number",
+            "description": "Inpainting conditioning mask strength",
+            "default": 1.0
+          },
+          "initial_noise_multiplier": {
+            "title": "Initial Noise Multiplier",
+            "type": "number",
+            "description": "Noise multiplier for img2img",
+            "default": 1.0
+          },
+          "img2img_extra_noise": {
+            "title": "Img2Img Extra Noise",
+            "description": "Extra noise multiplier for img2img and hires fix",
+            "default": 0.0
+          },
+          "img2img_color_correction": {
+            "title": "Img2Img Color Correction",
+            "description": "Apply color correction to img2img results to match original colors.",
+            "default": false
+          },
+          "img2img_fix_steps": {
+            "title": "Img2Img Fix Steps",
+            "description": "With img2img, do exactly the amount of steps the slider specifies.",
+            "default": false
+          },
+          "img2img_background_color": {
+            "title": "Img2Img Background Color",
+            "type": "string",
+            "description": "With img2img, fill transparent parts of the input image with this color.",
+            "default": "#ffffff"
+          },
+          "img2img_editor_height": {
+            "title": "Img2Img Editor Height",
+            "type": "number",
+            "description": "Height of the image editor",
+            "default": 720
+          },
+          "img2img_sketch_default_brush_color": {
+            "title": "Img2Img Sketch Default Brush Color",
+            "type": "string",
+            "description": "Sketch initial brush color",
+            "default": "#ffffff"
+          },
+          "img2img_inpaint_mask_brush_color": {
+            "title": "Img2Img Inpaint Mask Brush Color",
+            "type": "string",
+            "description": "Inpaint mask brush color",
+            "default": "#ffffff"
+          },
+          "img2img_inpaint_sketch_default_brush_color": {
+            "title": "Img2Img Inpaint Sketch Default Brush Color",
+            "type": "string",
+            "description": "Inpaint sketch initial brush color",
+            "default": "#ffffff"
+          },
+          "return_mask": {
+            "title": "Return Mask",
+            "description": "For inpainting, include the greyscale mask in results for web",
+            "default": false
+          },
+          "return_mask_composite": {
+            "title": "Return Mask Composite",
+            "description": "For inpainting, include masked composite in results for web",
+            "default": false
           },
           "cross_attention_optimization": {
             "title": "Cross Attention Optimization",
@@ -4824,10 +6033,17 @@
             "description": "Pad prompt/negative prompt to be same length",
             "default": false
           },
-          "experimental_persistent_cond_cache": {
-            "title": "Experimental Persistent Cond Cache",
-            "description": "persistent cond cache",
-            "default": false
+          "persistent_cond_cache": {
+            "title": "Persistent Cond Cache",
+            "type": "boolean",
+            "description": "Persistent cond cache",
+            "default": true
+          },
+          "batch_cond_uncond": {
+            "title": "Batch Cond Uncond",
+            "type": "boolean",
+            "description": "Batch cond/uncond",
+            "default": true
           },
           "use_old_emphasis_implementation": {
             "title": "Use Old Emphasis Implementation",
@@ -4857,6 +6073,11 @@
           "hires_fix_use_firstpass_conds": {
             "title": "Hires Fix Use Firstpass Conds",
             "description": "For hires fix, calculate conds of second pass using extra networks of first pass.",
+            "default": false
+          },
+          "use_old_scheduling": {
+            "title": "Use Old Scheduling",
+            "description": "Use old prompt editing timelines.",
             "default": false
           },
           "interrogate_keep_models_in_memory": {
@@ -5007,27 +6228,22 @@
             "description": "Gradio theme",
             "default": "Default"
           },
-          "img2img_editor_height": {
-            "title": "Img2Img Editor Height",
-            "type": "number",
-            "description": "img2img: height of image editor",
-            "default": 720
+          "gradio_themes_cache": {
+            "title": "Gradio Themes Cache",
+            "type": "boolean",
+            "description": "Cache gradio themes locally",
+            "default": true
+          },
+          "gallery_height": {
+            "title": "Gallery Height",
+            "description": "Gallery height",
+            "default": ""
           },
           "return_grid": {
             "title": "Return Grid",
             "type": "boolean",
             "description": "Show grid in results for web",
             "default": true
-          },
-          "return_mask": {
-            "title": "Return Mask",
-            "description": "For inpainting, include the greyscale mask in results for web",
-            "default": false
-          },
-          "return_mask_composite": {
-            "title": "Return Mask Composite",
-            "description": "For inpainting, include masked composite in results for web",
-            "default": false
           },
           "do_not_show_images": {
             "title": "Do Not Show Images",
@@ -5135,7 +6351,7 @@
           },
           "hires_fix_show_sampler": {
             "title": "Hires Fix Show Sampler",
-            "description": "Hires fix: show hires sampler selection",
+            "description": "Hires fix: show hires checkpoint and sampler selection",
             "default": false
           },
           "hires_fix_show_prompts": {
@@ -5219,6 +6435,11 @@
             "description": "Live preview method",
             "default": "Approx NN"
           },
+          "live_preview_allow_lowvram_full": {
+            "title": "Live Preview Allow Lowvram Full",
+            "description": "Allow Full live preview method with lowvram/medvram",
+            "default": false
+          },
           "live_preview_content": {
             "title": "Live Preview Content",
             "type": "string",
@@ -5230,6 +6451,11 @@
             "type": "number",
             "description": "Progressbar and preview update period",
             "default": 1000
+          },
+          "live_preview_fast_interrupt": {
+            "title": "Live Preview Fast Interrupt",
+            "description": "Return image with chosen live preview method on interrupt",
+            "default": false
           },
           "hide_samplers": {
             "title": "Hide Samplers",
@@ -5244,7 +6470,7 @@
           "eta_ancestral": {
             "title": "Eta Ancestral",
             "type": "number",
-            "description": "Eta for ancestral samplers",
+            "description": "Eta for k-diffusion samplers",
             "default": 1.0
           },
           "ddim_discretize": {
@@ -5263,6 +6489,11 @@
             "description": "sigma tmin",
             "default": 0.0
           },
+          "s_tmax": {
+            "title": "S Tmax",
+            "description": "sigma tmax",
+            "default": 0.0
+          },
           "s_noise": {
             "title": "S Noise",
             "type": "number",
@@ -5272,7 +6503,7 @@
           "k_sched_type": {
             "title": "K Sched Type",
             "type": "string",
-            "description": "scheduler type",
+            "description": "Scheduler type",
             "default": "Automatic"
           },
           "sigma_min": {
@@ -5294,6 +6525,11 @@
           "always_discard_next_to_last_sigma": {
             "title": "Always Discard Next To Last Sigma",
             "description": "Always discard next-to-last sigma",
+            "default": false
+          },
+          "sgm_noise_multiplier": {
+            "title": "Sgm Noise Multiplier",
+            "description": "SGM noise multiplier",
             "default": false
           },
           "uni_pc_variant": {
@@ -5388,6 +6624,18 @@
           }
         }
       },
+      "PathsReq": {
+        "title": "PathsReq",
+        "required": ["paths"],
+        "type": "object",
+        "properties": {
+          "paths": {
+            "title": "Paths",
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      },
       "PredictBody": {
         "title": "PredictBody",
         "required": ["data"],
@@ -5438,6 +6686,12 @@
             "type": "integer",
             "description": "id of last received last preview image",
             "default": -1
+          },
+          "live_preview": {
+            "title": "Include live preview",
+            "type": "boolean",
+            "description": "boolean flag indicating whether to include the live preview image",
+            "default": true
           }
         }
       },
@@ -5509,6 +6763,21 @@
           "path": { "title": "Path", "type": "string" },
           "scale": { "title": "Scale", "type": "integer" }
         }
+      },
+      "RemoveCustomTagFromReq": {
+        "title": "RemoveCustomTagFromReq",
+        "required": ["img_id", "tag_id"],
+        "type": "object",
+        "properties": {
+          "img_id": { "title": "Img Id", "type": "integer" },
+          "tag_id": { "title": "Tag Id", "type": "string" }
+        }
+      },
+      "RemoveCustomTagReq": {
+        "title": "RemoveCustomTagReq",
+        "required": ["tag_id"],
+        "type": "object",
+        "properties": { "tag_id": { "title": "Tag Id", "type": "string" } }
       },
       "ResetBody": {
         "title": "ResetBody",
@@ -5642,59 +6911,12 @@
         "title": "StableDiffusionProcessingImg2Img",
         "type": "object",
         "properties": {
-          "init_images": {
-            "title": "Init Images",
-            "type": "array",
-            "items": {}
-          },
-          "resize_mode": {
-            "title": "Resize Mode",
-            "type": "integer",
-            "default": 0
-          },
-          "denoising_strength": {
-            "title": "Denoising Strength",
-            "type": "number",
-            "default": 0.75
-          },
-          "image_cfg_scale": { "title": "Image Cfg Scale", "type": "number" },
-          "mask": { "title": "Mask", "type": "string" },
-          "mask_blur": { "title": "Mask Blur", "type": "integer" },
-          "mask_blur_x": {
-            "title": "Mask Blur X",
-            "type": "integer",
-            "default": 4
-          },
-          "mask_blur_y": {
-            "title": "Mask Blur Y",
-            "type": "integer",
-            "default": 4
-          },
-          "inpainting_fill": {
-            "title": "Inpainting Fill",
-            "type": "integer",
-            "default": 0
-          },
-          "inpaint_full_res": {
-            "title": "Inpaint Full Res",
-            "type": "boolean",
-            "default": true
-          },
-          "inpaint_full_res_padding": {
-            "title": "Inpaint Full Res Padding",
-            "type": "integer",
-            "default": 0
-          },
-          "inpainting_mask_invert": {
-            "title": "Inpainting Mask Invert",
-            "type": "integer",
-            "default": 0
-          },
-          "initial_noise_multiplier": {
-            "title": "Initial Noise Multiplier",
-            "type": "number"
-          },
           "prompt": { "title": "Prompt", "type": "string", "default": "" },
+          "negative_prompt": {
+            "title": "Negative Prompt",
+            "type": "string",
+            "default": ""
+          },
           "styles": {
             "title": "Styles",
             "type": "array",
@@ -5732,12 +6954,8 @@
           },
           "width": { "title": "Width", "type": "integer", "default": 512 },
           "height": { "title": "Height", "type": "integer", "default": 512 },
-          "restore_faces": {
-            "title": "Restore Faces",
-            "type": "boolean",
-            "default": false
-          },
-          "tiling": { "title": "Tiling", "type": "boolean", "default": false },
+          "restore_faces": { "title": "Restore Faces", "type": "boolean" },
+          "tiling": { "title": "Tiling", "type": "boolean" },
           "do_not_save_samples": {
             "title": "Do Not Save Samples",
             "type": "boolean",
@@ -5748,17 +6966,17 @@
             "type": "boolean",
             "default": false
           },
-          "negative_prompt": { "title": "Negative Prompt", "type": "string" },
           "eta": { "title": "Eta", "type": "number" },
-          "s_min_uncond": {
-            "title": "S Min Uncond",
+          "denoising_strength": {
+            "title": "Denoising Strength",
             "type": "number",
-            "default": 0.0
+            "default": 0.75
           },
-          "s_churn": { "title": "S Churn", "type": "number", "default": 0.0 },
+          "s_min_uncond": { "title": "S Min Uncond", "type": "number" },
+          "s_churn": { "title": "S Churn", "type": "number" },
           "s_tmax": { "title": "S Tmax", "type": "number" },
-          "s_tmin": { "title": "S Tmin", "type": "number", "default": 0.0 },
-          "s_noise": { "title": "S Noise", "type": "number", "default": 1.0 },
+          "s_tmin": { "title": "S Tmin", "type": "number" },
+          "s_noise": { "title": "S Noise", "type": "number" },
           "override_settings": {
             "title": "Override Settings",
             "type": "object"
@@ -5768,12 +6986,68 @@
             "type": "boolean",
             "default": true
           },
-          "script_args": {
-            "title": "Script Args",
-            "type": "array",
-            "items": {},
-            "default": []
+          "refiner_checkpoint": {
+            "title": "Refiner Checkpoint",
+            "type": "string"
           },
+          "refiner_switch_at": {
+            "title": "Refiner Switch At",
+            "type": "number"
+          },
+          "disable_extra_networks": {
+            "title": "Disable Extra Networks",
+            "type": "boolean",
+            "default": false
+          },
+          "comments": { "title": "Comments", "type": "object" },
+          "init_images": {
+            "title": "Init Images",
+            "type": "array",
+            "items": {}
+          },
+          "resize_mode": {
+            "title": "Resize Mode",
+            "type": "integer",
+            "default": 0
+          },
+          "image_cfg_scale": { "title": "Image Cfg Scale", "type": "number" },
+          "mask": { "title": "Mask", "type": "string" },
+          "mask_blur_x": {
+            "title": "Mask Blur X",
+            "type": "integer",
+            "default": 4
+          },
+          "mask_blur_y": {
+            "title": "Mask Blur Y",
+            "type": "integer",
+            "default": 4
+          },
+          "mask_blur": { "title": "Mask Blur", "type": "integer" },
+          "inpainting_fill": {
+            "title": "Inpainting Fill",
+            "type": "integer",
+            "default": 0
+          },
+          "inpaint_full_res": {
+            "title": "Inpaint Full Res",
+            "type": "boolean",
+            "default": true
+          },
+          "inpaint_full_res_padding": {
+            "title": "Inpaint Full Res Padding",
+            "type": "integer",
+            "default": 0
+          },
+          "inpainting_mask_invert": {
+            "title": "Inpainting Mask Invert",
+            "type": "integer",
+            "default": 0
+          },
+          "initial_noise_multiplier": {
+            "title": "Initial Noise Multiplier",
+            "type": "number"
+          },
+          "latent_mask": { "title": "Latent Mask", "type": "string" },
           "sampler_index": {
             "title": "Sampler Index",
             "type": "string",
@@ -5785,6 +7059,12 @@
             "default": false
           },
           "script_name": { "title": "Script Name", "type": "string" },
+          "script_args": {
+            "title": "Script Args",
+            "type": "array",
+            "items": {},
+            "default": []
+          },
           "send_images": {
             "title": "Send Images",
             "type": "boolean",
@@ -5806,15 +7086,99 @@
         "title": "StableDiffusionProcessingTxt2Img",
         "type": "object",
         "properties": {
-          "enable_hr": {
-            "title": "Enable Hr",
+          "prompt": { "title": "Prompt", "type": "string", "default": "" },
+          "negative_prompt": {
+            "title": "Negative Prompt",
+            "type": "string",
+            "default": ""
+          },
+          "styles": {
+            "title": "Styles",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "seed": { "title": "Seed", "type": "integer", "default": -1 },
+          "subseed": { "title": "Subseed", "type": "integer", "default": -1 },
+          "subseed_strength": {
+            "title": "Subseed Strength",
+            "type": "number",
+            "default": 0
+          },
+          "seed_resize_from_h": {
+            "title": "Seed Resize From H",
+            "type": "integer",
+            "default": -1
+          },
+          "seed_resize_from_w": {
+            "title": "Seed Resize From W",
+            "type": "integer",
+            "default": -1
+          },
+          "sampler_name": { "title": "Sampler Name", "type": "string" },
+          "batch_size": {
+            "title": "Batch Size",
+            "type": "integer",
+            "default": 1
+          },
+          "n_iter": { "title": "N Iter", "type": "integer", "default": 1 },
+          "steps": { "title": "Steps", "type": "integer", "default": 50 },
+          "cfg_scale": {
+            "title": "Cfg Scale",
+            "type": "number",
+            "default": 7.0
+          },
+          "width": { "title": "Width", "type": "integer", "default": 512 },
+          "height": { "title": "Height", "type": "integer", "default": 512 },
+          "restore_faces": { "title": "Restore Faces", "type": "boolean" },
+          "tiling": { "title": "Tiling", "type": "boolean" },
+          "do_not_save_samples": {
+            "title": "Do Not Save Samples",
             "type": "boolean",
             "default": false
           },
+          "do_not_save_grid": {
+            "title": "Do Not Save Grid",
+            "type": "boolean",
+            "default": false
+          },
+          "eta": { "title": "Eta", "type": "number" },
           "denoising_strength": {
             "title": "Denoising Strength",
             "type": "number",
             "default": 0
+          },
+          "s_min_uncond": { "title": "S Min Uncond", "type": "number" },
+          "s_churn": { "title": "S Churn", "type": "number" },
+          "s_tmax": { "title": "S Tmax", "type": "number" },
+          "s_tmin": { "title": "S Tmin", "type": "number" },
+          "s_noise": { "title": "S Noise", "type": "number" },
+          "override_settings": {
+            "title": "Override Settings",
+            "type": "object"
+          },
+          "override_settings_restore_afterwards": {
+            "title": "Override Settings Restore Afterwards",
+            "type": "boolean",
+            "default": true
+          },
+          "refiner_checkpoint": {
+            "title": "Refiner Checkpoint",
+            "type": "string"
+          },
+          "refiner_switch_at": {
+            "title": "Refiner Switch At",
+            "type": "number"
+          },
+          "disable_extra_networks": {
+            "title": "Disable Extra Networks",
+            "type": "boolean",
+            "default": false
+          },
+          "comments": { "title": "Comments", "type": "object" },
+          "enable_hr": {
+            "title": "Enable Hr",
+            "type": "boolean",
+            "default": false
           },
           "firstphase_width": {
             "title": "Firstphase Width",
@@ -5843,6 +7207,10 @@
             "type": "integer",
             "default": 0
           },
+          "hr_checkpoint_name": {
+            "title": "Hr Checkpoint Name",
+            "type": "string"
+          },
           "hr_sampler_name": { "title": "Hr Sampler Name", "type": "string" },
           "hr_prompt": {
             "title": "Hr Prompt",
@@ -5854,92 +7222,18 @@
             "type": "string",
             "default": ""
           },
-          "prompt": { "title": "Prompt", "type": "string", "default": "" },
-          "styles": {
-            "title": "Styles",
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "seed": { "title": "Seed", "type": "integer", "default": -1 },
-          "subseed": { "title": "Subseed", "type": "integer", "default": -1 },
-          "subseed_strength": {
-            "title": "Subseed Strength",
-            "type": "number",
-            "default": 0
-          },
-          "seed_resize_from_h": {
-            "title": "Seed Resize From H",
-            "type": "integer",
-            "default": -1
-          },
-          "seed_resize_from_w": {
-            "title": "Seed Resize From W",
-            "type": "integer",
-            "default": -1
-          },
-          "sampler_name": { "title": "Sampler Name", "type": "string" },
-          "batch_size": {
-            "title": "Batch Size",
-            "type": "integer",
-            "default": 1
-          },
-          "n_iter": { "title": "N Iter", "type": "integer", "default": 1 },
-          "steps": { "title": "Steps", "type": "integer", "default": 50 },
-          "cfg_scale": {
-            "title": "Cfg Scale",
-            "type": "number",
-            "default": 7.0
-          },
-          "width": { "title": "Width", "type": "integer", "default": 512 },
-          "height": { "title": "Height", "type": "integer", "default": 512 },
-          "restore_faces": {
-            "title": "Restore Faces",
-            "type": "boolean",
-            "default": false
-          },
-          "tiling": { "title": "Tiling", "type": "boolean", "default": false },
-          "do_not_save_samples": {
-            "title": "Do Not Save Samples",
-            "type": "boolean",
-            "default": false
-          },
-          "do_not_save_grid": {
-            "title": "Do Not Save Grid",
-            "type": "boolean",
-            "default": false
-          },
-          "negative_prompt": { "title": "Negative Prompt", "type": "string" },
-          "eta": { "title": "Eta", "type": "number" },
-          "s_min_uncond": {
-            "title": "S Min Uncond",
-            "type": "number",
-            "default": 0.0
-          },
-          "s_churn": { "title": "S Churn", "type": "number", "default": 0.0 },
-          "s_tmax": { "title": "S Tmax", "type": "number" },
-          "s_tmin": { "title": "S Tmin", "type": "number", "default": 0.0 },
-          "s_noise": { "title": "S Noise", "type": "number", "default": 1.0 },
-          "override_settings": {
-            "title": "Override Settings",
-            "type": "object"
-          },
-          "override_settings_restore_afterwards": {
-            "title": "Override Settings Restore Afterwards",
-            "type": "boolean",
-            "default": true
-          },
-          "script_args": {
-            "title": "Script Args",
-            "type": "array",
-            "items": {},
-            "default": []
-          },
           "sampler_index": {
             "title": "Sampler Index",
             "type": "string",
             "default": "Euler"
           },
           "script_name": { "title": "Script Name", "type": "string" },
+          "script_args": {
+            "title": "Script Args",
+            "type": "array",
+            "items": {},
+            "default": []
+          },
           "send_images": {
             "title": "Send Images",
             "type": "boolean",
@@ -6022,6 +7316,15 @@
           "info": { "title": "Info", "type": "string" }
         }
       },
+      "ToggleCustomTagToImgReq": {
+        "title": "ToggleCustomTagToImgReq",
+        "required": ["img_path", "tag_id"],
+        "type": "object",
+        "properties": {
+          "img_path": { "title": "Img Path", "type": "string" },
+          "tag_id": { "title": "Tag Id", "type": "integer" }
+        }
+      },
       "TrainResponse": {
         "title": "TrainResponse",
         "required": ["info"],
@@ -6038,15 +7341,103 @@
         "title": "Txt2ImgApiTaskArgs",
         "type": "object",
         "properties": {
-          "enable_hr": {
-            "title": "Enable Hr",
+          "prompt": { "title": "Prompt", "type": "string", "default": "" },
+          "negative_prompt": {
+            "title": "Negative Prompt",
+            "type": "string",
+            "default": ""
+          },
+          "styles": {
+            "title": "Styles",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "seed": { "title": "Seed", "type": "integer", "default": -1 },
+          "subseed": { "title": "Subseed", "type": "integer", "default": -1 },
+          "subseed_strength": {
+            "title": "Subseed Strength",
+            "type": "number",
+            "default": 0
+          },
+          "seed_resize_from_h": {
+            "title": "Seed Resize From H",
+            "type": "integer",
+            "default": -1
+          },
+          "seed_resize_from_w": {
+            "title": "Seed Resize From W",
+            "type": "integer",
+            "default": -1
+          },
+          "sampler_name": {
+            "title": "Sampler name",
+            "type": "string",
+            "default": "DPM++ 2M Karras"
+          },
+          "batch_size": {
+            "title": "Batch Size",
+            "type": "integer",
+            "default": 1
+          },
+          "n_iter": { "title": "N Iter", "type": "integer", "default": 1 },
+          "steps": { "title": "Steps", "type": "integer", "default": 50 },
+          "cfg_scale": {
+            "title": "Cfg Scale",
+            "type": "number",
+            "default": 7.0
+          },
+          "width": { "title": "Width", "type": "integer", "default": 512 },
+          "height": { "title": "Height", "type": "integer", "default": 512 },
+          "restore_faces": { "title": "Restore Faces", "type": "boolean" },
+          "tiling": { "title": "Tiling", "type": "boolean" },
+          "do_not_save_samples": {
+            "title": "Do Not Save Samples",
             "type": "boolean",
             "default": false
           },
+          "do_not_save_grid": {
+            "title": "Do Not Save Grid",
+            "type": "boolean",
+            "default": false
+          },
+          "eta": { "title": "Eta", "type": "number" },
           "denoising_strength": {
             "title": "Denoising Strength",
             "type": "number",
             "default": 0
+          },
+          "s_min_uncond": { "title": "S Min Uncond", "type": "number" },
+          "s_churn": { "title": "S Churn", "type": "number" },
+          "s_tmax": { "title": "S Tmax", "type": "number" },
+          "s_tmin": { "title": "S Tmin", "type": "number" },
+          "s_noise": { "title": "S Noise", "type": "number" },
+          "override_settings": {
+            "title": "Override Settings",
+            "type": "object"
+          },
+          "override_settings_restore_afterwards": {
+            "title": "Override Settings Restore Afterwards",
+            "type": "boolean",
+            "default": true
+          },
+          "refiner_checkpoint": {
+            "title": "Refiner Checkpoint",
+            "type": "string"
+          },
+          "refiner_switch_at": {
+            "title": "Refiner Switch At",
+            "type": "number"
+          },
+          "disable_extra_networks": {
+            "title": "Disable Extra Networks",
+            "type": "boolean",
+            "default": false
+          },
+          "comments": { "title": "Comments", "type": "object" },
+          "enable_hr": {
+            "title": "Enable Hr",
+            "type": "boolean",
+            "default": false
           },
           "firstphase_width": {
             "title": "Firstphase Width",
@@ -6075,6 +7466,10 @@
             "type": "integer",
             "default": 0
           },
+          "hr_checkpoint_name": {
+            "title": "Hr Checkpoint Name",
+            "type": "string"
+          },
           "hr_sampler_name": { "title": "Hr Sampler Name", "type": "string" },
           "hr_prompt": {
             "title": "Hr Prompt",
@@ -6086,91 +7481,13 @@
             "type": "string",
             "default": ""
           },
-          "prompt": { "title": "Prompt", "type": "string", "default": "" },
-          "styles": {
-            "title": "Styles",
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "seed": { "title": "Seed", "type": "integer", "default": -1 },
-          "subseed": { "title": "Subseed", "type": "integer", "default": -1 },
-          "subseed_strength": {
-            "title": "Subseed Strength",
-            "type": "number",
-            "default": 0
-          },
-          "seed_resize_from_h": {
-            "title": "Seed Resize From H",
-            "type": "integer",
-            "default": -1
-          },
-          "seed_resize_from_w": {
-            "title": "Seed Resize From W",
-            "type": "integer",
-            "default": -1
-          },
-          "sampler_name": {
-            "title": "Sampler name",
-            "type": "string",
-            "default": "Euler a"
-          },
-          "batch_size": {
-            "title": "Batch Size",
-            "type": "integer",
-            "default": 1
-          },
-          "n_iter": { "title": "N Iter", "type": "integer", "default": 1 },
-          "steps": { "title": "Steps", "type": "integer", "default": 50 },
-          "cfg_scale": {
-            "title": "Cfg Scale",
-            "type": "number",
-            "default": 7.0
-          },
-          "width": { "title": "Width", "type": "integer", "default": 512 },
-          "height": { "title": "Height", "type": "integer", "default": 512 },
-          "restore_faces": {
-            "title": "Restore Faces",
-            "type": "boolean",
-            "default": false
-          },
-          "tiling": { "title": "Tiling", "type": "boolean", "default": false },
-          "do_not_save_samples": {
-            "title": "Do Not Save Samples",
-            "type": "boolean",
-            "default": false
-          },
-          "do_not_save_grid": {
-            "title": "Do Not Save Grid",
-            "type": "boolean",
-            "default": false
-          },
-          "negative_prompt": { "title": "Negative Prompt", "type": "string" },
-          "eta": { "title": "Eta", "type": "number" },
-          "s_min_uncond": {
-            "title": "S Min Uncond",
-            "type": "number",
-            "default": 0.0
-          },
-          "s_churn": { "title": "S Churn", "type": "number", "default": 0.0 },
-          "s_tmax": { "title": "S Tmax", "type": "number" },
-          "s_tmin": { "title": "S Tmin", "type": "number", "default": 0.0 },
-          "s_noise": { "title": "S Noise", "type": "number", "default": 1.0 },
-          "override_settings": {
-            "title": "Override Settings",
-            "type": "object"
-          },
-          "override_settings_restore_afterwards": {
-            "title": "Override Settings Restore Afterwards",
-            "type": "boolean",
-            "default": true
-          },
+          "script_name": { "title": "Script Name", "type": "string" },
           "script_args": {
             "title": "Script Args",
             "type": "array",
             "items": {},
             "default": []
           },
-          "script_name": { "title": "Script Name", "type": "string" },
           "alwayson_scripts": {
             "title": "Alwayson Scripts",
             "type": "object",
@@ -6180,6 +7497,11 @@
             "title": "Custom checkpoint.",
             "type": "string",
             "description": "Custom checkpoint hash. If not specified, the latest checkpoint will be used."
+          },
+          "vae": {
+            "title": "Custom VAE.",
+            "type": "string",
+            "description": "Custom VAE. If not specified, the current VAE will be used."
           },
           "callback_url": {
             "title": "Callback URL",

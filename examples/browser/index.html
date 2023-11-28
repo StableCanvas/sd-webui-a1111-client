@@ -18,36 +18,65 @@
           Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
         font-size: 14px;
         line-height: 1.5;
+        margin: 0;
+        padding: 0;
+      }
+      .contianer {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        padding: 1rem 0.5rem;
+      }
+      .body_left {
+        flex: 1;
+        margin-right: 10px;
+      }
+      .body_right {
+        flex: 2;
+        height: 100%;
+        overflow: hidden;
+      }
+      #history {
+        height: 100%;
+        overflow: auto;
+        box-sizing: border-box;
       }
     </style>
   </head>
   <body>
-    <h1>@stable-canvas/sd-webui-a1111-client DEMO</h1>
-    <fieldset style="display: inline-block">
-      <legend>prompt</legend>
-      <textarea
-        id="prompt"
-        cols="60"
-        rows="10"
-        style="border: none; resize: none"
-      ></textarea>
-    </fieldset>
-    <fieldset style="display: inline-block">
-      <legend>negative prompt</legend>
-      <textarea
-        id="negative_prompt"
-        cols="60"
-        rows="10"
-        style="border: none; resize: none"
-      ></textarea>
-    </fieldset>
-    <br />
-    <button>Generate</button>
-    <div id="message"></div>
-    <div id="eta"></div>
-    <fieldset id="history">
-      <legend>history</legend>
-    </fieldset>
+    <div class="contianer">
+      <div class="body_left">
+        <h1>@stable-canvas/sd-webui-a1111-client DEMO</h1>
+        <fieldset style="display: inline-block">
+          <legend>prompt</legend>
+          <textarea
+            id="prompt"
+            cols="60"
+            rows="10"
+            style="border: none; resize: none"
+          ></textarea>
+        </fieldset>
+        <fieldset style="display: inline-block">
+          <legend>negative prompt</legend>
+          <textarea
+            id="negative_prompt"
+            cols="60"
+            rows="10"
+            style="border: none; resize: none"
+          ></textarea>
+        </fieldset>
+        <br />
+        <button>Generate</button>
+        <div id="message"></div>
+        <div id="eta"></div>
+      </div>
+      <div class="body_right">
+        <fieldset id="history">
+          <legend>history</legend>
+        </fieldset>
+      </div>
+    </div>
     <script type="module">
       import {
         SDWebUIA1111Client,
