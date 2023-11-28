@@ -16,6 +16,7 @@ a1111/webui client for nodejs/browser
   - agent scheduler
 
 # usage
+> full code in [/examples](/examples) folder
 
 ## nodejs
 
@@ -76,7 +77,5 @@ fs.writeFileSync("image.png", Buffer.from(image, "base64"));
 
 demo online: [codesandbox](https://codesandbox.io/s/sd-webui-a1111-client-demo-j38wmy?file=/src/index.js)
 
-
-# Changelog
-
-- remove generate code on git
+# license
+Apache-2.0
