@@ -33,6 +33,7 @@ const api_whitelist = [
   "/sd_extra_networks/*",
   "/tacapi/*",
   "/agent-scheduler/*",
+  "/controlnet/*",
 ].map((p) => new UrlPattern(p));
 
 const cleaned_openapi = JSON.parse(JSON.stringify(openapi));
