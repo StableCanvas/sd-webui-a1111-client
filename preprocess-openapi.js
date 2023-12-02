@@ -1,5 +1,10 @@
 /**
- * 这个脚本用来清理openapi.json中无用的内容
+ * this script is used to clean unused content in openapi.json
+ *
+ * 1. remove unused paths
+ * 2. remove unused components
+ * 3. reset component 'default' value
+ *
  */
 
 const fs = require("fs");
