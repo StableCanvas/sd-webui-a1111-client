@@ -4,21 +4,21 @@ import {
 } from "../client";
 import { SDWebUIA1111SystemSettings } from "./system.types";
 
-enum Img2imgResizeMode {
+export enum Img2imgResizeMode {
   "Just resize" = 0,
   "Crop and resize" = 1,
   "Resize and fill" = 2,
   "Just resize (latent upscale)" = 2,
 }
 
-enum Img2imgInpaintFill {
+export enum Img2imgInpaintFill {
   "fill" = 0,
   "original" = 1,
   "latent noise" = 2,
   "latent nothing" = 3,
 }
 
-enum Img2imgInpaintFullRes {
+export enum Img2imgInpaintFullRes {
   "Whole picture" = 0,
   "Only masked" = 1,
 }
