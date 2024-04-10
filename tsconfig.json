@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "NodeNext",
     "target": "ESNext",
     "declaration": false,
     "declarationDir": null,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "NodeNext",
     "lib": ["DOM", "DOM.Iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": false,

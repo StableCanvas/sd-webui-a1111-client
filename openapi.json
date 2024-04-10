@@ -1560,38 +1560,6 @@
         }
       }
     },
-    "/sdapi/v1/preprocess": {
-      "post": {
-        "summary": "Preprocess",
-        "operationId": "preprocess_sdapi_v1_preprocess_post",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": { "title": "Args", "type": "object" }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/PreprocessResponse" }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
-              }
-            }
-          }
-        }
-      }
-    },
     "/sdapi/v1/train/embedding": {
       "post": {
         "summary": "Train Embedding",
@@ -1732,6 +1700,26 @@
         }
       }
     },
+    "/sdapi/v1/extensions": {
+      "get": {
+        "summary": "Get Extensions List",
+        "operationId": "get_extensions_list_sdapi_v1_extensions_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Extensions List Sdapi V1 Extensions Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ExtensionItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sd_extra_networks/thumb": {
       "get": {
         "summary": "Fetch File",
@@ -1834,10 +1822,46 @@
         }
       }
     },
+    "/sdapi/v1/loras": {
+      "get": {
+        "summary": "Get Loras",
+        "operationId": "get_loras_sdapi_v1_loras_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/refresh-loras": {
+      "post": {
+        "summary": "Refresh Loras",
+        "operationId": "refresh_loras_sdapi_v1_refresh_loras_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
     "/tacapi/v1/refresh-temp-files": {
       "post": {
         "summary": "Api Refresh Temp Files",
         "operationId": "api_refresh_temp_files_tacapi_v1_refresh_temp_files_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/refresh-embeddings": {
+      "post": {
+        "summary": "Api Refresh Embeddings",
+        "operationId": "api_refresh_embeddings_tacapi_v1_refresh_embeddings_post",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2032,6 +2056,94 @@
         }
       }
     },
+    "/tacapi/v1/refresh-styles-if-changed": {
+      "get": {
+        "summary": "Refresh Styles If Changed",
+        "operationId": "refresh_styles_if_changed_tacapi_v1_refresh_styles_if_changed_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/adetailer/v1/version": {
+      "get": {
+        "summary": "Version",
+        "operationId": "version_adetailer_v1_version_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/adetailer/v1/schema": {
+      "get": {
+        "summary": "Schema",
+        "operationId": "schema_adetailer_v1_schema_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/adetailer/v1/ad_model": {
+      "get": {
+        "summary": "Ad Model",
+        "operationId": "ad_model_adetailer_v1_ad_model_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/samplers": {
+      "get": {
+        "summary": "Get Samplers",
+        "operationId": "get_samplers_agent_scheduler_v1_samplers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Samplers Agent Scheduler V1 Samplers Get",
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/sd-models": {
+      "get": {
+        "summary": "Get Sd Models",
+        "operationId": "get_sd_models_agent_scheduler_v1_sd_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Sd Models Agent Scheduler V1 Sd Models Get",
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agent-scheduler/v1/queue/txt2img": {
       "post": {
         "summary": "Queue Txt2Img",
@@ -2122,6 +2234,68 @@
                 "schema": { "$ref": "#/components/schemas/QueueStatusResponse" }
               }
             }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/export": {
+      "get": {
+        "summary": "Export Queue",
+        "operationId": "export_queue_agent_scheduler_v1_export_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Limit", "type": "integer", "default": 1000 },
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Offset", "type": "integer", "default": 0 },
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-scheduler/v1/import": {
+      "post": {
+        "summary": "Import Queue",
+        "operationId": "import_queue_agent_scheduler_v1_import_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/StringRequestBody" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
           },
           "422": {
             "description": "Validation Error",
@@ -2406,6 +2580,18 @@
           }
         },
         "deprecated": true
+      }
+    },
+    "/agent-scheduler/v1/task/requeue-failed": {
+      "post": {
+        "summary": "Requeue Failed Tasks",
+        "operationId": "requeue_failed_tasks_agent_scheduler_v1_task_requeue_failed_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
       }
     },
     "/agent-scheduler/v1/delete/{id}": {
@@ -2957,6 +3143,38 @@
         }
       }
     },
+    "/controlnet/render_openpose_json": {
+      "post": {
+        "summary": "Render Openpose Json",
+        "operationId": "render_openpose_json_controlnet_render_openpose_json_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Pose json files to render.",
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/PoseData" },
+                "default": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/infinite_image_browsing/hello": {
       "get": {
         "summary": "Greeting",
@@ -3095,8 +3313,8 @@
     },
     "/infinite_image_browsing/files": {
       "get": {
-        "summary": "Get Target Floder Files",
-        "operationId": "get_target_floder_files_infinite_image_browsing_files_get",
+        "summary": "Get Target Folder Files",
+        "operationId": "get_target_folder_files_infinite_image_browsing_files_get",
         "parameters": [
           {
             "required": true,
@@ -3205,6 +3423,68 @@
         }
       }
     },
+    "/infinite_image_browsing/stream_video": {
+      "get": {
+        "summary": "Stream Video",
+        "operationId": "stream_video_infinite_image_browsing_stream_video_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/video_cover": {
+      "get": {
+        "summary": "Video Cover",
+        "operationId": "video_cover_infinite_image_browsing_video_cover_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Path", "type": "string" },
+            "name": "path",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "T", "type": "string" },
+            "name": "t",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/infinite_image_browsing/send_img_path": {
       "post": {
         "summary": "Api Set Send Img Path",
@@ -3273,6 +3553,34 @@
         }
       }
     },
+    "/infinite_image_browsing/image_geninfo_batch": {
+      "post": {
+        "summary": "Image Geninfo Batch",
+        "operationId": "image_geninfo_batch_infinite_image_browsing_image_geninfo_batch_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/GeninfoBatchReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/infinite_image_browsing/check_path_exists": {
       "post": {
         "summary": "Check Path Exists",
@@ -3309,6 +3617,34 @@
           "200": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/fe-static/{file_path}": {
+      "get": {
+        "summary": "Serve Static File",
+        "operationId": "serve_static_file_infinite_image_browsing_fe_static__file_path__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "File Path", "type": "string" },
+            "name": "file_path",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
           }
         }
       }
@@ -3381,6 +3717,34 @@
         }
       }
     },
+    "/infinite_image_browsing/open_with_default_app": {
+      "post": {
+        "summary": "Open Target File Withdefault App",
+        "operationId": "open_target_file_withDefault_app_infinite_image_browsing_open_with_default_app_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OpenFolderReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/infinite_image_browsing/db/basic_info": {
       "get": {
         "summary": "Get Db Basic Info",
@@ -3413,6 +3777,34 @@
           "200": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/infinite_image_browsing/db/search_by_substr": {
+      "post": {
+        "summary": "Search By Substr",
+        "operationId": "search_by_substr_infinite_image_browsing_db_search_by_substr_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SearchBySubstrReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
           }
         }
       }
@@ -3531,6 +3923,34 @@
         }
       }
     },
+    "/infinite_image_browsing/db/batch_update_image_tag": {
+      "post": {
+        "summary": "Batch Update Image Tag",
+        "operationId": "batch_update_image_tag_infinite_image_browsing_db_batch_update_image_tag_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BatchUpdateImageReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/infinite_image_browsing/db/add_custom_tag": {
       "post": {
         "summary": "Add Custom Tag",
@@ -3601,52 +4021,6 @@
           },
           "required": true
         },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/infinite_image_browsing/db/search_by_substr": {
-      "get": {
-        "summary": "Search By Substr",
-        "operationId": "search_by_substr_infinite_image_browsing_db_search_by_substr_get",
-        "parameters": [
-          {
-            "required": false,
-            "schema": { "title": "Substr", "type": "string", "default": "" },
-            "name": "substr",
-            "in": "query"
-          },
-          {
-            "required": false,
-            "schema": { "title": "Cursor", "type": "string", "default": "" },
-            "name": "cursor",
-            "in": "query"
-          },
-          {
-            "required": false,
-            "schema": { "title": "Size", "default": 200 },
-            "name": "size",
-            "in": "query"
-          },
-          {
-            "required": false,
-            "schema": { "title": "Regexp", "type": "string", "default": "" },
-            "name": "regexp",
-            "in": "query"
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -3777,26 +4151,31 @@
         }
       }
     },
-    "/sdapi/v1/loras": {
-      "get": {
-        "summary": "Get Loras",
-        "operationId": "get_loras_sdapi_v1_loras_get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
-          }
-        }
-      }
-    },
-    "/sdapi/v1/refresh-loras": {
+    "/rembg": {
       "post": {
-        "summary": "Refresh Loras",
-        "operationId": "refresh_loras_sdapi_v1_refresh_loras_post",
+        "summary": "Rembg Remove",
+        "operationId": "rembg_remove_rembg_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_rembg_remove_rembg_post"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
           }
         }
       }
@@ -3809,6 +4188,20 @@
         "required": ["tag_name"],
         "type": "object",
         "properties": { "tag_name": { "title": "Tag Name", "type": "string" } }
+      },
+      "BatchUpdateImageReq": {
+        "title": "BatchUpdateImageReq",
+        "required": ["img_paths", "action", "tag_id"],
+        "type": "object",
+        "properties": {
+          "img_paths": {
+            "title": "Img Paths",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "action": { "title": "Action", "type": "string" },
+          "tag_id": { "title": "Tag Id", "type": "integer" }
+        }
       },
       "Body_detect_controlnet_detect_post": {
         "title": "Body_detect_controlnet_detect_post",
@@ -3839,6 +4232,11 @@
             "title": "Controlnet Threshold b",
             "type": "number",
             "default": 64
+          },
+          "low_vram": {
+            "title": "Low vram",
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -3874,6 +4272,47 @@
           "scope": { "title": "Scope", "type": "string", "default": "" },
           "client_id": { "title": "Client Id", "type": "string" },
           "client_secret": { "title": "Client Secret", "type": "string" }
+        }
+      },
+      "Body_rembg_remove_rembg_post": {
+        "title": "Body_rembg_remove_rembg_post",
+        "type": "object",
+        "properties": {
+          "input_image": {
+            "title": "rembg input image",
+            "type": "string",
+            "default": ""
+          },
+          "model": {
+            "title": "rembg model",
+            "type": "string",
+            "default": "u2net"
+          },
+          "return_mask": {
+            "title": "return mask",
+            "type": "boolean",
+            "default": false
+          },
+          "alpha_matting": {
+            "title": "alpha matting",
+            "type": "boolean",
+            "default": false
+          },
+          "alpha_matting_foreground_threshold": {
+            "title": "alpha matting foreground threshold",
+            "type": "integer",
+            "default": 240
+          },
+          "alpha_matting_background_threshold": {
+            "title": "alpha matting background threshold",
+            "type": "integer",
+            "default": 10
+          },
+          "alpha_matting_erode_size": {
+            "title": "alpha matting erode size",
+            "type": "integer",
+            "default": 10
+          }
         }
       },
       "Body_upload_file_upload_post": {
@@ -4005,6 +4444,56 @@
           },
           "rank_eta": { "title": "Rank Eta", "type": "number" },
           "queue_eta": { "title": "Queue Eta", "type": "number" }
+        }
+      },
+      "ExtensionItem": {
+        "title": "ExtensionItem",
+        "required": [
+          "name",
+          "remote",
+          "branch",
+          "commit_hash",
+          "version",
+          "commit_date",
+          "enabled"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "description": "Extension name"
+          },
+          "remote": {
+            "title": "Remote",
+            "type": "string",
+            "description": "Extension Repository URL"
+          },
+          "branch": {
+            "title": "Branch",
+            "type": "string",
+            "description": "Extension Repository Branch"
+          },
+          "commit_hash": {
+            "title": "Commit Hash",
+            "type": "string",
+            "description": "Extension Repository Commit Hash"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string",
+            "description": "Extension Version"
+          },
+          "commit_date": {
+            "title": "Commit Date",
+            "type": "string",
+            "description": "Extension Repository Commit Date"
+          },
+          "enabled": {
+            "title": "Enabled",
+            "type": "boolean",
+            "description": "Flag specifying whether this extension is enabled"
+          }
         }
       },
       "ExtraPathModel": {
@@ -4672,6 +5161,12 @@
             "description": "use CPU as torch device for specified modules",
             "default": []
           },
+          "use_ipex": {
+            "title": "Use Ipex",
+            "type": "boolean",
+            "description": "use Intel XPU as torch device",
+            "default": false
+          },
           "disable_model_loading_ram_optimization": {
             "title": "Disable Model Loading Ram Optimization",
             "type": "boolean",
@@ -4790,7 +5285,7 @@
           "enable_console_prompts": {
             "title": "Enable Console Prompts",
             "type": "boolean",
-            "description": "print prompts to console when generating with txt2img and img2img",
+            "description": "does not do anything",
             "default": false
           },
           "vae_path": {
@@ -4883,7 +5378,7 @@
           "no_gradio_queue": {
             "title": "No Gradio Queue",
             "type": "boolean",
-            "description": "Disables gradio queue; causes the webpage to use http requests instead of websockets; was the defaul in earlier versions",
+            "description": "Disables gradio queue; causes the webpage to use http requests instead of websockets; was the default in earlier versions",
             "default": false
           },
           "skip_version_check": {
@@ -4912,7 +5407,7 @@
           "add_stop_route": {
             "title": "Add Stop Route",
             "type": "boolean",
-            "description": "add /_stop route to stop server",
+            "description": "does not do anything",
             "default": false
           },
           "api_server_stop": {
@@ -4936,7 +5431,13 @@
           "disable_extra_extensions": {
             "title": "Disable Extra Extensions",
             "type": "boolean",
-            "description": " prevent all extensions except built-in from running regardless of any other settings",
+            "description": "prevent all extensions except built-in from running regardless of any other settings",
+            "default": false
+          },
+          "skip_load_model_at_start": {
+            "title": "Skip Load Model At Start",
+            "type": "boolean",
+            "description": "if load a model at web start, only take effect when --nowebui",
             "default": false
           },
           "ad_no_huggingface": {
@@ -4944,6 +5445,12 @@
             "type": "boolean",
             "description": "Don't use adetailer models from huggingface",
             "default": false
+          },
+          "agent_scheduler_sqlite_file": {
+            "title": "Agent Scheduler Sqlite File",
+            "type": "string",
+            "description": "sqlite file to use for the database connection. It can be abs or relative path(from base path) default: task_scheduler.sqlite3",
+            "default": "task_scheduler.sqlite3"
           },
           "controlnet_dir": {
             "title": "Controlnet Dir",
@@ -4971,6 +5478,11 @@
             "type": "string",
             "description": "Set the log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)",
             "default": "INFO"
+          },
+          "controlnet_tracemalloc": {
+            "title": "Controlnet Tracemalloc",
+            "type": "string",
+            "description": "Enable memory tracing."
           },
           "disable_openpose_editor_auto_update": {
             "title": "Disable Openpose Editor Auto Update",
@@ -5006,6 +5518,18 @@
             "type": "string",
             "description": "Path to directory with SwinIR model file(s).",
             "default": "O:\\AI\\sd-webui\\models\\SwinIR"
+          }
+        }
+      },
+      "GeninfoBatchReq": {
+        "title": "GeninfoBatchReq",
+        "required": ["paths"],
+        "type": "object",
+        "properties": {
+          "paths": {
+            "title": "Paths",
+            "type": "array",
+            "items": { "type": "string" }
           }
         }
       },
@@ -5290,6 +5814,11 @@
             "items": { "type": "integer" }
           },
           "cursor": { "title": "Cursor", "type": "string" },
+          "folder_paths": {
+            "title": "Folder Paths",
+            "type": "array",
+            "items": { "type": "string" }
+          },
           "size": { "title": "Size", "type": "integer", "default": 200 }
         }
       },
@@ -5361,6 +5890,12 @@
             "description": "Add number to filename when saving",
             "default": true
           },
+          "save_images_replace_action": {
+            "title": "Save Images Replace Action",
+            "type": "string",
+            "description": "Saving the image to an existing file",
+            "default": "Replace"
+          },
           "grid_save": {
             "title": "Grid Save",
             "type": "boolean",
@@ -5422,17 +5957,6 @@
             "type": "string",
             "description": "Background color for image grids",
             "default": "#ffffff"
-          },
-          "enable_pnginfo": {
-            "title": "Enable Pnginfo",
-            "type": "boolean",
-            "description": "Save text information about generation parameters as chunks to png files",
-            "default": true
-          },
-          "save_txt": {
-            "title": "Save Txt",
-            "description": "Create a text file next to every image with generation parameters.",
-            "default": false
           },
           "save_images_before_face_restoration": {
             "title": "Save Images Before Face Restoration",
@@ -5530,6 +6054,18 @@
             "title": "Save Incomplete Images",
             "description": "Save incomplete images",
             "default": false
+          },
+          "notification_audio": {
+            "title": "Notification Audio",
+            "type": "boolean",
+            "description": "Play notification sound after image generation",
+            "default": true
+          },
+          "notification_volume": {
+            "title": "Notification Volume",
+            "type": "number",
+            "description": "Notification sound volume",
+            "default": 100
           },
           "outdir_samples": {
             "title": "Outdir Samples",
@@ -5663,6 +6199,11 @@
             "description": "Automatically open webui in browser on startup",
             "default": "Local"
           },
+          "enable_console_prompts": {
+            "title": "Enable Console Prompts",
+            "description": "Print prompts to console when generating with txt2img and img2img.",
+            "default": false
+          },
           "show_warnings": {
             "title": "Show Warnings",
             "description": "Show warnings in console.",
@@ -5712,6 +6253,11 @@
             "type": "boolean",
             "description": "Prevent Stability-AI's ldm/sgm modules from printing noise to console.",
             "default": true
+          },
+          "dump_stacks_on_signal": {
+            "title": "Dump Stacks On Signal",
+            "description": "Print stack traces before exiting the program with ctrl+c.",
+            "default": false
           },
           "api_enable_requests": {
             "title": "Api Enable Requests",
@@ -6002,6 +6548,12 @@
             "description": "For inpainting, include masked composite in results for web",
             "default": false
           },
+          "img2img_batch_show_results_limit": {
+            "title": "Img2Img Batch Show Results Limit",
+            "type": "number",
+            "description": "Show the first N batch img2img results in UI",
+            "default": 32
+          },
           "cross_attention_optimization": {
             "title": "Cross Attention Optimization",
             "type": "string",
@@ -6154,6 +6706,11 @@
             "description": "Show hidden directories",
             "default": true
           },
+          "extra_networks_dir_button_function": {
+            "title": "Extra Networks Dir Button Function",
+            "description": "Add a '/' to the beginning of directory buttons",
+            "default": false
+          },
           "extra_networks_hidden_models": {
             "title": "Extra Networks Hidden Models",
             "type": "string",
@@ -6188,6 +6745,18 @@
             "description": "Show description on card",
             "default": true
           },
+          "extra_networks_card_order_field": {
+            "title": "Extra Networks Card Order Field",
+            "type": "string",
+            "description": "Default order field for Extra Networks cards",
+            "default": "Path"
+          },
+          "extra_networks_card_order": {
+            "title": "Extra Networks Card Order",
+            "type": "string",
+            "description": "Default order for Extra Networks cards",
+            "default": "Ascending"
+          },
           "extra_networks_add_text_separator": {
             "title": "Extra Networks Add Text Separator",
             "type": "string",
@@ -6216,80 +6785,85 @@
             "description": "Add hypernetwork to prompt",
             "default": "None"
           },
-          "localization": {
-            "title": "Localization",
-            "type": "string",
-            "description": "Localization",
-            "default": "None"
+          "keyedit_precision_attention": {
+            "title": "Keyedit Precision Attention",
+            "type": "number",
+            "description": "Precision for (attention:1.1) when editing the prompt with Ctrl+up/down",
+            "default": 0.1
           },
-          "gradio_theme": {
-            "title": "Gradio Theme",
-            "type": "string",
-            "description": "Gradio theme",
-            "default": "Default"
+          "keyedit_precision_extra": {
+            "title": "Keyedit Precision Extra",
+            "type": "number",
+            "description": "Precision for <extra networks:0.9> when editing the prompt with Ctrl+up/down",
+            "default": 0.05
           },
-          "gradio_themes_cache": {
-            "title": "Gradio Themes Cache",
+          "keyedit_delimiters": {
+            "title": "Keyedit Delimiters",
+            "type": "string",
+            "description": "Word delimiters when editing the prompt with Ctrl+up/down",
+            "default": ".,\\/!?%^*;:{}=`~() "
+          },
+          "keyedit_delimiters_whitespace": {
+            "title": "Keyedit Delimiters Whitespace",
+            "type": "array",
+            "items": {},
+            "description": "Ctrl+up/down whitespace delimiters",
+            "default": ["Tab", "Carriage Return", "Line Feed"]
+          },
+          "keyedit_move": {
+            "title": "Keyedit Move",
             "type": "boolean",
-            "description": "Cache gradio themes locally",
+            "description": "Alt+left/right moves prompt elements",
             "default": true
+          },
+          "disable_token_counters": {
+            "title": "Disable Token Counters",
+            "description": "Disable prompt token counters",
+            "default": false
+          },
+          "return_grid": {
+            "title": "Return Grid",
+            "type": "boolean",
+            "description": "Show grid in gallery",
+            "default": true
+          },
+          "do_not_show_images": {
+            "title": "Do Not Show Images",
+            "description": "Do not show any images in gallery",
+            "default": false
+          },
+          "js_modal_lightbox": {
+            "title": "Js Modal Lightbox",
+            "type": "boolean",
+            "description": "Full page image viewer: enable",
+            "default": true
+          },
+          "js_modal_lightbox_initially_zoomed": {
+            "title": "Js Modal Lightbox Initially Zoomed",
+            "type": "boolean",
+            "description": "Full page image viewer: show images zoomed in by default",
+            "default": true
+          },
+          "js_modal_lightbox_gamepad": {
+            "title": "Js Modal Lightbox Gamepad",
+            "description": "Full page image viewer: navigate with gamepad",
+            "default": false
+          },
+          "js_modal_lightbox_gamepad_repeat": {
+            "title": "Js Modal Lightbox Gamepad Repeat",
+            "type": "number",
+            "description": "Full page image viewer: gamepad repeat period",
+            "default": 250
           },
           "gallery_height": {
             "title": "Gallery Height",
             "description": "Gallery height",
             "default": ""
           },
-          "return_grid": {
-            "title": "Return Grid",
-            "type": "boolean",
-            "description": "Show grid in results for web",
-            "default": true
-          },
-          "do_not_show_images": {
-            "title": "Do Not Show Images",
-            "description": "Do not show any images in results for web",
+          "compact_prompt_box": {
+            "title": "Compact Prompt Box",
+            "description": "Compact prompt layout",
             "default": false
-          },
-          "send_seed": {
-            "title": "Send Seed",
-            "type": "boolean",
-            "description": "Send seed when sending prompt or image to other interface",
-            "default": true
-          },
-          "send_size": {
-            "title": "Send Size",
-            "type": "boolean",
-            "description": "Send size when sending prompt or image to another interface",
-            "default": true
-          },
-          "js_modal_lightbox": {
-            "title": "Js Modal Lightbox",
-            "type": "boolean",
-            "description": "Enable full page image viewer",
-            "default": true
-          },
-          "js_modal_lightbox_initially_zoomed": {
-            "title": "Js Modal Lightbox Initially Zoomed",
-            "type": "boolean",
-            "description": "Show images zoomed in by default in full page image viewer",
-            "default": true
-          },
-          "js_modal_lightbox_gamepad": {
-            "title": "Js Modal Lightbox Gamepad",
-            "description": "Navigate image viewer with gamepad",
-            "default": false
-          },
-          "js_modal_lightbox_gamepad_repeat": {
-            "title": "Js Modal Lightbox Gamepad Repeat",
-            "type": "number",
-            "description": "Gamepad repeat period, in milliseconds",
-            "default": 250
-          },
-          "show_progress_in_title": {
-            "title": "Show Progress In Title",
-            "type": "boolean",
-            "description": "Show generation progress in window title.",
-            "default": true
           },
           "samplers_in_dropdown": {
             "title": "Samplers In Dropdown",
@@ -6303,29 +6877,36 @@
             "description": "Show Width/Height and Batch sliders in same row",
             "default": true
           },
-          "keyedit_precision_attention": {
-            "title": "Keyedit Precision Attention",
-            "type": "number",
-            "description": "Ctrl+up/down precision when editing (attention:1.1)",
-            "default": 0.1
+          "sd_checkpoint_dropdown_use_short": {
+            "title": "Sd Checkpoint Dropdown Use Short",
+            "description": "Checkpoint dropdown: use filenames without paths",
+            "default": false
           },
-          "keyedit_precision_extra": {
-            "title": "Keyedit Precision Extra",
-            "type": "number",
-            "description": "Ctrl+up/down precision when editing <extra networks:0.9>",
-            "default": 0.05
+          "hires_fix_show_sampler": {
+            "title": "Hires Fix Show Sampler",
+            "description": "Hires fix: show hires checkpoint and sampler selection",
+            "default": false
           },
-          "keyedit_delimiters": {
-            "title": "Keyedit Delimiters",
+          "hires_fix_show_prompts": {
+            "title": "Hires Fix Show Prompts",
+            "description": "Hires fix: show hires prompt and negative prompt",
+            "default": false
+          },
+          "txt2img_settings_accordion": {
+            "title": "Txt2Img Settings Accordion",
+            "description": "Settings in txt2img hidden under Accordion",
+            "default": false
+          },
+          "img2img_settings_accordion": {
+            "title": "Img2Img Settings Accordion",
+            "description": "Settings in img2img hidden under Accordion",
+            "default": false
+          },
+          "localization": {
+            "title": "Localization",
             "type": "string",
-            "description": "Ctrl+up/down word delimiters",
-            "default": ".,\\/!?%^*;:{}=`~()"
-          },
-          "keyedit_move": {
-            "title": "Keyedit Move",
-            "type": "boolean",
-            "description": "Alt+left/right moves prompt elements",
-            "default": true
+            "description": "Localization",
+            "default": "None"
           },
           "quicksettings_list": {
             "title": "Quicksettings List",
@@ -6346,45 +6927,88 @@
           },
           "ui_reorder_list": {
             "title": "Ui Reorder List",
-            "description": "txt2img/img2img UI item order",
+            "description": "UI item order for txt2img/img2img tabs",
             "default": []
           },
-          "hires_fix_show_sampler": {
-            "title": "Hires Fix Show Sampler",
-            "description": "Hires fix: show hires checkpoint and sampler selection",
-            "default": false
+          "gradio_theme": {
+            "title": "Gradio Theme",
+            "type": "string",
+            "description": "Gradio theme",
+            "default": "Default"
           },
-          "hires_fix_show_prompts": {
-            "title": "Hires Fix Show Prompts",
-            "description": "Hires fix: show hires prompt and negative prompt",
-            "default": false
-          },
-          "disable_token_counters": {
-            "title": "Disable Token Counters",
-            "description": "Disable prompt token counters",
-            "default": false
-          },
-          "add_model_hash_to_info": {
-            "title": "Add Model Hash To Info",
+          "gradio_themes_cache": {
+            "title": "Gradio Themes Cache",
             "type": "boolean",
-            "description": "Add model hash to generation information",
+            "description": "Cache gradio themes locally",
             "default": true
+          },
+          "show_progress_in_title": {
+            "title": "Show Progress In Title",
+            "type": "boolean",
+            "description": "Show generation progress in window title.",
+            "default": true
+          },
+          "send_seed": {
+            "title": "Send Seed",
+            "type": "boolean",
+            "description": "Send seed when sending prompt or image to other interface",
+            "default": true
+          },
+          "send_size": {
+            "title": "Send Size",
+            "type": "boolean",
+            "description": "Send size when sending prompt or image to another interface",
+            "default": true
+          },
+          "infotext_explanation": {
+            "title": "Infotext Explanation",
+            "type": "string",
+            "default": "Infotext is what this software calls the text that contains generation parameters and can be used to generate the same picture again.\nIt is displayed in UI below the image. To use infotext, paste it into the prompt and click the ↙️ paste button."
+          },
+          "enable_pnginfo": {
+            "title": "Enable Pnginfo",
+            "type": "boolean",
+            "description": "Write infotext to metadata of the generated image",
+            "default": true
+          },
+          "save_txt": {
+            "title": "Save Txt",
+            "description": "Create a text file with infotext next to every generated image",
+            "default": false
           },
           "add_model_name_to_info": {
             "title": "Add Model Name To Info",
             "type": "boolean",
-            "description": "Add model name to generation information",
+            "description": "Add model name to infotext",
+            "default": true
+          },
+          "add_model_hash_to_info": {
+            "title": "Add Model Hash To Info",
+            "type": "boolean",
+            "description": "Add model hash to infotext",
+            "default": true
+          },
+          "add_vae_name_to_info": {
+            "title": "Add Vae Name To Info",
+            "type": "boolean",
+            "description": "Add VAE name to infotext",
+            "default": true
+          },
+          "add_vae_hash_to_info": {
+            "title": "Add Vae Hash To Info",
+            "type": "boolean",
+            "description": "Add VAE hash to infotext",
             "default": true
           },
           "add_user_name_to_info": {
             "title": "Add User Name To Info",
-            "description": "Add user name to generation information when authenticated",
+            "description": "Add user name to infotext when authenticated",
             "default": false
           },
           "add_version_to_infotext": {
             "title": "Add Version To Infotext",
             "type": "boolean",
-            "description": "Add program version to generation information",
+            "description": "Add program version to infotext",
             "default": true
           },
           "disable_weights_auto_swap": {
@@ -6392,6 +7016,11 @@
             "type": "boolean",
             "description": "Disregard checkpoint information from pasted infotext",
             "default": true
+          },
+          "infotext_skip_pasting": {
+            "title": "Infotext Skip Pasting",
+            "description": "Disregard fields from pasted infotext",
+            "default": []
           },
           "infotext_styles": {
             "title": "Infotext Styles",
@@ -6455,6 +7084,11 @@
           "live_preview_fast_interrupt": {
             "title": "Live Preview Fast Interrupt",
             "description": "Return image with chosen live preview method on interrupt",
+            "default": false
+          },
+          "js_live_preview_in_modal_lightbox": {
+            "title": "Js Live Preview In Modal Lightbox",
+            "description": "Show Live preview in full page image viewer",
             "default": false
           },
           "hide_samplers": {
@@ -6572,6 +7206,12 @@
             "description": "Maximum number of images in upscaling cache",
             "default": 5
           },
+          "postprocessing_existing_caption_action": {
+            "title": "Postprocessing Existing Caption Action",
+            "type": "string",
+            "description": "Action for existing captions",
+            "default": "Ignore"
+          },
           "disabled_extensions": {
             "title": "Disabled Extensions",
             "description": "Disable these extensions",
@@ -6592,6 +7232,130 @@
             "title": "Sd Checkpoint Hash",
             "description": "SHA256 hash of the current checkpoint",
             "default": ""
+          },
+          "sd_lora": {
+            "title": "Sd Lora",
+            "type": "string",
+            "description": "Add network to prompt",
+            "default": "None"
+          },
+          "lora_preferred_name": {
+            "title": "Lora Preferred Name",
+            "type": "string",
+            "description": "When adding to prompt, refer to Lora by",
+            "default": "Alias from file"
+          },
+          "lora_add_hashes_to_infotext": {
+            "title": "Lora Add Hashes To Infotext",
+            "type": "boolean",
+            "description": "Add Lora hashes to infotext",
+            "default": true
+          },
+          "lora_show_all": {
+            "title": "Lora Show All",
+            "description": "Always show all networks on the Lora page",
+            "default": false
+          },
+          "lora_hide_unknown_for_versions": {
+            "title": "Lora Hide Unknown For Versions",
+            "description": "Hide networks of unknown versions for model versions",
+            "default": []
+          },
+          "lora_in_memory_limit": {
+            "title": "Lora In Memory Limit",
+            "description": "Number of Lora networks to keep cached in memory",
+            "default": 0
+          },
+          "lora_functional": {
+            "title": "Lora Functional",
+            "description": "Lora/Networks: use old method that takes longer when you have multiple Loras active and produces same results as kohya-ss/sd-webui-additional-networks extension",
+            "default": false
+          },
+          "canvas_hotkey_zoom": {
+            "title": "Canvas Hotkey Zoom",
+            "type": "string",
+            "description": "Zoom canvas",
+            "default": "Alt"
+          },
+          "canvas_hotkey_adjust": {
+            "title": "Canvas Hotkey Adjust",
+            "type": "string",
+            "description": "Adjust brush size",
+            "default": "Ctrl"
+          },
+          "canvas_hotkey_move": {
+            "title": "Canvas Hotkey Move",
+            "type": "string",
+            "description": "Moving the canvas",
+            "default": "F"
+          },
+          "canvas_hotkey_fullscreen": {
+            "title": "Canvas Hotkey Fullscreen",
+            "type": "string",
+            "description": "Fullscreen Mode, maximizes the picture so that it fits into the screen and stretches it to its full width ",
+            "default": "S"
+          },
+          "canvas_hotkey_reset": {
+            "title": "Canvas Hotkey Reset",
+            "type": "string",
+            "description": "Reset zoom and canvas positon",
+            "default": "R"
+          },
+          "canvas_hotkey_overlap": {
+            "title": "Canvas Hotkey Overlap",
+            "type": "string",
+            "description": "Toggle overlap",
+            "default": "O"
+          },
+          "canvas_show_tooltip": {
+            "title": "Canvas Show Tooltip",
+            "type": "boolean",
+            "description": "Enable tooltip on the canvas",
+            "default": true
+          },
+          "canvas_auto_expand": {
+            "title": "Canvas Auto Expand",
+            "type": "boolean",
+            "description": "Automatically expands an image that does not fit completely in the canvas area, similar to manually pressing the S and R buttons",
+            "default": true
+          },
+          "canvas_blur_prompt": {
+            "title": "Canvas Blur Prompt",
+            "description": "Take the focus off the prompt when working with a canvas",
+            "default": false
+          },
+          "canvas_disabled_functions": {
+            "title": "Canvas Disabled Functions",
+            "type": "array",
+            "items": {},
+            "description": "Disable function that you don't use",
+            "default": ["Overlap"]
+          },
+          "settings_in_ui": {
+            "title": "Settings In Ui",
+            "type": "string",
+            "default": "This page allows you to add some settings to the main interface of txt2img and img2img tabs."
+          },
+          "extra_options_txt2img": {
+            "title": "Extra Options Txt2Img",
+            "description": "Settings for txt2img",
+            "default": []
+          },
+          "extra_options_img2img": {
+            "title": "Extra Options Img2Img",
+            "description": "Settings for img2img",
+            "default": []
+          },
+          "extra_options_cols": {
+            "title": "Extra Options Cols",
+            "type": "number",
+            "description": "Number of columns for added settings",
+            "default": 1
+          },
+          "extra_options_accordion": {
+            "title": "Extra Options Accordion",
+            "description": "Place added settings into an accordion",
+            "default": false
           }
         }
       },
@@ -6609,7 +7373,7 @@
       },
       "PNGInfoResponse": {
         "title": "PNGInfoResponse",
-        "required": ["info", "items"],
+        "required": ["info", "items", "parameters"],
         "type": "object",
         "properties": {
           "info": {
@@ -6620,7 +7384,12 @@
           "items": {
             "title": "Items",
             "type": "object",
-            "description": "An object containing all the info the image had"
+            "description": "A dictionary containing all the other fields the image had"
+          },
+          "parameters": {
+            "title": "Parameters",
+            "type": "object",
+            "description": "A dictionary with parsed generation info fields"
           }
         }
       },
@@ -6634,6 +7403,47 @@
             "type": "array",
             "items": { "type": "string" }
           }
+        }
+      },
+      "Person": {
+        "title": "Person",
+        "required": ["pose_keypoints_2d"],
+        "type": "object",
+        "properties": {
+          "pose_keypoints_2d": {
+            "title": "Pose Keypoints 2D",
+            "type": "array",
+            "items": { "type": "number" }
+          },
+          "hand_right_keypoints_2d": {
+            "title": "Hand Right Keypoints 2D",
+            "type": "array",
+            "items": { "type": "number" }
+          },
+          "hand_left_keypoints_2d": {
+            "title": "Hand Left Keypoints 2D",
+            "type": "array",
+            "items": { "type": "number" }
+          },
+          "face_keypoints_2d": {
+            "title": "Face Keypoints 2D",
+            "type": "array",
+            "items": { "type": "number" }
+          }
+        }
+      },
+      "PoseData": {
+        "title": "PoseData",
+        "required": ["people", "canvas_width", "canvas_height"],
+        "type": "object",
+        "properties": {
+          "people": {
+            "title": "People",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Person" }
+          },
+          "canvas_width": { "title": "Canvas Width", "type": "integer" },
+          "canvas_height": { "title": "Canvas Height", "type": "integer" }
         }
       },
       "PredictBody": {
@@ -6657,18 +7467,6 @@
               { "type": "object" },
               { "type": "array", "items": { "type": "object" } }
             ]
-          }
-        }
-      },
-      "PreprocessResponse": {
-        "title": "PreprocessResponse",
-        "required": ["info"],
-        "type": "object",
-        "properties": {
-          "info": {
-            "title": "Preprocess info",
-            "type": "string",
-            "description": "Response string from preprocessing task."
           }
         }
       },
@@ -6905,6 +7703,22 @@
             "items": {},
             "description": "Titles of scripts (img2img)"
           }
+        }
+      },
+      "SearchBySubstrReq": {
+        "title": "SearchBySubstrReq",
+        "required": ["surstr", "cursor", "regexp"],
+        "type": "object",
+        "properties": {
+          "surstr": { "title": "Surstr", "type": "string" },
+          "cursor": { "title": "Cursor", "type": "string" },
+          "regexp": { "title": "Regexp", "type": "string" },
+          "folder_paths": {
+            "title": "Folder Paths",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "size": { "title": "Size", "type": "integer", "default": 200 }
         }
       },
       "StableDiffusionProcessingImg2Img": {
@@ -7144,8 +7958,7 @@
           "eta": { "title": "Eta", "type": "number" },
           "denoising_strength": {
             "title": "Denoising Strength",
-            "type": "number",
-            "default": 0
+            "type": "number"
           },
           "s_min_uncond": { "title": "S Min Uncond", "type": "number" },
           "s_churn": { "title": "S Churn", "type": "number" },
@@ -7250,6 +8063,12 @@
             "default": {}
           }
         }
+      },
+      "StringRequestBody": {
+        "title": "StringRequestBody",
+        "required": ["content"],
+        "type": "object",
+        "properties": { "content": { "title": "Content", "type": "string" } }
       },
       "TaskModel": {
         "title": "TaskModel",
@@ -7403,8 +8222,7 @@
           "eta": { "title": "Eta", "type": "number" },
           "denoising_strength": {
             "title": "Denoising Strength",
-            "type": "number",
-            "default": 0
+            "type": "number"
           },
           "s_min_uncond": { "title": "S Min Uncond", "type": "number" },
           "s_churn": { "title": "S Churn", "type": "number" },

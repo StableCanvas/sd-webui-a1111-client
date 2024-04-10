@@ -61,9 +61,17 @@ Object.values(cleaned_openapi.components.schemas).forEach((schema) => {
     if (
       v.default &&
       typeof v.default === "string" &&
-      fs.existsSync(v.default)
+      (fs.existsSync(v.default) || isValidPath(v.default))
     ) {
       v.default = "";
+    }
+    if (
+      v.default &&
+      Array.isArray(v.default) &&
+      v.default.every((x) => typeof x === "string") &&
+      v.default.some((x) => fs.existsSync(x) || isValidPath(x))
+    ) {
+      v.default = [];
     }
   }
 });
@@ -120,8 +128,28 @@ const output_count = {
 
 console.log({ input_count, output_count });
 
-// save file
+// =================================== save file
 fs.writeFileSync(
   path.join(__dirname, "openapi-cleaned.json"),
   JSON.stringify(cleaned_openapi, null, 2)
 );
+
+// ===================================
+
+function isValidPath(p) {
+  // Normalize the path to remove any redundant .. or ./
+  const normalizedPath = path.normalize(p);
+
+  // Optional: Add specific checks for your use case.
+  // For instance, checking for invalid or reserved names in Windows,
+  // checking for max path length, etc.
+
+  try {
+    // This throws an error if the path is not a string, hence testing if it's at least a proper string.
+    path.parse(normalizedPath);
+    return true;
+  } catch (error) {
+    // The string is not a valid path
+    return false;
+  }
+}
