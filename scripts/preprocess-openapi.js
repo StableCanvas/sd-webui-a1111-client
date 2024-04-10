@@ -12,7 +12,7 @@ const path = require("path");
 const UrlPattern = require("url-pattern");
 
 const openapi = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "openapi.json"), "utf8")
+  fs.readFileSync(path.join(__dirname, "..", "openapi.json"), "utf8")
 );
 
 const input_count = {
@@ -39,6 +39,7 @@ const api_whitelist = [
   "/tacapi/*",
   "/agent-scheduler/*",
   "/controlnet/*",
+  "/rembg",
 ].map((p) => new UrlPattern(p));
 
 const cleaned_openapi = JSON.parse(JSON.stringify(openapi));
@@ -130,26 +131,18 @@ console.log({ input_count, output_count });
 
 // =================================== save file
 fs.writeFileSync(
-  path.join(__dirname, "openapi-cleaned.json"),
+  path.join(__dirname, "..", "openapi-cleaned.json"),
   JSON.stringify(cleaned_openapi, null, 2)
 );
 
 // ===================================
 
 function isValidPath(p) {
-  // Normalize the path to remove any redundant .. or ./
   const normalizedPath = path.normalize(p);
-
-  // Optional: Add specific checks for your use case.
-  // For instance, checking for invalid or reserved names in Windows,
-  // checking for max path length, etc.
-
   try {
-    // This throws an error if the path is not a string, hence testing if it's at least a proper string.
     path.parse(normalizedPath);
     return true;
   } catch (error) {
-    // The string is not a valid path
     return false;
   }
 }
