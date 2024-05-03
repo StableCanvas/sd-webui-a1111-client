@@ -1,4 +1,8 @@
-import type { SDWebUIA1111Client } from "../client";
+import {
+  CancelablePromise,
+  TextToImageResponse,
+  type SDWebUIA1111Client,
+} from "../client";
 import { SDProcessing } from "./SDProcessing";
 import type { Txt2imgProcessParams } from "./types";
 
@@ -16,6 +20,10 @@ import type { Txt2imgProcessParams } from "./types";
 export class Txt2imgProcess extends SDProcessing<Txt2imgProcessParams> {
   request(client: SDWebUIA1111Client) {
     const requestBody = this.toJSON();
-    return client.default.text2ImgapiSdapiV1Txt2ImgPost({ requestBody });
+    return client.default.text2ImgapiSdapiV1Txt2ImgPost({
+      requestBody,
+    }) as CancelablePromise<
+      TextToImageResponse & { parameters: Txt2imgProcessParams }
+    >;
   }
 }

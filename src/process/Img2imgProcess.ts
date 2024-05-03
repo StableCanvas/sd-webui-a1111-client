@@ -1,4 +1,8 @@
-import { SDWebUIA1111Client } from "../client";
+import {
+  CancelablePromise,
+  ImageToImageResponse,
+  SDWebUIA1111Client,
+} from "../client";
 import { SDProcessing } from "./SDProcessing";
 import { Img2imgProcessParams } from "./types";
 
@@ -16,6 +20,12 @@ import { Img2imgProcessParams } from "./types";
 export class Img2imgProcess extends SDProcessing<Img2imgProcessParams> {
   request(client: SDWebUIA1111Client) {
     const requestBody = this.toJSON();
-    return client.default.img2ImgapiSdapiV1Img2ImgPost({ requestBody });
+    return client.default.img2ImgapiSdapiV1Img2ImgPost({
+      requestBody,
+    }) as CancelablePromise<
+      ImageToImageResponse & {
+        parameters: Img2imgProcessParams;
+      }
+    >;
   }
 }
