@@ -5,7 +5,7 @@ interface ControlNetUnitRequest {
    * Image to use in this unit.
    * Defaults to null.
    */
-  input_image?: string | null;
+  image?: string | null;
 
   /**
    * Mask pixel_perfect to filter the image.
@@ -47,7 +47,7 @@ interface ControlNetUnitRequest {
    * Whether to compensate low GPU memory with processing time.
    * Defaults to false.
    */
-  lowvram?: boolean;
+  low_vram?: boolean;
 
   /**
    * Resolution of the preprocessor.
@@ -100,27 +100,21 @@ interface ControlNetUnitRequest {
 type ResizeMode =
   | "Just Resize"
   | "Scale to Fit (Inner Fit)"
-  | "Envelope (Outer Fit)"
-  | 0
-  | 1
-  | 2;
+  | "Envelope (Outer Fit)";
 
 type ControlMode =
   | "Balanced"
   | "My prompt is more important"
-  | "ControlNet is more important"
-  | 0
-  | 1
-  | 2;
+  | "ControlNet is more important";
 
 const defaultControlNetUnitRequest = (): ControlNetUnitRequest => ({
-  input_image: null,
+  image: null,
   mask: null,
   module: "none",
   model: "None",
   weight: 1,
   resize_mode: "Scale to Fit (Inner Fit)",
-  lowvram: false,
+  low_vram: false,
   processor_res: -1,
   threshold_a: -1,
   threshold_b: -1,
