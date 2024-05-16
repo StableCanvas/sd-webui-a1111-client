@@ -3,7 +3,7 @@ import { ExtensionScript } from "./ExtensionScript";
 /**
  * Parameters for the cutoff feature.
  */
-interface CutoffParams {
+export interface CutoffParams {
   /**
    * Whether the cutoff feature is enabled.
    */
@@ -48,7 +48,7 @@ interface CutoffParams {
 /**
  * Arguments for extending the cutoff params.
  */
-type CutoffExtArgs = [
+export type CutoffExtArgs = [
   enabled: CutoffParams["enabled"],
   targets: CutoffParams["targets"],
   weight: CutoffParams["weight"],

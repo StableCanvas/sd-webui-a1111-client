@@ -56,7 +56,7 @@ export interface DynamicCFGParams {
   schedVal: number;
 }
 
-type DynamicCFGArgs = [
+export type DynamicCFGArgs = [
   enabled: DynamicCFGParams["enabled"],
   mimicScale: DynamicCFGParams["mimicScale"],
   thresholdPercentile: DynamicCFGParams["thresholdPercentile"],

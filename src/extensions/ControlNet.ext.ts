@@ -1,6 +1,6 @@
 import { ExtensionScript } from "./ExtensionScript";
 
-interface ControlNetUnitRequest {
+export interface ControlNetUnitRequest {
   /**
    * Image to use in this unit.
    * Defaults to null.
@@ -97,12 +97,12 @@ interface ControlNetUnitRequest {
   pixel_perfect?: boolean;
 }
 
-type ResizeMode =
+export type ResizeMode =
   | "Just Resize"
   | "Scale to Fit (Inner Fit)"
   | "Envelope (Outer Fit)";
 
-type ControlMode =
+export type ControlMode =
   | "Balanced"
   | "My prompt is more important"
   | "ControlNet is more important";
