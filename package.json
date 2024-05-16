@@ -1,6 +1,6 @@
 {
   "name": "@stable-canvas/sd-webui-a1111-client",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "source": "src/main.ts",
   "main": "dist/main.umd.js",
