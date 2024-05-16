@@ -15,6 +15,10 @@ a1111/webui client for nodejs/browser
   - TiledVAE
   - agent scheduler
 
+## support version
+- webui: 1.8.0
+- control-net: 3b4eedd
+
 # usage
 > full code in [/examples](/examples) folder
 
