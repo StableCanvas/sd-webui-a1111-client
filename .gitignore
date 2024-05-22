@@ -136,3 +136,5 @@ dist
 src/client/**/*.ts
 
 openapi-cleaned.json
+
+docs
