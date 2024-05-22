@@ -22,7 +22,7 @@ a1111/webui client for nodejs/browser
 # usage
 
 ## document
-
+https://stablecanvas.github.io/sd-webui-a1111-client/
 
 ## example code
 > full code in [/examples](/examples) folder
