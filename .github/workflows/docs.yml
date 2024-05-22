@@ -34,7 +34,7 @@ jobs:
         run: pnpm install
 
       - name: Build docs
-        run: pnpm build:docs
+        run: pnpm run generate-client && pnpm run build:docs
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.1
