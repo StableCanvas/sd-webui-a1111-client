@@ -42,6 +42,14 @@ fs.writeFileSync("image.png", Buffer.from(image, "base64"));
 
 ## browser
 
+cdns (mjs):
+- unpkg: https://unpkg.com/@stable-canvas/sd-webui-a1111-client@latest/dist/main.module.mjs
+- jsdelivr: https://cdn.jsdelivr.net/npm/@stable-canvas/sd-webui-a1111-client@latest/+esm
+
+cdns (umd)
+- unpkg: https://unpkg.com/@stable-canvas/sd-webui-a1111-client@latest/dist/main.umd.min.js
+- jsdelivr: https://cdn.jsdelivr.net/npm/@stable-canvas/sd-webui-a1111-client@latest/dist/main.umd.min.js
+
 ```html
 <script type="importmap">
   {
