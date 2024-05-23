@@ -1,7 +1,7 @@
 {
   "name": "@stable-canvas/sd-webui-a1111-client",
   "version": "1.1.1",
-  "description": "",
+  "description": "API client for AUTOMATIC1111/stable-diffusion-webui for Node.js and Browser.",
   "source": "src/main.ts",
   "main": "dist/main.umd.js",
   "module": "dist/main.module.mjs",
@@ -17,7 +17,11 @@
     "webui",
     "diffusion",
     "ai",
-    "ai art"
+    "ai art",
+    "api",
+    "a1111",
+    "a1111-stable-diffusion-webui",
+    "stable-diffusion-webui"
   ],
   "files": [
     "dist/**.js*",
