@@ -3,7 +3,7 @@ import {
   ImageToImageResponse,
   SDWebUIA1111Client,
 } from "../client";
-import { SDProcessing } from "./SDProcessing";
+import { SDProcessor } from "./SDProcessor";
 import { Img2imgProcessParams } from "./types";
 
 /**
@@ -17,7 +17,7 @@ import { Img2imgProcessParams } from "./types";
  * const image = images[0]; // base64 image string
  * ```
  */
-export class Img2imgProcess extends SDProcessing<Img2imgProcessParams> {
+export class Img2imgProcess extends SDProcessor<Img2imgProcessParams> {
   request(client: SDWebUIA1111Client) {
     const requestBody = this.toJSON();
     return client.default.img2ImgapiSdapiV1Img2ImgPost({

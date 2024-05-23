@@ -1,23 +1,10 @@
 import { SDWebUIA1111Client } from "../client";
 import { ExtensionScript } from "../extensions/ExtensionScript";
 
-function deepClone<T>(obj: T): T {
-  if (obj === null || typeof obj !== "object") {
-    return obj;
-  }
+const deepClone: <T>(x: T) => T =
+  globalThis.structuredClone ?? ((x: any) => JSON.parse(JSON.stringify(x)));
 
-  const clone = Array.isArray(obj) ? ([] as T) : ({} as T);
-
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      clone[key] = deepClone(obj[key]);
-    }
-  }
-
-  return clone;
-}
-
-export class SDProcessing<Body> {
+export class SDProcessor<Body> {
   protected extensions = [] as ExtensionScript[];
 
   constructor(readonly init_body: Body) {}
@@ -39,9 +26,11 @@ export class SDProcessing<Body> {
    * Adds an extension to the list of extensions.
    *
    * @param {ExtensionScript} ext - The extension to be added.
+   * @return {SDProcessor<Body>} The current SDProcessing object.
    */
   use(ext: ExtensionScript) {
     this.extensions.push(ext);
+    return this;
   }
 
   /**
@@ -49,10 +38,12 @@ export class SDProcessing<Body> {
    *
    * @param {string} name - The name of the extension script.
    * @param {any[]} args - The arguments for the extension script.
+   * @return {SDProcessor<Body>} The current SDProcessing object.
    */
   useCustomExt(name: string, args: any[]) {
     const ext = new ExtensionScript(name, args);
     this.extensions.push(ext);
+    return this;
   }
 
   /**

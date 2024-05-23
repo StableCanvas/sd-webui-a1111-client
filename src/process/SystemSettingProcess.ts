@@ -1,5 +1,5 @@
 import { SDWebUIA1111Client } from "../client";
-import { SDProcessing } from "./SDProcessing";
+import { SDProcessor } from "./SDProcessor";
 import { SDWebUIA1111SystemSettings } from "./system.types";
 
 /**
@@ -16,7 +16,7 @@ import { SDWebUIA1111SystemSettings } from "./system.types";
  * await process.request(client);
  * ```
  */
-export class SystemSettingProcess extends SDProcessing<
+export class SystemSettingProcess extends SDProcessor<
   Partial<SDWebUIA1111SystemSettings>
 > {
   request(client: SDWebUIA1111Client) {
