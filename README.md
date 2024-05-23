@@ -5,7 +5,6 @@
 API client for AUTOMATIC1111/stable-diffusion-webui for Node.js and Browser.
 
 - [Types Document](https://stablecanvas.github.io/sd-webui-a1111-client/)
-- [Service Functions](https://stablecanvas.github.io/sd-webui-a1111-client/classes/DefaultService.html)
 
 ## Features
 
@@ -51,11 +50,26 @@ const client = new SDWebUIA1111Client({
 });
 ```
 
+### Default Service
+
+Allowing full control over the request body.
+
+```ts
+const response = await client.default.text2ImgapiSdapiV1Txt2ImgPost({
+  requestBody: {
+    prompt: 'an astronaut riding a horse on the moon'
+  }
+});
+```
+
+fully functions here:
+[Service Functions](https://stablecanvas.github.io/sd-webui-a1111-client/classes/DefaultService.html)
+
 ## API Usage
 
 ### Documentation
 
-[documentation](https://stablecanvas.github.io/sd-webui-a1111-client/classes/ServiceApi.html)
+[ServiceApi documentation](https://stablecanvas.github.io/sd-webui-a1111-client/classes/ServiceApi.html)
 
 ### Instance
 
@@ -73,18 +87,6 @@ const api = new A1111StableDiffusionApi({
   //   disableCache: false,
   //   cacheTime: 60 * 1000
   // }
-});
-```
-
-### Default Service
-
-Allowing full control over the request body.
-
-```ts
-const response = await client.default.text2ImgapiSdapiV1Txt2ImgPost({
-  requestBody: {
-    prompt: 'an astronaut riding a horse on the moon'
-  }
 });
 ```
 
@@ -122,7 +124,7 @@ const responses = await batch.waitForComplete();
 
 ## ControlNet Api Usage
 
-[document](http://stablecanvas.github.io/sd-webui-a1111-client/classes/ControlNetApi.html)
+[ControlNetApi documentation](http://stablecanvas.github.io/sd-webui-a1111-client/classes/ControlNetApi.html)
 
 ### Requisites
 
@@ -186,6 +188,26 @@ const batch = api.ControlNet.txt2imgBatch({
 const responses = await batch.waitForComplete();
 ```
 
+### Detect
+
+Thanks to the ControlNet plugin releasing an interface for detection, we can use this API when we only need to detect and not generate images.
+
+> It is worth mentioning that if you want to customize the preprocessing process of ControlNet, you need to set the `module` parameter of the ControlNet Unit to `none`, indicating that the input image has already been preprocessed.
+
+> Regarding the parameters `controlnet_threshold_a` and `controlnet_threshold_b`, you can use `api.ControlNet.getModuleDetail` to get the requirements for these parameters from the current plugin.
+
+```ts
+const {
+  images,
+} = await api.ControlNet.detect({
+  controlnet_module: 'openpose_full',
+  controlnet_input_images: [
+    // image base64
+  ],
+  controlnet_processor_res: 512,
+});
+```
+
 ### GetModelList
 
 ```ts
@@ -201,8 +223,10 @@ const moduleList = await api.ControlNet.getModules();
 ## Processor Usage
 Advanced processing pipeline, providing more control over requests.
 
-- [img2img document](http://stablecanvas.github.io/sd-webui-a1111-client/classes/Img2imgProcess.html)
-- [txt2img document](http://stablecanvas.github.io/sd-webui-a1111-client/classes/Txt2imgProcess.html)
+- [img2img documentation](http://stablecanvas.github.io/sd-webui-a1111-client/classes/Img2imgProcess.html)
+- [txt2img documentation](http://stablecanvas.github.io/sd-webui-a1111-client/classes/Txt2imgProcess.html)
+
+> The design of the processor lies between the API and the client. It is not as convenient as the API but offers more customized functionalities, which is useful for achieving workflows similar to ComfyUI.
 
 ### Text to Image / Image to Image
 
