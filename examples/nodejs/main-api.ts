@@ -1,7 +1,7 @@
 import "./ensure-fetch";
 
 import fs from "fs";
-import { SDWebUIA1111Client, Txt2imgProcess } from "../../dist/main";
+import { A1111StableDiffusionApi } from "../../dist/main";
 
 import cliProgress from "cli-progress";
 import open from "open";
@@ -10,14 +10,12 @@ import open from "open";
 let timer: any = null;
 const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 bar1.start(100, 0);
-const logProgress = (client: SDWebUIA1111Client) => {
+const logProgress = (api: A1111StableDiffusionApi) => {
   if (timer) {
     clearInterval(timer);
   }
   timer = setInterval(async () => {
-    const { progress } = await client.default.progressapiSdapiV1ProgressGet({
-      skipCurrentImage: true,
-    });
+    const { progress } = await api.Service.progress();
     if (!progress) {
       return;
     }
@@ -26,8 +24,8 @@ const logProgress = (client: SDWebUIA1111Client) => {
 };
 
 // call generate api from client
-export const generate1Girl = async (client: SDWebUIA1111Client) => {
-  const pc1 = new Txt2imgProcess({
+export const generate1Girl = async (api: A1111StableDiffusionApi) => {
+  const { image } = await api.Service.txt2img({
     prompt: `photorealistic, RAW photo, best quality, 1girl, fashion orange top, half body, pastel grey background, highly detailed face, cold light`,
     negative_prompt: `fake, paintings, error, bad art, NG_DeepNegative_V1_75T,`,
     sampler_name: "DPM++ SDE Karras",
@@ -35,8 +33,7 @@ export const generate1Girl = async (client: SDWebUIA1111Client) => {
     height: 768,
     steps: 20,
   });
-  const { images: [image0] = [] } = await pc1.request(client);
-  return image0 as undefined | string;
+  return image;
 };
 
 // save base64 image
@@ -56,13 +53,15 @@ async function saveBase64Image(
 }
 
 const main = async () => {
-  const client = new SDWebUIA1111Client({
-    BASE: "http://localhost:7860",
+  const api = new A1111StableDiffusionApi({
+    client: {
+      BASE: "http://127.0.0.1:7860",
+    },
   });
-  logProgress(client);
+  logProgress(api);
 
   console.time("image generate");
-  const image = await generate1Girl(client);
+  const image = await generate1Girl(api);
   bar1.update(100);
   bar1.stop();
   console.timeEnd("image generate");

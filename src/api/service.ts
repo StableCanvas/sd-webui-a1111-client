@@ -11,7 +11,7 @@ import EventEmitter from "eventemitter3";
 
 class Img2imgBatchGeneration extends BatchGeneration<
   StableDiffusionProcessingImg2Img,
-  { image: string; info: GenerationResponseInfo }
+  { images: string[]; info: GenerationResponseInfo }
 > {
   constructor(
     readonly serviceApi: ServiceApi,
@@ -32,7 +32,7 @@ class Img2imgBatchGeneration extends BatchGeneration<
 
 class Txt2imgBatchGeneration extends BatchGeneration<
   StableDiffusionProcessingTxt2Img,
-  { image: string; info: GenerationResponseInfo }
+  { images: string[]; info: GenerationResponseInfo }
 > {
   constructor(
     readonly serviceApi: ServiceApi,
@@ -193,7 +193,7 @@ export class ServiceApi extends CachedApi {
    * Asynchronously sends an image to the server for processing and returns the processed image and information.
    *
    * @param {StableDiffusionProcessingImg2Img} requestBody - The image to be processed.
-   * @return {Promise<{ image: string, info: GenerationResponseInfo }>} The processed image and information.
+   * @return {Promise<{ image: string, images: string[], info: GenerationResponseInfo }>} The processed image and information.
    */
   async img2img(requestBody: StableDiffusionProcessingImg2Img) {
     const resp = await this.client.default.img2ImgapiSdapiV1Img2ImgPost({
@@ -205,6 +205,7 @@ export class ServiceApi extends CachedApi {
     }
     return {
       image,
+      images: resp.images || [],
       info: JSON.parse(resp.info) as GenerationResponseInfo,
     };
   }
@@ -213,7 +214,7 @@ export class ServiceApi extends CachedApi {
    * Asynchronously sends a text to the server for processing and returns the processed image and information.
    *
    * @param {StableDiffusionProcessingTxt2Img} requestBody - The text to be processed.
-   * @return {Promise<{ image: string, info: GenerationResponseInfo }>} The processed image and information.
+   * @return {Promise<{ image: string, images: string[], info: GenerationResponseInfo }>} The processed image and information.
    */
   async txt2img(requestBody: StableDiffusionProcessingTxt2Img) {
     const resp = await this.client.default.text2ImgapiSdapiV1Txt2ImgPost({
@@ -225,6 +226,7 @@ export class ServiceApi extends CachedApi {
     }
     return {
       image,
+      images: resp.images || [],
       info: JSON.parse(resp.info) as GenerationResponseInfo,
     };
   }

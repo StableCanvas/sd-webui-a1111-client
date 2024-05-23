@@ -19,7 +19,7 @@ import { GenerationResponseInfo } from "./service.types";
 
 class Img2imgBatchGeneration extends BatchGeneration<
   Img2imgProcessParams,
-  { image: string; info: GenerationResponseInfo }
+  { images: string[]; info: GenerationResponseInfo }
 > {
   constructor(
     readonly api: ControlNetApi,
@@ -44,7 +44,7 @@ class Img2imgBatchGeneration extends BatchGeneration<
 
 class Txt2imgBatchGeneration extends BatchGeneration<
   Txt2imgProcessParams,
-  { image: string; info: GenerationResponseInfo }
+  { images: string[]; info: GenerationResponseInfo }
 > {
   constructor(
     readonly api: ControlNetApi,
@@ -199,7 +199,7 @@ export class ControlNetApi extends CachedApi {
    * @param {Object} options - The options for the text to image processing.
    * @param {Txt2imgProcessParams} options.params - The parameters for the text to image processing.
    * @param {ControlNetUnitRequest[]} options.units - The control net units for the text to image processing.
-   * @return {Promise<{ image: string, info: GenerationResponseInfo }>} The processed image and information.
+   * @return {Promise<{ image: string, images: string[], info: GenerationResponseInfo }>} The processed image and information.
    * @throws {Error} If no image is returned from the server.
    */
   async txt2img({
@@ -228,6 +228,7 @@ export class ControlNetApi extends CachedApi {
     }
     return {
       image,
+      images: resp.images || [],
       info: JSON.parse(resp.info) as GenerationResponseInfo,
     };
   }
@@ -238,7 +239,7 @@ export class ControlNetApi extends CachedApi {
    * @param {Object} options - The options for the image to image processing.
    * @param {Img2imgProcessParams} options.params - The parameters for the image to image processing.
    * @param {ControlNetUnitRequest[]} options.units - The control net units for the image to image processing.
-   * @return {Promise<{ image: string, info: GenerationResponseInfo }>} The processed image and information.
+   * @return {Promise<{ image: string, images: string[], info: GenerationResponseInfo }>} The processed image and information.
    * @throws {Error} If no image is returned from the server.
    */
   async img2img({
@@ -267,6 +268,7 @@ export class ControlNetApi extends CachedApi {
     }
     return {
       image,
+      images: resp.images || [],
       info: JSON.parse(resp.info) as GenerationResponseInfo,
     };
   }
