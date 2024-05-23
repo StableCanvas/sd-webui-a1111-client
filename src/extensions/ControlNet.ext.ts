@@ -7,6 +7,11 @@ import { ExtensionScript } from "./ExtensionScript";
 
 export interface ControlNetUnitRequest {
   /**
+   * This unit enabled or not.
+   */
+  enabled: boolean;
+
+  /**
    * Image to use in this unit.
    * Defaults to null.
    */
@@ -113,6 +118,7 @@ export type ControlMode =
   | "ControlNet is more important";
 
 const defaultControlNetUnitRequest = (): ControlNetUnitRequest => ({
+  enabled: true,
   image: null,
   mask: null,
   module: "none",
