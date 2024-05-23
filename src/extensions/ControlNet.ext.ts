@@ -1,3 +1,8 @@
+import {
+  StableDiffusionProcessingImg2Img,
+  StableDiffusionProcessingTxt2Img,
+} from "../client";
+import { deepClone } from "../misc";
 import { ExtensionScript } from "./ExtensionScript";
 
 export interface ControlNetUnitRequest {
@@ -127,7 +132,13 @@ const defaultControlNetUnitRequest = (): ControlNetUnitRequest => ({
 export class ControlNetExt extends ExtensionScript<
   Array<Partial<ControlNetUnitRequest>>
 > {
-  constructor(unit0?: Partial<ControlNetUnitRequest>) {
+  constructor(
+    unit0?: Partial<ControlNetUnitRequest>,
+    readonly options?: {
+      disable_auto_set_image?: boolean;
+      disable_auto_set_mask?: boolean;
+    }
+  ) {
     super("ControlNet", []);
     if (unit0) {
       this.addUnit(unit0);
@@ -147,5 +158,42 @@ export class ControlNetExt extends ExtensionScript<
 
   clear() {
     this.args = [];
+  }
+
+  install(
+    req: StableDiffusionProcessingImg2Img | StableDiffusionProcessingTxt2Img
+  ): void {
+    if (typeof req !== "object") {
+      return;
+    }
+
+    const units = deepClone(this.args);
+
+    if (!this.options?.disable_auto_set_image) {
+      const init_images = "init_images" in req ? req.init_images || [] : [];
+      const init_image0 = init_images[0];
+      if (init_image0) {
+        for (const unit of units) {
+          if (!unit.image) {
+            unit.image = init_image0;
+          }
+        }
+      }
+    }
+    if (!this.options?.disable_auto_set_mask) {
+      const mask = "mask" in req ? req.mask || null : null;
+      if (mask) {
+        for (const unit of units) {
+          if (!unit.mask) {
+            unit.mask = mask;
+          }
+        }
+      }
+    }
+
+    req["alwayson_scripts"] ||= {};
+    req["alwayson_scripts"][this.name] = {
+      args: units,
+    };
   }
 }

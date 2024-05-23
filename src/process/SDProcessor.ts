@@ -1,8 +1,6 @@
 import { SDWebUIA1111Client } from "../client";
 import { ExtensionScript } from "../extensions/ExtensionScript";
-
-const deepClone: <T>(x: T) => T =
-  globalThis.structuredClone ?? ((x: any) => JSON.parse(JSON.stringify(x)));
+import { deepClone } from "../misc";
 
 export class SDProcessor<Body> {
   protected extensions = [] as ExtensionScript[];
