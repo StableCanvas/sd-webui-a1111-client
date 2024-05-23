@@ -2,6 +2,11 @@
 
 # sd-webui-a1111-client
 
+![npm](https://img.shields.io/npm/v/@stable-canvas/sd-webui-a1111-client)
+![npm](https://img.shields.io/npm/dw/@stable-canvas/sd-webui-a1111-client)
+![GitHub Repo stars](https://img.shields.io/github/stars/StableCanvas/sd-webui-a1111-client)
+
+
 API client for AUTOMATIC1111/stable-diffusion-webui for Node.js and Browser.
 
 - [Types Document](https://stablecanvas.github.io/sd-webui-a1111-client/)
