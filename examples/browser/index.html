@@ -8,11 +8,16 @@
     <script type="importmap">
       {
         "imports": {
-          "@stable-canvas/sd-webui-a1111-client": "https://unpkg.com/@stable-canvas/sd-webui-a1111-client@latest/dist/main.module.mjs"
+          "@stable-canvas/sd-webui-a1111-client": "../../dist/main.module.mjs"
         }
       }
     </script>
     <style>
+      * {
+        box-sizing: inherit;
+        padding: 0;
+        margin: 0;
+      }
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
           Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -41,6 +46,64 @@
         height: 100%;
         overflow: auto;
         box-sizing: border-box;
+      }
+
+      html {
+        box-sizing: border-box;
+        background-color: #1f1f1f;
+        color: white;
+      }
+
+      fieldset {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+      }
+
+      legend {
+        color: #ccc;
+        font-size: 0.8rem;
+      }
+
+      button {
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        font-size: 1rem;
+        margin: 10px 0;
+        padding: 10px;
+      }
+
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      textarea {
+        background-color: #333;
+        color: white;
+        font-size: 1rem;
+        padding: 10px;
+
+        outline: none;
+      }
+
+      img {
+        max-width: 512px;
+      }
+
+      #message {
+        color: #007bff;
+        font-size: 1rem;
+        margin: 10px 0;
+      }
+
+      #eta {
+        color: #ccc;
+        font-size: 0.8rem;
+        margin: 10px 0;
       }
     </style>
   </head>
@@ -92,10 +155,10 @@
       const $eta = document.querySelector("#eta");
       const $prompt = document.querySelector("#prompt");
       const $negative_prompt = document.querySelector("#negative_prompt");
-      $prompt.value = localStorage.getItem("prompt") || "1girl";
+      $prompt.value = localStorage.getItem("prompt") || "1girl,best quality";
       $negative_prompt.value =
         localStorage.getItem("negative_prompt") ||
-        "worst quality,zombie,disgust";
+        "(worst quality:2),zombie,disgust,bad,error,disabled,\nNG_DeepNegative_V1_75T";
       let processing = false;
       const generate = async () => {
         if (processing) {
@@ -122,7 +185,9 @@
           negative_prompt: $negative_prompt.value,
           width: 512,
           height: 768,
-          steps: 30,
+          steps: 35,
+          cfg_scale: 4,
+          sampler_index: "DPM++ 2M SDE Karras",
         };
         localStorage.setItem("prompt", body.prompt);
         localStorage.setItem("negative_prompt", body.negative_prompt);
