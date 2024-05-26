@@ -4,15 +4,13 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  eventemitter3:
-    specifier: ^5.0.1
-    version: 5.0.1
-
 devDependencies:
   '@types/node':
     specifier: ^20.4.2
     version: registry.npmmirror.com/@types/node@20.4.2
+  eventemitter3:
+    specifier: ^5.0.1
+    version: 5.0.1
   microbundle:
     specifier: ^0.15.1
     version: registry.npmmirror.com/microbundle@0.15.1(ts-node@10.9.1)
@@ -72,7 +70,7 @@ packages:
 
   /eventemitter3@5.0.1:
     resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
-    dev: false
+    dev: true
 
   /fsevents@2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
