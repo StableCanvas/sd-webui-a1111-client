@@ -85,6 +85,11 @@ class ProgressWatcher extends EventEmitter<{
 }
 
 export class ServiceApi extends CachedApi {
+  cache_key_prefix() {
+    const base_url = this.options.client.request.config.BASE ?? "*";
+    return `@service/${base_url}`;
+  }
+
   /**
    * Retrieves the SD models from the API.
    *

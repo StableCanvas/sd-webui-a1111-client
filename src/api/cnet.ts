@@ -72,6 +72,11 @@ export class ControlNetApi extends CachedApi {
     return this.options.client;
   }
 
+  cache_key_prefix() {
+    const base_url = this.options.client.request.config.BASE ?? "*";
+    return `@controlnet/${base_url}`;
+  }
+
   /**
    * Retrieves a list of models from the controlnet API.
    *
@@ -100,7 +105,7 @@ export class ControlNetApi extends CachedApi {
    * @return {Promise<string[]>} A promise that resolves to an array of model names.
    */
   async getModels() {
-    const key = "models";
+    const key = "models" + this.client;
     return this._getFromCacheOrFetch(key, this._getModels.bind(this));
   }
 

@@ -6,21 +6,46 @@ export type CachedApiOptions = {
   disableCache?: boolean;
 };
 
-export class CachedApi {
-  protected _cache = {} as Record<
-    string,
-    {
-      data: any;
-      expires: number;
+/**
+ * A global cache hub that stores cache data for all CachedApi instances.
+ */
+export class GlobalCacheHub {
+  static __KEY__ = "__A1111_CLIENT_CACHE__";
+
+  private ensureCache() {
+    if (!(globalThis as any)[GlobalCacheHub.__KEY__]) {
+      (globalThis as any)[GlobalCacheHub.__KEY__] = {};
     }
-  >;
+  }
+
+  get _cache() {
+    this.ensureCache();
+    return (globalThis as any)[GlobalCacheHub.__KEY__] as Record<
+      string,
+      {
+        data: any;
+        expires: number;
+      }
+    >;
+  }
+
+  clearCache() {
+    this.ensureCache();
+    (globalThis as any)[GlobalCacheHub.__KEY__] = {};
+  }
+}
+
+export class CachedApi {
+  protected hub: GlobalCacheHub;
 
   protected options: CachedApiOptions;
 
   constructor(
     options: Pick<CachedApiOptions, "client"> &
-      Partial<Omit<CachedApiOptions, "client">>
+      Partial<Omit<CachedApiOptions, "client">>,
+    hub = new GlobalCacheHub()
   ) {
+    this.hub = hub;
     this.options = {
       ...options,
       disableCache: options.disableCache ?? false,
@@ -28,15 +53,28 @@ export class CachedApi {
     };
   }
 
+  private get _cache() {
+    return this.hub._cache;
+  }
+
   get client() {
     return this.options.client;
+  }
+
+  protected cache_key_prefix() {
+    return "";
+  }
+
+  protected full_cache_key(key: string) {
+    return `${this.cache_key_prefix()}:${key}`;
   }
 
   protected async _getFromCache<T>(key: string) {
     if (this.options.disableCache) {
       return null;
     }
-    const cached = this._cache[key];
+    const fullKey = this.full_cache_key(key);
+    const cached = this._cache[fullKey];
     if (!cached || cached.expires < Date.now()) {
       return null;
     }
@@ -47,7 +85,8 @@ export class CachedApi {
     if (this.options.disableCache) {
       return;
     }
-    this._cache[key] = {
+    const fullKey = this.full_cache_key(key);
+    this._cache[fullKey] = {
       data,
       expires: Date.now() + this.options.cacheTime,
     };
@@ -70,7 +109,7 @@ export class CachedApi {
    * Clears the cache by resetting the `_cache` object to an empty object.
    */
   clearCache() {
-    this._cache = {};
+    this.hub.clearCache();
   }
 
   /**
@@ -79,6 +118,7 @@ export class CachedApi {
    * @param {string} key - The key of the cache entry to remove.
    */
   removeCache(key: string) {
-    delete this._cache[key];
+    const fullKey = this.full_cache_key(key);
+    delete this._cache[fullKey];
   }
 }
