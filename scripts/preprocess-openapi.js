@@ -134,6 +134,7 @@ fs.writeFileSync(
   path.join(__dirname, "..", "openapi-cleaned.json"),
   JSON.stringify(cleaned_openapi, null, 2)
 );
+console.log("openapi-cleaned.json saved");
 
 // ===================================
 

@@ -834,6 +834,18 @@
         }
       }
     },
+    "/internal/pending-tasks": {
+      "get": {
+        "summary": "Get Pending Tasks",
+        "operationId": "get_pending_tasks_internal_pending_tasks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
     "/internal/progress": {
       "post": {
         "summary": "Progressapi",
@@ -1294,6 +1306,26 @@
         }
       }
     },
+    "/sdapi/v1/schedulers": {
+      "get": {
+        "summary": "Get Schedulers",
+        "operationId": "get_schedulers_sdapi_v1_schedulers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Schedulers Sdapi V1 Schedulers Get",
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/SchedulerItem" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/sdapi/v1/upscalers": {
       "get": {
         "summary": "Get Upscalers",
@@ -1468,6 +1500,18 @@
                 "schema": { "$ref": "#/components/schemas/EmbeddingsResponse" }
               }
             }
+          }
+        }
+      }
+    },
+    "/sdapi/v1/refresh-embeddings": {
+      "post": {
+        "summary": "Refresh Embeddings",
+        "operationId": "refresh_embeddings_sdapi_v1_refresh_embeddings_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
           }
         }
       }
@@ -1729,6 +1773,46 @@
             "required": false,
             "schema": { "title": "Filename", "type": "string", "default": "" },
             "name": "filename",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sd_extra_networks/cover-images": {
+      "get": {
+        "summary": "Fetch Cover Images",
+        "operationId": "fetch_cover_images_sd_extra_networks_cover_images_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": { "title": "Page", "type": "string", "default": "" },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Item", "type": "string", "default": "" },
+            "name": "item",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": { "title": "Index", "type": "integer", "default": 0 },
+            "name": "index",
             "in": "query"
           }
         ],
@@ -2060,6 +2144,172 @@
       "get": {
         "summary": "Refresh Styles If Changed",
         "operationId": "refresh_styles_if_changed_tacapi_v1_refresh_styles_if_changed_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/increase-use-count": {
+      "post": {
+        "summary": "Increase Use Count",
+        "operationId": "increase_use_count_tacapi_v1_increase_use_count_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Tagname", "type": "string" },
+            "name": "tagname",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Ttype", "type": "integer" },
+            "name": "ttype",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Neg", "type": "boolean" },
+            "name": "neg",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/get-use-count": {
+      "get": {
+        "summary": "Get Use Count",
+        "operationId": "get_use_count_tacapi_v1_get_use_count_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Tagname", "type": "string" },
+            "name": "tagname",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Ttype", "type": "integer" },
+            "name": "ttype",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Neg", "type": "boolean" },
+            "name": "neg",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/get-use-count-list": {
+      "post": {
+        "summary": "Get Use Count List",
+        "operationId": "get_use_count_list_tacapi_v1_get_use_count_list_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UseCountListRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/reset-use-count": {
+      "put": {
+        "summary": "Reset Use Count",
+        "operationId": "reset_use_count_tacapi_v1_reset_use_count_put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": { "title": "Tagname", "type": "string" },
+            "name": "tagname",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Ttype", "type": "integer" },
+            "name": "ttype",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Pos", "type": "boolean" },
+            "name": "pos",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": { "title": "Neg", "type": "boolean" },
+            "name": "neg",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tacapi/v1/get-all-use-counts": {
+      "get": {
+        "summary": "Get All Tag Counts",
+        "operationId": "get_all_tag_counts_tacapi_v1_get_all_use_counts_get",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -4101,6 +4351,34 @@
         }
       }
     },
+    "/infinite_image_browsing/db/alias_extra_path": {
+      "post": {
+        "summary": "Alias Extra Path",
+        "operationId": "alias_extra_path_infinite_image_browsing_db_alias_extra_path_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ExtraPathAliasModel" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/infinite_image_browsing/db/rebuild_index": {
       "post": {
         "summary": "Rebuild Index",
@@ -4221,17 +4499,23 @@
           "controlnet_processor_res": {
             "title": "Controlnet Processor Resolution",
             "type": "integer",
-            "default": 512
+            "default": -1
           },
           "controlnet_threshold_a": {
             "title": "Controlnet Threshold a",
             "type": "number",
-            "default": 64
+            "default": -1
           },
           "controlnet_threshold_b": {
             "title": "Controlnet Threshold b",
             "type": "number",
-            "default": 64
+            "default": -1
+          },
+          "controlnet_masks": {
+            "title": "Controlnet Masks",
+            "type": "array",
+            "items": { "type": "string" },
+            "default": []
           },
           "low_vram": {
             "title": "Low vram",
@@ -4496,19 +4780,27 @@
           }
         }
       },
-      "ExtraPathModel": {
-        "title": "ExtraPathModel",
-        "required": ["path"],
+      "ExtraPathAliasModel": {
+        "title": "ExtraPathAliasModel",
+        "required": ["path", "alias"],
         "type": "object",
         "properties": {
           "path": { "title": "Path", "type": "string" },
-          "type": { "$ref": "#/components/schemas/ExtraPathType" }
+          "alias": { "title": "Alias", "type": "string" }
         }
       },
-      "ExtraPathType": {
-        "title": "ExtraPathType",
-        "enum": ["scanned", "walk", "cli_access_only"],
-        "description": "An enumeration."
+      "ExtraPathModel": {
+        "title": "ExtraPathModel",
+        "required": ["path", "types"],
+        "type": "object",
+        "properties": {
+          "path": { "title": "Path", "type": "string" },
+          "types": {
+            "title": "Types",
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
       },
       "ExtrasBatchImagesRequest": {
         "title": "ExtrasBatchImagesRequest",
@@ -4554,8 +4846,7 @@
           },
           "upscaling_resize": {
             "title": "Upscaling Factor",
-            "maximum": 8.0,
-            "minimum": 1.0,
+            "exclusiveMinimum": 0.0,
             "type": "number",
             "description": "By how much to upscale the image, only used when resize_mode=0.",
             "default": 2
@@ -4675,8 +4966,7 @@
           },
           "upscaling_resize": {
             "title": "Upscaling Factor",
-            "maximum": 8.0,
-            "minimum": 1.0,
+            "exclusiveMinimum": 0.0,
             "type": "number",
             "description": "By how much to upscale the image, only used when resize_mode=0.",
             "default": 2
@@ -4867,6 +5157,11 @@
             "description": "base path where all user data is stored",
             "default": "O:\\AI\\sd-webui"
           },
+          "models_dir": {
+            "title": "Models Dir",
+            "type": "string",
+            "description": "base path where models are stored; overrides --data-dir"
+          },
           "config": {
             "title": "Config",
             "type": "string",
@@ -4921,7 +5216,7 @@
           "max_batch_count": {
             "title": "Max Batch Count",
             "type": "integer",
-            "description": "maximum batch count value for the UI",
+            "description": "does not do anything",
             "default": 16
           },
           "embeddings_dir": {
@@ -5060,6 +5355,12 @@
             "type": "string",
             "description": "Path to directory with RealESRGAN model file(s).",
             "default": "O:\\AI\\sd-webui\\models\\RealESRGAN"
+          },
+          "dat_models_path": {
+            "title": "Dat Models Path",
+            "type": "string",
+            "description": "Path to directory with DAT model file(s).",
+            "default": "O:\\AI\\sd-webui\\models\\DAT"
           },
           "clip_models_path": {
             "title": "Clip Models Path",
@@ -5205,8 +5506,18 @@
           "freeze_settings": {
             "title": "Freeze Settings",
             "type": "boolean",
-            "description": "disable editing settings",
+            "description": "disable editing of all settings globally",
             "default": false
+          },
+          "freeze_settings_in_sections": {
+            "title": "Freeze Settings In Sections",
+            "type": "string",
+            "description": "disable editing settings in specific sections of the settings page by specifying a comma-delimited list such like \"saving-images,upscaling\". The list of setting names can be found in the modules/shared_options.py file"
+          },
+          "freeze_specific_settings": {
+            "title": "Freeze Specific Settings",
+            "type": "string",
+            "description": "disable editing of individual settings by specifying a comma-delimited list like \"samples_save,samples_format\". The list of setting names can be found in the config.json file"
           },
           "ui_settings_file": {
             "title": "Ui Settings File",
@@ -5255,9 +5566,10 @@
           },
           "styles_file": {
             "title": "Styles File",
-            "type": "string",
-            "description": "filename to use for styles",
-            "default": "O:\\AI\\sd-webui\\styles.csv"
+            "type": "array",
+            "items": {},
+            "description": "path or wildcard path of styles files, allow multiple entries.",
+            "default": []
           },
           "autolaunch": {
             "title": "Autolaunch",
@@ -5440,6 +5752,24 @@
             "description": "if load a model at web start, only take effect when --nowebui",
             "default": false
           },
+          "unix_filenames_sanitization": {
+            "title": "Unix Filenames Sanitization",
+            "type": "boolean",
+            "description": "allow any symbols except '/' in filenames. May conflict with your browser and file system",
+            "default": false
+          },
+          "filenames_max_length": {
+            "title": "Filenames Max Length",
+            "type": "integer",
+            "description": "maximal length of filenames of saved images. If you override it, it can conflict with your file system",
+            "default": 128
+          },
+          "no_prompt_history": {
+            "title": "No Prompt History",
+            "type": "boolean",
+            "description": "disable read prompt from last generation feature; settings this argument will not create '--data_path/params.txt' file",
+            "default": false
+          },
           "ad_no_huggingface": {
             "title": "Ad No Huggingface",
             "type": "boolean",
@@ -5616,8 +5946,9 @@
           "sampler_name": {
             "title": "Sampler name",
             "type": "string",
-            "default": "DPM++ 2M Karras"
+            "default": "DPM++ 2M"
           },
+          "scheduler": { "title": "Scheduler", "type": "string" },
           "batch_size": {
             "title": "Batch Size",
             "type": "integer",
@@ -5677,6 +6008,7 @@
             "type": "boolean",
             "default": false
           },
+          "firstpass_image": { "title": "Firstpass Image", "type": "string" },
           "comments": { "title": "Comments", "type": "object" },
           "init_images": {
             "title": "Init Images",
@@ -5701,6 +6033,11 @@
             "default": 4
           },
           "mask_blur": { "title": "Mask Blur", "type": "integer" },
+          "mask_round": {
+            "title": "Mask Round",
+            "type": "boolean",
+            "default": true
+          },
           "inpainting_fill": {
             "title": "Inpainting Fill",
             "type": "integer",
@@ -5726,6 +6063,7 @@
             "type": "number"
           },
           "latent_mask": { "title": "Latent Mask", "type": "string" },
+          "force_task_id": { "title": "Force Task Id", "type": "string" },
           "include_init_images": {
             "title": "Include Init Images",
             "type": "boolean",
@@ -5743,6 +6081,7 @@
             "type": "object",
             "default": {}
           },
+          "infotext": { "title": "Infotext", "type": "string" },
           "checkpoint": {
             "title": "Custom checkpoint.",
             "type": "string",
@@ -5986,7 +6325,7 @@
           "jpeg_quality": {
             "title": "Jpeg Quality",
             "type": "number",
-            "description": "Quality for saved jpeg images",
+            "description": "Quality for saved jpeg and avif images",
             "default": 80
           },
           "webp_lossless": {
@@ -6035,6 +6374,12 @@
             "description": "When using 'Save' button, only save a single selected image",
             "default": true
           },
+          "save_write_log_csv": {
+            "title": "Save Write Log Csv",
+            "type": "boolean",
+            "description": "Write log.csv when saving images using 'Save' button",
+            "default": true
+          },
           "save_init_img": {
             "title": "Save Init Img",
             "description": "Save init images when using img2img",
@@ -6076,19 +6421,19 @@
             "title": "Outdir Txt2Img Samples",
             "type": "string",
             "description": "Output directory for txt2img images",
-            "default": "outputs/txt2img-images"
+            "default": "outputs\\txt2img-images"
           },
           "outdir_img2img_samples": {
             "title": "Outdir Img2Img Samples",
             "type": "string",
             "description": "Output directory for img2img images",
-            "default": "outputs/img2img-images"
+            "default": "outputs\\img2img-images"
           },
           "outdir_extras_samples": {
             "title": "Outdir Extras Samples",
             "type": "string",
             "description": "Output directory for images from extras tab",
-            "default": "outputs/extras-images"
+            "default": "outputs\\extras-images"
           },
           "outdir_grids": {
             "title": "Outdir Grids",
@@ -6099,25 +6444,25 @@
             "title": "Outdir Txt2Img Grids",
             "type": "string",
             "description": "Output directory for txt2img grids",
-            "default": "outputs/txt2img-grids"
+            "default": "outputs\\txt2img-grids"
           },
           "outdir_img2img_grids": {
             "title": "Outdir Img2Img Grids",
             "type": "string",
             "description": "Output directory for img2img grids",
-            "default": "outputs/img2img-grids"
+            "default": "outputs\\img2img-grids"
           },
           "outdir_save": {
             "title": "Outdir Save",
             "type": "string",
             "description": "Directory for saving images using the Save button",
-            "default": "log/images"
+            "default": "log\\images"
           },
           "outdir_init_images": {
             "title": "Outdir Init Images",
             "type": "string",
             "description": "Directory for saving init images when using img2img",
-            "default": "outputs/init-images"
+            "default": "outputs\\init-images"
           },
           "save_to_dirs": {
             "title": "Save To Dirs",
@@ -6167,9 +6512,33 @@
             "description": "Select which Real-ESRGAN models to show in the web UI.",
             "default": ["R-ESRGAN 4x+", "R-ESRGAN 4x+ Anime6B"]
           },
+          "dat_enabled_models": {
+            "title": "Dat Enabled Models",
+            "type": "array",
+            "items": {},
+            "description": "Select which DAT models to show in the web UI.",
+            "default": ["DAT x2", "DAT x3", "DAT x4"]
+          },
+          "DAT_tile": {
+            "title": "Dat Tile",
+            "type": "number",
+            "description": "Tile size for DAT upscalers.",
+            "default": 192
+          },
+          "DAT_tile_overlap": {
+            "title": "Dat Tile Overlap",
+            "type": "number",
+            "description": "Tile overlap for DAT upscalers.",
+            "default": 8
+          },
           "upscaler_for_img2img": {
             "title": "Upscaler For Img2Img",
             "description": "Upscaler for img2img"
+          },
+          "set_scale_by_when_changing_upscaler": {
+            "title": "Set Scale By When Changing Upscaler",
+            "description": "Automatically set the Scale by factor based on the name of the selected Upscaler.",
+            "default": false
           },
           "face_restoration": {
             "title": "Face Restoration",
@@ -6232,6 +6601,12 @@
             "description": "Add a second progress bar to the console that shows progress for an entire job.",
             "default": true
           },
+          "enable_upscale_progressbar": {
+            "title": "Enable Upscale Progressbar",
+            "type": "boolean",
+            "description": "Show a progress bar in the console for tiled upscaling.",
+            "default": true
+          },
           "print_hypernet_extra": {
             "title": "Print Hypernet Extra",
             "description": "Print extra hypernetwork information to console.",
@@ -6258,6 +6633,47 @@
             "title": "Dump Stacks On Signal",
             "description": "Print stack traces before exiting the program with ctrl+c.",
             "default": false
+          },
+          "profiling_explanation": {
+            "title": "Profiling Explanation",
+            "type": "string",
+            "default": "Those settings allow you to enable torch profiler when generating pictures.\nProfiling allows you to see which code uses how much of computer's resources during generation.\nEach generation writes its own profile to one file, overwriting previous.\nThe file can be viewed in <a href=\"chrome:tracing\">Chrome</a>, or on a <a href=\"https://ui.perfetto.dev/\">Perfetto</a> web site.\nWarning: writing profile can take a lot of time, up to 30 seconds, and the file itelf can be around 500MB in size."
+          },
+          "profiling_enable": {
+            "title": "Profiling Enable",
+            "description": "Enable profiling",
+            "default": false
+          },
+          "profiling_activities": {
+            "title": "Profiling Activities",
+            "type": "array",
+            "items": {},
+            "description": "Activities",
+            "default": ["CPU"]
+          },
+          "profiling_record_shapes": {
+            "title": "Profiling Record Shapes",
+            "type": "boolean",
+            "description": "Record shapes",
+            "default": true
+          },
+          "profiling_profile_memory": {
+            "title": "Profiling Profile Memory",
+            "type": "boolean",
+            "description": "Profile memory",
+            "default": true
+          },
+          "profiling_with_stack": {
+            "title": "Profiling With Stack",
+            "type": "boolean",
+            "description": "Include python stack",
+            "default": true
+          },
+          "profiling_filename": {
+            "title": "Profiling Filename",
+            "type": "string",
+            "description": "Profile filename",
+            "default": "trace.json"
           },
           "api_enable_requests": {
             "title": "Api Enable Requests",
@@ -6373,11 +6789,11 @@
             "description": "Enable quantization in K samplers for sharper and cleaner results. This may change existing seeds",
             "default": false
           },
-          "enable_emphasis": {
-            "title": "Enable Emphasis",
-            "type": "boolean",
-            "description": "Enable emphasis",
-            "default": true
+          "emphasis": {
+            "title": "Emphasis",
+            "type": "string",
+            "description": "Emphasis mode",
+            "default": "Original"
           },
           "enable_batch_seeds": {
             "title": "Enable Batch Seeds",
@@ -6390,6 +6806,11 @@
             "type": "number",
             "description": "Prompt word wrap length limit",
             "default": 20
+          },
+          "sdxl_clip_l_skip": {
+            "title": "Sdxl Clip L Skip",
+            "description": "Clip skip SDXL",
+            "default": false
           },
           "CLIP_stop_at_last_layers": {
             "title": "Clip Stop At Last Layers",
@@ -6441,6 +6862,11 @@
             "description": "SDXL high aesthetic score",
             "default": 6.0
           },
+          "sd3_enable_t5": {
+            "title": "Sd3 Enable T5",
+            "description": "Enable T5",
+            "default": false
+          },
           "sd_vae_explanation": {
             "title": "Sd Vae Explanation",
             "type": "string",
@@ -6462,6 +6888,11 @@
             "type": "boolean",
             "description": "Selected VAE overrides per-model preferences",
             "default": true
+          },
+          "auto_vae_precision_bfloat16": {
+            "title": "Auto Vae Precision Bfloat16",
+            "description": "Automatically convert VAE to bfloat16",
+            "default": false
           },
           "auto_vae_precision": {
             "title": "Auto Vae Precision",
@@ -6554,6 +6985,12 @@
             "description": "Show the first N batch img2img results in UI",
             "default": 32
           },
+          "overlay_inpaint": {
+            "title": "Overlay Inpaint",
+            "type": "boolean",
+            "description": "Overlay original for inpaint",
+            "default": true
+          },
           "cross_attention_optimization": {
             "title": "Cross Attention Optimization",
             "type": "string",
@@ -6564,6 +7001,11 @@
             "title": "S Min Uncond",
             "description": "Negative Guidance minimum sigma",
             "default": 0.0
+          },
+          "s_min_uncond_all": {
+            "title": "S Min Uncond All",
+            "description": "Negative Guidance minimum sigma all steps",
+            "default": false
           },
           "token_merging_ratio": {
             "title": "Token Merging Ratio",
@@ -6582,7 +7024,12 @@
           },
           "pad_cond_uncond": {
             "title": "Pad Cond Uncond",
-            "description": "Pad prompt/negative prompt to be same length",
+            "description": "Pad prompt/negative prompt",
+            "default": false
+          },
+          "pad_cond_uncond_v0": {
+            "title": "Pad Cond Uncond V0",
+            "description": "Pad prompt/negative prompt (v0)",
             "default": false
           },
           "persistent_cond_cache": {
@@ -6595,6 +7042,23 @@
             "title": "Batch Cond Uncond",
             "type": "boolean",
             "description": "Batch cond/uncond",
+            "default": true
+          },
+          "fp8_storage": {
+            "title": "Fp8 Storage",
+            "type": "string",
+            "description": "FP8 weight",
+            "default": "Disable"
+          },
+          "cache_fp16_weight": {
+            "title": "Cache Fp16 Weight",
+            "description": "Cache FP16 weight for LoRA",
+            "default": false
+          },
+          "auto_backcompat": {
+            "title": "Auto Backcompat",
+            "type": "boolean",
+            "description": "Automatic backward compatibility",
             "default": true
           },
           "use_old_emphasis_implementation": {
@@ -6617,11 +7081,6 @@
             "description": "For hires fix, use width/height sliders to set final resolution rather than first pass (disables Upscale by, Resize width/height to).",
             "default": false
           },
-          "dont_fix_second_order_samplers_schedule": {
-            "title": "Dont Fix Second Order Samplers Schedule",
-            "description": "Do not fix prompt schedule for second order samplers.",
-            "default": false
-          },
           "hires_fix_use_firstpass_conds": {
             "title": "Hires Fix Use Firstpass Conds",
             "description": "For hires fix, calculate conds of second pass using extra networks of first pass.",
@@ -6630,6 +7089,16 @@
           "use_old_scheduling": {
             "title": "Use Old Scheduling",
             "description": "Use old prompt editing timelines.",
+            "default": false
+          },
+          "use_downcasted_alpha_bar": {
+            "title": "Use Downcasted Alpha Bar",
+            "description": "Downcast model alphas_cumprod to fp16 before sampling. For reproducing old seeds.",
+            "default": false
+          },
+          "refiner_switch_by_sample_steps": {
+            "title": "Refiner Switch By Sample Steps",
+            "description": "Switch to refiner by sampling steps instead of model timesteps. Old behavior for refiner.",
             "default": false
           },
           "interrogate_keep_models_in_memory": {
@@ -6745,6 +7214,11 @@
             "description": "Show description on card",
             "default": true
           },
+          "extra_networks_card_description_is_html": {
+            "title": "Extra Networks Card Description Is Html",
+            "description": "Treat card description as HTML",
+            "default": false
+          },
           "extra_networks_card_order_field": {
             "title": "Extra Networks Card Order Field",
             "type": "string",
@@ -6756,6 +7230,24 @@
             "type": "string",
             "description": "Default order for Extra Networks cards",
             "default": "Ascending"
+          },
+          "extra_networks_tree_view_style": {
+            "title": "Extra Networks Tree View Style",
+            "type": "string",
+            "description": "Extra Networks directory view style",
+            "default": "Dirs"
+          },
+          "extra_networks_tree_view_default_enabled": {
+            "title": "Extra Networks Tree View Default Enabled",
+            "type": "boolean",
+            "description": "Show the Extra Networks directory view by default",
+            "default": true
+          },
+          "extra_networks_tree_view_default_width": {
+            "title": "Extra Networks Tree View Default Width",
+            "type": "number",
+            "description": "Default width for the Extra Networks directory tree view",
+            "default": 180
           },
           "extra_networks_add_text_separator": {
             "title": "Extra Networks Add Text Separator",
@@ -6821,6 +7313,12 @@
             "description": "Disable prompt token counters",
             "default": false
           },
+          "include_styles_into_token_counters": {
+            "title": "Include Styles Into Token Counters",
+            "type": "boolean",
+            "description": "Count tokens of enabled styles",
+            "default": true
+          },
           "return_grid": {
             "title": "Return Grid",
             "type": "boolean",
@@ -6855,10 +7353,28 @@
             "description": "Full page image viewer: gamepad repeat period",
             "default": 250
           },
+          "sd_webui_modal_lightbox_icon_opacity": {
+            "title": "Sd Webui Modal Lightbox Icon Opacity",
+            "type": "number",
+            "description": "Full page image viewer: control icon unfocused opacity",
+            "default": 1
+          },
+          "sd_webui_modal_lightbox_toolbar_opacity": {
+            "title": "Sd Webui Modal Lightbox Toolbar Opacity",
+            "type": "number",
+            "description": "Full page image viewer: tool bar opacity",
+            "default": 0.9
+          },
           "gallery_height": {
             "title": "Gallery Height",
             "description": "Gallery height",
             "default": ""
+          },
+          "open_dir_button_choice": {
+            "title": "Open Dir Button Choice",
+            "type": "string",
+            "description": "What directory the [📂] button opens",
+            "default": "Subdirectory"
           },
           "compact_prompt_box": {
             "title": "Compact Prompt Box",
@@ -6901,6 +7417,12 @@
             "title": "Img2Img Settings Accordion",
             "description": "Settings in img2img hidden under Accordion",
             "default": false
+          },
+          "interrupt_after_current": {
+            "title": "Interrupt After Current",
+            "type": "boolean",
+            "description": "Don't Interrupt in the middle",
+            "default": true
           },
           "localization": {
             "title": "Localization",
@@ -6959,6 +7481,11 @@
             "type": "boolean",
             "description": "Send size when sending prompt or image to another interface",
             "default": true
+          },
+          "enable_reloading_ui_scripts": {
+            "title": "Enable Reloading Ui Scripts",
+            "description": "Reload UI scripts when using Reload UI option",
+            "default": false
           },
           "infotext_explanation": {
             "title": "Infotext Explanation",
@@ -7091,6 +7618,12 @@
             "description": "Show Live preview in full page image viewer",
             "default": false
           },
+          "prevent_screen_sleep_during_generation": {
+            "title": "Prevent Screen Sleep During Generation",
+            "type": "boolean",
+            "description": "Prevent screen sleep during generation",
+            "default": true
+          },
           "hide_samplers": {
             "title": "Hide Samplers",
             "description": "Hide samplers in user interface",
@@ -7133,12 +7666,6 @@
             "type": "number",
             "description": "sigma noise",
             "default": 1.0
-          },
-          "k_sched_type": {
-            "title": "K Sched Type",
-            "type": "string",
-            "description": "Scheduler type",
-            "default": "Automatic"
           },
           "sigma_min": {
             "title": "Sigma Min",
@@ -7190,9 +7717,37 @@
             "description": "UniPC lower order final",
             "default": true
           },
+          "sd_noise_schedule": {
+            "title": "Sd Noise Schedule",
+            "type": "string",
+            "description": "Noise schedule for sampling",
+            "default": "Default"
+          },
+          "skip_early_cond": {
+            "title": "Skip Early Cond",
+            "description": "Ignore negative prompt during early sampling",
+            "default": 0.0
+          },
+          "beta_dist_alpha": {
+            "title": "Beta Dist Alpha",
+            "type": "number",
+            "description": "Beta scheduler - alpha",
+            "default": 0.6
+          },
+          "beta_dist_beta": {
+            "title": "Beta Dist Beta",
+            "type": "number",
+            "description": "Beta scheduler - beta",
+            "default": 0.6
+          },
           "postprocessing_enable_in_main_ui": {
             "title": "Postprocessing Enable In Main Ui",
             "description": "Enable postprocessing operations in txt2img and img2img tabs",
+            "default": []
+          },
+          "postprocessing_disable_in_extras": {
+            "title": "Postprocessing Disable In Extras",
+            "description": "Disable postprocessing operations in extras tab",
             "default": []
           },
           "postprocessing_operation_order": {
@@ -7251,6 +7806,12 @@
             "description": "Add Lora hashes to infotext",
             "default": true
           },
+          "lora_bundled_ti_to_infotext": {
+            "title": "Lora Bundled Ti To Infotext",
+            "type": "boolean",
+            "description": "Add Lora name as TI hashes for bundled Textual Inversion",
+            "default": true
+          },
           "lora_show_all": {
             "title": "Lora Show All",
             "description": "Always show all networks on the Lora page",
@@ -7265,6 +7826,16 @@
             "title": "Lora In Memory Limit",
             "description": "Number of Lora networks to keep cached in memory",
             "default": 0
+          },
+          "lora_not_found_warning_console": {
+            "title": "Lora Not Found Warning Console",
+            "description": "Lora not found warning in console",
+            "default": false
+          },
+          "lora_not_found_gradio_warning": {
+            "title": "Lora Not Found Gradio Warning",
+            "description": "Lora not found warning popup in webui",
+            "default": false
           },
           "lora_functional": {
             "title": "Lora Functional",
@@ -7283,6 +7854,18 @@
             "description": "Adjust brush size",
             "default": "Ctrl"
           },
+          "canvas_hotkey_shrink_brush": {
+            "title": "Canvas Hotkey Shrink Brush",
+            "type": "string",
+            "description": "Shrink the brush size",
+            "default": "Q"
+          },
+          "canvas_hotkey_grow_brush": {
+            "title": "Canvas Hotkey Grow Brush",
+            "type": "string",
+            "description": "Enlarge the brush size",
+            "default": "W"
+          },
           "canvas_hotkey_move": {
             "title": "Canvas Hotkey Move",
             "type": "string",
@@ -7298,7 +7881,7 @@
           "canvas_hotkey_reset": {
             "title": "Canvas Hotkey Reset",
             "type": "string",
-            "description": "Reset zoom and canvas positon",
+            "description": "Reset zoom and canvas position",
             "default": "R"
           },
           "canvas_hotkey_overlap": {
@@ -7575,7 +8158,7 @@
         "title": "RemoveCustomTagReq",
         "required": ["tag_id"],
         "type": "object",
-        "properties": { "tag_id": { "title": "Tag Id", "type": "string" } }
+        "properties": { "tag_id": { "title": "Tag Id", "type": "integer" } }
       },
       "ResetBody": {
         "title": "ResetBody",
@@ -7623,6 +8206,25 @@
             "title": "Options",
             "type": "object",
             "additionalProperties": { "type": "string" }
+          }
+        }
+      },
+      "SchedulerItem": {
+        "title": "SchedulerItem",
+        "required": ["name", "label"],
+        "type": "object",
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "label": { "title": "Label", "type": "string" },
+          "aliases": {
+            "title": "Aliases",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "default_rho": { "title": "Default Rho", "type": "number" },
+          "need_inner_model": {
+            "title": "Needs Inner Model",
+            "type": "boolean"
           }
         }
       },
@@ -7754,6 +8356,7 @@
             "default": -1
           },
           "sampler_name": { "title": "Sampler Name", "type": "string" },
+          "scheduler": { "title": "Scheduler", "type": "string" },
           "batch_size": {
             "title": "Batch Size",
             "type": "integer",
@@ -7813,6 +8416,7 @@
             "type": "boolean",
             "default": false
           },
+          "firstpass_image": { "title": "Firstpass Image", "type": "string" },
           "comments": { "title": "Comments", "type": "object" },
           "init_images": {
             "title": "Init Images",
@@ -7837,6 +8441,11 @@
             "default": 4
           },
           "mask_blur": { "title": "Mask Blur", "type": "integer" },
+          "mask_round": {
+            "title": "Mask Round",
+            "type": "boolean",
+            "default": true
+          },
           "inpainting_fill": {
             "title": "Inpainting Fill",
             "type": "integer",
@@ -7862,6 +8471,7 @@
             "type": "number"
           },
           "latent_mask": { "title": "Latent Mask", "type": "string" },
+          "force_task_id": { "title": "Force Task Id", "type": "string" },
           "sampler_index": {
             "title": "Sampler Index",
             "type": "string",
@@ -7893,7 +8503,8 @@
             "title": "Alwayson Scripts",
             "type": "object",
             "default": {}
-          }
+          },
+          "infotext": { "title": "Infotext", "type": "string" }
         }
       },
       "StableDiffusionProcessingTxt2Img": {
@@ -7929,6 +8540,7 @@
             "default": -1
           },
           "sampler_name": { "title": "Sampler Name", "type": "string" },
+          "scheduler": { "title": "Scheduler", "type": "string" },
           "batch_size": {
             "title": "Batch Size",
             "type": "integer",
@@ -7987,6 +8599,7 @@
             "type": "boolean",
             "default": false
           },
+          "firstpass_image": { "title": "Firstpass Image", "type": "string" },
           "comments": { "title": "Comments", "type": "object" },
           "enable_hr": {
             "title": "Enable Hr",
@@ -8025,6 +8638,7 @@
             "type": "string"
           },
           "hr_sampler_name": { "title": "Hr Sampler Name", "type": "string" },
+          "hr_scheduler": { "title": "Hr Scheduler", "type": "string" },
           "hr_prompt": {
             "title": "Hr Prompt",
             "type": "string",
@@ -8035,6 +8649,7 @@
             "type": "string",
             "default": ""
           },
+          "force_task_id": { "title": "Force Task Id", "type": "string" },
           "sampler_index": {
             "title": "Sampler Index",
             "type": "string",
@@ -8061,7 +8676,8 @@
             "title": "Alwayson Scripts",
             "type": "object",
             "default": {}
-          }
+          },
+          "infotext": { "title": "Infotext", "type": "string" }
         }
       },
       "StringRequestBody": {
@@ -8191,8 +8807,9 @@
           "sampler_name": {
             "title": "Sampler name",
             "type": "string",
-            "default": "DPM++ 2M Karras"
+            "default": "DPM++ 2M"
           },
+          "scheduler": { "title": "Scheduler", "type": "string" },
           "batch_size": {
             "title": "Batch Size",
             "type": "integer",
@@ -8251,6 +8868,7 @@
             "type": "boolean",
             "default": false
           },
+          "firstpass_image": { "title": "Firstpass Image", "type": "string" },
           "comments": { "title": "Comments", "type": "object" },
           "enable_hr": {
             "title": "Enable Hr",
@@ -8289,6 +8907,7 @@
             "type": "string"
           },
           "hr_sampler_name": { "title": "Hr Sampler Name", "type": "string" },
+          "hr_scheduler": { "title": "Hr Scheduler", "type": "string" },
           "hr_prompt": {
             "title": "Hr Prompt",
             "type": "string",
@@ -8299,6 +8918,7 @@
             "type": "string",
             "default": ""
           },
+          "force_task_id": { "title": "Force Task Id", "type": "string" },
           "script_name": { "title": "Script Name", "type": "string" },
           "script_args": {
             "title": "Script Args",
@@ -8311,6 +8931,7 @@
             "type": "object",
             "default": {}
           },
+          "infotext": { "title": "Infotext", "type": "string" },
           "checkpoint": {
             "title": "Custom checkpoint.",
             "type": "string",
@@ -8351,6 +8972,24 @@
           "model_path": { "title": "Path", "type": "string" },
           "model_url": { "title": "URL", "type": "string" },
           "scale": { "title": "Scale", "type": "number" }
+        }
+      },
+      "UseCountListRequest": {
+        "title": "UseCountListRequest",
+        "required": ["tagNames", "tagTypes"],
+        "type": "object",
+        "properties": {
+          "tagNames": {
+            "title": "Tagnames",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "tagTypes": {
+            "title": "Tagtypes",
+            "type": "array",
+            "items": { "type": "integer" }
+          },
+          "neg": { "title": "Neg", "type": "boolean", "default": false }
         }
       },
       "ValidationError": {
