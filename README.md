@@ -70,6 +70,30 @@ const response = await client.default.text2ImgapiSdapiV1Txt2ImgPost({
 fully functions here:
 [Service Functions](https://stablecanvas.github.io/sd-webui-a1111-client/classes/DefaultService.html)
 
+## Pipeline Usage  
+
+The `pipeline` is a DSL implementation in this library that allows intuitive request initiation through simple chained calls. It makes using the `sd-webui` client extremely straightforward.  
+
+Here is a basic example:  
+
+```ts
+import { Pipeline } from "@stable-canvas/sd-webui-a1111-client";
+const client = /* client instance */;
+const { images, parameters } = await new Pipeline(client)
+  .model("sdxl.safetensors")
+  .prompt("A beautiful sunset over the mountains")
+  .negative("Low quality, blurry")
+  .sampler("DPM++ 2M")
+  .scheduler("exponential")
+  .size(1024, 768)
+  .steps(35)
+  .cfg(5)
+  .use(/* extension */)
+  .run();
+```
+
+> For details about extensions, refer to the **Processor Usage** section.
+
 ## API Usage
 
 ### Documentation
@@ -127,7 +151,7 @@ const batch = api.Service.txt2imgBatch(
 const responses = await batch.waitForComplete();
 ```
 
-## ControlNet Api Usage
+### ControlNet Api Usage
 
 [ControlNetApi documentation](http://stablecanvas.github.io/sd-webui-a1111-client/classes/ControlNetApi.html)
 

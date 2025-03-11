@@ -151,7 +151,21 @@ export class ControlNetExt extends ExtensionScript<
     }
   }
 
+  /**
+   * @deprecated Use `add` instead
+   */
   addUnit(unit: Partial<ControlNetUnitRequest>) {
+    return this.add(unit);
+  }
+
+  /**
+   * Add a unit to the control net units. The unit must have at least one key.
+   * If the unit is empty, an error will be thrown.
+   * The unit will be merged with the default unit request before being added
+   * @param {Partial<ControlNetUnitRequest>} unit The unit to add
+   * @returns {this} The current instance of the extension script
+   */
+  add(unit: Partial<ControlNetUnitRequest>) {
     if (Object.keys(unit).length === 0) {
       throw new Error("Unit must have at least one key");
     }
@@ -160,10 +174,14 @@ export class ControlNetExt extends ExtensionScript<
       ...defaultControlNetUnitRequest(),
       ...unit,
     });
+
+    return this;
   }
 
   clear() {
     this.args = [];
+
+    return this;
   }
 
   install(

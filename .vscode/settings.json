@@ -1,11 +1,16 @@
 {
   "cSpell.words": [
+    "alwayson",
+    "cnet",
     "codegen",
+    "controlnet",
+    "denoising",
     "Imgapi",
     "Inpaint",
     "inpainting",
     "microbundle",
     "openapi",
+    "openpose",
     "Sdapi",
     "subseed",
     "webui",
