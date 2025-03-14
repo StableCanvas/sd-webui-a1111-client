@@ -94,6 +94,27 @@ const { images, parameters } = await new Pipeline(client)
 
 > For details about extensions, refer to the **Processor Usage** section.
 
+### img2img (or inpainting) with pipeline
+```ts
+const input_image = fs.readFileSync("./input_image.jpg").toString("base64");
+const input_mask = fs.readFileSync("./input_mask.jpg").toString("base64");
+const { images, parameters } = await new Pipeline(client)
+  .model("sdxl.safetensors")
+  .prompt("A beautiful sunset over the mountains")
+  .negative("Low quality, blurry")
+  .sampler("DPM++ 2M")
+  .scheduler("exponential")
+  .size(1024, 768)
+  .steps(35)
+  .cfg(5)
+  .images(input_image)
+  // 👇 inpainting params 👇
+  // .inpainting(InpaintFill.original)
+  // .mask(input_mask)
+  .use(/* extension */)
+  .run();
+```
+
 ## API Usage
 
 ### Documentation

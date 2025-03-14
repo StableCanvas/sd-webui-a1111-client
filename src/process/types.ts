@@ -4,30 +4,30 @@ import {
 } from "../client";
 import { SDWebUIA1111SystemSettings } from "./system.types";
 
-export enum Img2imgResizeMode {
+export enum ResizeModeI2i {
   "Just resize" = 0,
   "Crop and resize" = 1,
   "Resize and fill" = 2,
   "Just resize (latent upscale)" = 2,
 }
 
-export enum Img2imgInpaintFill {
+export enum InpaintFill {
   "fill" = 0,
   "original" = 1,
   "latent noise" = 2,
   "latent nothing" = 3,
 }
 
-export enum Img2imgInpaintFullRes {
+export enum InpaintFullRes {
   "Whole picture" = 0,
   "Only masked" = 1,
 }
 
 export type Img2imgProcessParams = StableDiffusionProcessingImg2Img & {
-  resize_mode?: Img2imgResizeMode;
-  inpainting_fill?: Img2imgInpaintFill;
+  resize_mode?: ResizeModeI2i;
+  inpainting_fill?: InpaintFill;
   inpainting_mask_invert?: 0 | 1; // false or true
-  inpaint_full_res?: Img2imgInpaintFullRes;
+  inpaint_full_res?: InpaintFullRes;
   override_settings?: Record<keyof any, any> &
     Partial<SDWebUIA1111SystemSettings>;
 };
