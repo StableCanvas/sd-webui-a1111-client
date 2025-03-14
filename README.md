@@ -29,7 +29,7 @@ API client for AUTOMATIC1111/stable-diffusion-webui for Node.js and Browser.
 
 ### Supported Versions
 
-- **WebUI**: 1.8.0
+- **WebUI**: 1.10.1
 - **ControlNet**: 3b4eedd
 
 ## Getting Started
